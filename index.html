@@ -196,15 +196,17 @@ a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="bor
 .stat-number,.counter-number,.display-number,[class*="stat"] .number,[class*="number"],.coverage-count,.service-count{color:var(--navy)!important;font-weight:400;}
 .partner-form-card{border:1px solid rgba(12,30,46,0.12);}
 #hero .hero-badge-wrap,#hero h1,#hero p,#hero .hero-ctas-wrap{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
-#hero a.hero-cta-primary{transition:background 0.2s ease,transform 0.2s ease;}
-#hero a.hero-cta-primary:hover{background:#f0f4f8!important;transform:translateY(-2px);}
+#hero .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:#b8963e;flex-shrink:0;animation:badgePulse 2.5s ease-in-out infinite;}
+@keyframes badgePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(0.85);}}
+#hero a.hero-cta-primary{transition:background 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 20px rgba(0,0,0,0.25);}
+#hero a.hero-cta-primary:hover{background:#f0f4f8!important;transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.3);}
 #hero a.hero-cta-secondary{transition:border-color 0.2s ease,background 0.2s ease;}
 #hero a.hero-cta-secondary:hover{background:rgba(255,255,255,0.08)!important;border-color:rgba(255,255,255,0.8)!important;}
 @media(max-width:768px){
   #hero{min-height:100vh!important;padding:0 0 4rem 0!important;justify-content:flex-end!important;}
   #hero > div:last-child{padding:0 1.5rem!important;}
   #hero h1{font-size:clamp(36px,9vw,52px)!important;}
-  #hero-bg{background-position:center center!important;}
+  #hero-bg{background-position:center 35%!important;}
 }
 </style>
 </head>
@@ -229,31 +231,31 @@ a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="bor
   <!-- HERO SECTION -->
   <section id="hero" class="hero-section" style="position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 5rem 0;overflow:hidden;">
 
-  <div id="hero-bg" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1800&q=85');background-size:cover;background-position:center 40%;background-repeat:no-repeat;"></div>
+  <div id="hero-bg" style="position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/WhiteStone-Partners-BSC/whitestone-partners/main/image.jpg');background-size:cover;background-position:center 35%;background-repeat:no-repeat;"></div>
 
-  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(8,18,30,0.82) 0%, rgba(8,18,30,0.65) 50%, rgba(8,18,30,0.3) 100%);"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(8,18,30,0.88) 0%, rgba(8,18,30,0.72) 40%, rgba(8,18,30,0.35) 75%, rgba(8,18,30,0.15) 100%);"></div>
 
-  <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to bottom,transparent,rgba(8,18,30,0.4));"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to bottom, transparent 60%, rgba(8,18,30,0.5));"></div>
 
   <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 3rem;width:100%;">
 
     <div class="hero-badge-wrap" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:6px 16px;margin-bottom:1.75rem;backdrop-filter:blur(8px);">
-      <div style="width:7px;height:7px;border-radius:50%;background:#b8963e;"></div>
+      <div class="hero-badge-dot" aria-hidden="true"></div>
       <span style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.9);">Certified Marine Dealer Program</span>
     </div>
 
-    <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(42px,6.5vw,88px);font-weight:300;color:#ffffff;line-height:1.08;letter-spacing:-0.01em;max-width:720px;margin:0 0 1.5rem;">
-      The program that brings<br>your customers back.<br><span style="color:#d4ac52;">Every season.</span>
+    <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(42px,6.5vw,88px);font-weight:300;color:#ffffff;line-height:1.05;letter-spacing:-0.02em;max-width:720px;margin:0 0 1.5rem;">
+      The program that brings<br>your customers back.<br><span style="color:#e8c060;">Every season.</span>
     </h1>
 
-    <p style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,0.72);max-width:520px;line-height:1.7;margin:0 0 2.5rem;">
+    <p style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,0.82);max-width:520px;line-height:1.7;margin:0 0 2.5rem;text-shadow:0 1px 3px rgba(0,0,0,0.3);">
       A turnkey prepaid service contract for certified marine dealers. Your customers stay. Your revenue grows.
     </p>
 
     <div class="hero-ctas-wrap" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
 
       <a href="#partner-application" id="hero-partner" class="hero-cta-primary"
-        style="display:inline-flex;align-items:center;gap:8px;background:#ffffff;color:#0c1e2e;text-decoration:none;padding:15px 32px;border-radius:6px;font-size:15px;font-weight:700;letter-spacing:0.02em;font-family:'DM Sans',Arial,sans-serif;">
+        style="display:inline-flex;align-items:center;gap:8px;background:#ffffff;color:#0c1e2e;text-decoration:none;padding:15px 34px;border-radius:6px;font-size:15px;font-weight:700;letter-spacing:0.02em;font-family:'DM Sans',Arial,sans-serif;">
         Become a Dealer Partner
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
