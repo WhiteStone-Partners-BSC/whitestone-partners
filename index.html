@@ -369,6 +369,28 @@ section[style*="background:#0c1e2e"] h2,section[style*="background:#0c1e2e"] h3,
 @media (max-width: 768px){.contact-grid{grid-template-columns:1fr!important;gap:3rem!important;}}
 .form-field input,.form-field textarea{box-sizing:border-box;}
 
+
+/* Hero entrance animations */
+@keyframes heroScrollFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+nav, header, .navbar, .site-header, #navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
 </style>
 </head>
 <body>
@@ -389,6 +411,65 @@ section[style*="background:#0c1e2e"] h2,section[style*="background:#0c1e2e"] h3,
   <a id="mm-partner" class="mob-cta">Become a Partner</a>
 </div>
 <div id="page-home" class="page active">
+<!-- ============================================ -->
+<!-- HERO SECTION                                 -->
+<!-- ============================================ -->
+<section id="hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 5rem;overflow:hidden;">
+
+  <!-- Background photo -->
+  <div style="position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/WhiteStone-Partners-BSC/whitestone-partners/main/image.jpg');background-size:cover;background-position:center 35%;background-repeat:no-repeat;"></div>
+
+  <!-- Dark overlay -- heavier left, lighter right -->
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(8,18,30,0.78) 0%,rgba(8,18,30,0.55) 45%,rgba(8,18,30,0.22) 100%);"></div>
+
+  <!-- Bottom fade into white -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to bottom,transparent,rgba(8,18,30,0.35));"></div>
+
+  <!-- Content -->
+  <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 3rem;width:100%;">
+
+    <!-- Headline -->
+    <h1 id="hero-headline" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(44px,6.5vw,88px);font-weight:300;color:#ffffff;line-height:1.08;letter-spacing:-0.01em;max-width:700px;margin:0 0 1.5rem;opacity:0;transform:translateY(28px);transition:opacity 0.8s ease 0.2s,transform 0.8s ease 0.2s;">
+      The program that brings<br>your customers back.<br><span style="color:#d4ac52;">Every season.</span>
+    </h1>
+
+    <!-- Subhead -->
+    <p id="hero-sub" style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,0.75);max-width:500px;line-height:1.7;margin:0 0 2.5rem;opacity:0;transform:translateY(20px);transition:opacity 0.8s ease 0.42s,transform 0.8s ease 0.42s;">
+      A turnkey prepaid service contract for certified marine dealers. Your customers stay. Your revenue grows.
+    </p>
+
+    <!-- CTA buttons -->
+    <div id="hero-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;opacity:0;transform:translateY(16px);transition:opacity 0.8s ease 0.6s,transform 0.8s ease 0.6s;">
+
+      <a href="#partner-application"
+        style="display:inline-flex;align-items:center;gap:8px;background:#ffffff;color:#0c1e2e;text-decoration:none;padding:15px 32px;border-radius:6px;font-size:15px;font-weight:700;letter-spacing:0.02em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.2);"
+        onmouseover="this.style.background='#f0f4f8';this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 28px rgba(0,0,0,0.25)'"
+        onmouseout="this.style.background='#ffffff';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.2)'">
+        Become a Dealer Partner
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <a href="#how-it-works"
+        style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#ffffff;text-decoration:none;padding:15px 32px;border-radius:6px;font-size:15px;font-weight:500;border:1.5px solid rgba(255,255,255,0.4);font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;"
+        onmouseover="this.style.borderColor='rgba(255,255,255,0.8)';this.style.background='rgba(255,255,255,0.08)'"
+        onmouseout="this.style.borderColor='rgba(255,255,255,0.4)';this.style.background='transparent'">
+        How It Works
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div id="hero-scroll" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:heroScrollFade 1s ease 1.2s forwards;">
+    <span style="font-family:'DM Sans',Arial,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);">Scroll</span>
+    <div style="width:1px;height:32px;background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);animation:scrollLine 1.8s ease-in-out infinite;"></div>
+  </div>
+
+</section>
+<!-- ============================================ -->
+<!-- END HERO                                     -->
+<!-- ============================================ -->
   <!-- ============================================ -->
   <!-- VIDEO SECTIONS -- replacing hero              -->
   <!-- ============================================ -->
@@ -1128,6 +1209,52 @@ document.addEventListener("DOMContentLoaded",function(){
     });
   })();
 });
+
+
+// Hero entrance animation
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var headline = document.getElementById('hero-headline');
+    var sub      = document.getElementById('hero-sub');
+    var ctas     = document.getElementById('hero-ctas');
+    if (headline) { headline.style.opacity = '1'; headline.style.transform = 'translateY(0)'; }
+    if (sub)      { sub.style.opacity = '1';      sub.style.transform = 'translateY(0)'; }
+    if (ctas)     { ctas.style.opacity = '1';     ctas.style.transform = 'translateY(0)'; }
+  }, 100);
+});
+
+// Nav scroll behavior -- transparent over hero, solid when scrolled
+function updateNav() {
+  var nav = document.querySelector('nav') || document.querySelector('header') || document.querySelector('#navbar');
+  if (!nav) return;
+  if (window.scrollY > window.innerHeight * 0.7) {
+    nav.style.background = 'rgba(247,248,250,0.97)';
+    nav.style.borderBottom = '1px solid #e4eaf0';
+    nav.style.boxShadow = '0 1px 8px rgba(12,30,46,0.06)';
+    nav.querySelectorAll('a').forEach(function(a) {
+      if (!a.classList.contains('btn-partner') && !a.classList.contains('nav-cta') && !a.classList.contains('mob-cta')) {
+        a.style.color = '#0c1e2e';
+      }
+    });
+    var burger = nav.querySelectorAll('.hamburger span');
+    burger.forEach(function(line){ line.style.background = '#0c1e2e'; });
+  } else {
+    nav.style.background = 'transparent';
+    nav.style.borderBottom = 'none';
+    nav.style.boxShadow = 'none';
+    nav.querySelectorAll('a').forEach(function(a) {
+      if (!a.classList.contains('btn-partner') && !a.classList.contains('nav-cta') && !a.classList.contains('mob-cta')) {
+        a.style.color = 'rgba(255,255,255,0.9)';
+      }
+    });
+    var burger = nav.querySelectorAll('.hamburger span');
+    burger.forEach(function(line){ line.style.background = 'rgba(255,255,255,0.9)'; });
+  }
+}
+
+window.addEventListener('scroll', updateNav);
+updateNav();
+
 </script>
 </body>
 </html>
