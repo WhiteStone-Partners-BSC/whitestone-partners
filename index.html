@@ -408,6 +408,18 @@ nav a:hover, header a:hover {
   color: #ffffff;
 }
 
+nav ul, header ul, .nav-links, .nav-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  list-style: none;
+}
+
+nav a, header a {
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
 #hero { background:#0c1e2e !important; }
 
 
@@ -972,28 +984,21 @@ window.addEventListener('scroll', updateNav);
 
 // -- INTRO + HERO REVEAL --
 function revealHero() {
-  var els = [
-    { id: 'hero-label',    delay: 0   },
-    { id: 'hero-headline', delay: 120 },
-    { id: 'hero-sub',      delay: 280 },
-    { id: 'hero-ctas',     delay: 440 },
-    { id: 'hero-scroll',   delay: 700 }
-  ];
-  els.forEach(function(item) {
+  ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id, i) {
     setTimeout(function() {
-      var el = document.getElementById(item.id);
+      var el = document.getElementById(id);
       if (!el) return;
-      el.style.transition = 'opacity 0.75s ease, transform 0.75s ease';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
       el.style.opacity    = '1';
       el.style.transform  = 'translateY(0)';
-    }, item.delay);
+    }, i * 150);
   });
 }
 
 function runIntro() {
   // Skip if seen this session
   if (sessionStorage.getItem('ws_intro')) {
-    revealHero();
+    setTimeout(function() { revealHero(); }, 50);
     return;
   }
   sessionStorage.setItem('ws_intro', '1');
@@ -1060,14 +1065,17 @@ document.querySelectorAll('[data-ws-reveal],[data-ws-reveal-text]').forEach(func
 });
 
 // -- RUN --
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    updateNav();
-    runIntro();
-  });
-} else {
+function initPage() {
   updateNav();
   runIntro();
+}
+
+// Use multiple triggers to guarantee it fires
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(initPage, 0);
+} else {
+  document.addEventListener('DOMContentLoaded', initPage);
+  window.addEventListener('load', initPage);
 }
 </script>
 </body>
