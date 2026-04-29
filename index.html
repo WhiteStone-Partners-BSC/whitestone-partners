@@ -356,8 +356,8 @@ a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="bor
 
 section[style*="background:#0c1e2e"],section[style*="background: #0c1e2e"],.section-dark{background:#ffffff!important;color:#0c1e2e!important;}
 section[style*="background:#0c1e2e"] h2,section[style*="background:#0c1e2e"] h3,section[style*="background:#0c1e2e"] p{color:#0c1e2e!important;}
-#page-home section:nth-of-type(odd),#page-about section:nth-of-type(odd),#page-contact section:nth-of-type(odd){background:#ffffff;}
-#page-home section:nth-of-type(even),#page-about section:nth-of-type(even),#page-contact section:nth-of-type(even){background:#f8f9fb;}
+#page-home section.ws-video-section:nth-of-type(odd){background:#ffffff;}#page-about section:nth-of-type(odd),#page-contact section:nth-of-type(odd){background:#ffffff;}
+#page-home section.ws-video-section:nth-of-type(even){background:#f7f8fa;}#page-about section:nth-of-type(even),#page-contact section:nth-of-type(even){background:#f8f9fb;}
 .reveal-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease, transform 0.65s ease;}
 .reveal-up.visible{opacity:1;transform:translateY(0);}
 .reveal-up:nth-child(2){transition-delay:0.1s;}
@@ -369,7 +369,12 @@ section[style*="background:#0c1e2e"] h2,section[style*="background:#0c1e2e"] h3,
 @media (max-width: 768px){.contact-grid{grid-template-columns:1fr!important;gap:3rem!important;}}
 .form-field input,.form-field textarea{box-sizing:border-box;}
 
-nav a, header a, .nav-link {
+#hero {
+  background: #0c1e2e !important;
+  background-color: #0c1e2e !important;
+}
+
+nav a, header a, .nav-link, .navbar a {
   color: rgba(255,255,255,0.85) !important;
   transition: color 0.15s ease;
 }
@@ -482,142 +487,98 @@ nav, header, .navbar, .site-header, #navbar {
 </section>
 <!-- ============================================ -->
   <!-- ============================================ -->
-  <!-- VIDEO SECTIONS -- replacing hero              -->
-  <!-- ============================================ -->
+  <!-- VIDEO SECTIONS -- replacing hero -->
 
-  <!-- SECTION 1 -- Video LEFT -->
-  <section class="ws-video-section vid-left">
-    <div class="ws-section-inner">
-
-      <div class="ws-video-card" data-ws-reveal>
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/video1_epy5cv.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="ws-text-side" data-ws-reveal-text>
-        <span class="ws-section-num">SIMPLE PROCESS</span>
-        <div class="ws-gold-bar"></div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-          Apply to<br>the Network.
-        </h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-          Fill out our dealer inquiry form. We'll reach out within 1–2 business days to walk you through the program.
-        </p>
-        <a href="#contact"
-          style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-          onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
-          onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
-          Apply to the Network
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
+<!-- SECTION 01 -- Video LEFT -->
+<section class="ws-video-section vid-left" id="how-it-works">
+  <div class="ws-section-inner">
+    <div class="ws-video-card" data-ws-reveal>
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-dbee4238-50ab-4855-af41-9bfdde66b1d6_pv7e01.mp4" type="video/mp4">
+      </video>
     </div>
-  </section>
-
-  <div class="ws-divider"></div>
-
-  <!-- SECTION 2 -- Video RIGHT -->
-  <section class="ws-video-section vid-right">
-    <div class="ws-section-inner">
-
-      <div class="ws-video-card" data-ws-reveal>
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/video2_l81j5d.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="ws-text-side" data-ws-reveal-text>
-        <span class="ws-section-num">SIMPLE PROCESS</span>
-        <div class="ws-gold-bar"></div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-          Get<br>Certified.
-        </h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-          Sign your dealer agreement, get your portal login, and learn the simple ticket process. Set up in hours, not weeks.
-        </p>
-        <a href="#how-it-works"
-          style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-          onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
-          onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
-          Learn More
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
+    <div class="ws-text-side" data-ws-reveal-text>
+      <span class="ws-section-num">SIMPLE PROCESS</span>
+      <div class="ws-gold-bar"></div>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
+        Apply to<br>the Network.
+      </h2>
+      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
+        Fill out our dealer inquiry form. We'll reach out within 1–2 business days to walk you through the program.
+      </p>
+      <a href="#contact"
+        style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
+        onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
+        Apply to the Network
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="ws-divider"></div>
+<div class="ws-divider"></div>
 
-  <!-- SECTION 3 -- Video LEFT -->
-  <section class="ws-video-section vid-left">
-    <div class="ws-section-inner">
-
-      <div class="ws-video-card" data-ws-reveal>
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/video3_jow7jx.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="ws-text-side" data-ws-reveal-text>
-        <span class="ws-section-num">SIMPLE PROCESS</span>
-        <div class="ws-gold-bar"></div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-          Start<br>Earning.
-        </h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-          Enroll customers, perform covered services, submit tickets. Get reimbursed per service plus a kickback on every contract sold.
-        </p>
-        <a href="#partner-application"
-          style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-          onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
-          onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
-          Become a Partner
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
+<!-- SECTION 02 -- Video RIGHT -->
+<section class="ws-video-section vid-right">
+  <div class="ws-section-inner">
+    <div class="ws-video-card" data-ws-reveal>
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-9c20243c-537b-4d95-9b7a-6268725ce92d_qw6pqo.mp4" type="video/mp4">
+      </video>
     </div>
-  </section>
-
-  <div class="ws-divider"></div>
-
-  <!-- SECTION 4 -- Video RIGHT -->
-  <section class="ws-video-section vid-right">
-    <div class="ws-section-inner">
-
-      <div class="ws-video-card" data-ws-reveal>
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/video4_oozsyq.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="ws-text-side" data-ws-reveal-text>
-        <span class="ws-section-num">WHITESTONE PARTNERS</span>
-        <div class="ws-gold-bar"></div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,3vw,44px);font-weight:300;color:#0c1e2e;line-height:1.2;letter-spacing:0.01em;margin:0;font-style:italic;">
-          "The contract that brings your customers back.<br>Every season."
-        </h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-          Join the Whitestone Partners dealer network and offer your customers the program that keeps them coming back.
-        </p>
-        <a href="#partner-application"
-          style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-          onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
-          onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
-          Apply to Become a Dealer
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
+    <div class="ws-text-side" data-ws-reveal-text>
+      <span class="ws-section-num">SIMPLE PROCESS</span>
+      <div class="ws-gold-bar"></div>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
+        Get<br>Certified.
+      </h2>
+      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
+        Sign your dealer agreement, get your portal login, and learn the simple ticket process. Set up in hours, not weeks.
+      </p>
+      <a href="#how-it-works"
+        style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
+        onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
+        Learn More
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="ws-divider"></div>
-  <!-- ============================================ -->
-  <!-- END VIDEO SECTIONS                           -->
+<div class="ws-divider"></div>
+
+<!-- SECTION 03 -- Video LEFT -->
+<section class="ws-video-section vid-left">
+  <div class="ws-section-inner">
+    <div class="ws-video-card" data-ws-reveal>
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-c39048cd-ec2c-41cb-bb75-c385c73c9d83_i20wml.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="ws-text-side" data-ws-reveal-text>
+      <span class="ws-section-num">SIMPLE PROCESS</span>
+      <div class="ws-gold-bar"></div>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
+        Start<br>Earning.
+      </h2>
+      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
+        Enroll customers, perform covered services, submit tickets. Get reimbursed per service plus a kickback on every contract sold.
+      </p>
+      <a href="#partner-application"
+        style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
+        onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
+        Become a Partner
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="ws-divider"></div>
+
   <!-- ============================================ -->
   </div>
 <div id="page-about" class="page">
@@ -987,115 +948,99 @@ nav, header, .navbar, .site-header, #navbar {
 </div>
 <script>
 function runIntroAnimation() {
-  // Skip if already seen this session
   if (sessionStorage.getItem('introShown')) {
     revealHeroContent(0);
     return;
   }
   sessionStorage.setItem('introShown', 'true');
 
-  // Lock scroll
   document.body.style.overflow = 'hidden';
-
-  // Hide hero content initially
   hideHeroContent();
 
-  // Create overlay -- same navy as hero so transition is seamless
+  // Overlay -- same navy as hero for seamless merge
   var overlay = document.createElement('div');
-  overlay.id = 'intro-overlay';
-  overlay.style.cssText = [
-    'position:fixed',
-    'inset:0',
-    'z-index:99999',
-    'background:#0c1e2e',
-    'display:flex',
-    'flex-direction:column',
-    'align-items:center',
-    'justify-content:center',
-    'pointer-events:none'
-  ].join(';');
+  overlay.id  = 'intro-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#0c1e2e;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;';
 
-  // Welcome text wrapper
   var textWrap = document.createElement('div');
-  textWrap.id = 'intro-text';
-  textWrap.style.cssText = [
-    'text-align:center',
-    'opacity:0',
-    'transform:translateY(10px)',
-    'transition:opacity 0.75s ease, transform 0.75s ease'
-  ].join(';');
+  textWrap.style.cssText = 'text-align:center;opacity:0;transform:translateY(10px);transition:opacity 0.75s ease,transform 0.75s ease;';
   textWrap.innerHTML =
-    '<div id="intro-welcome" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(13px,1.4vw,18px);font-weight:300;color:rgba(255,255,255,0.5);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:18px;transition:opacity 0.6s ease,transform 0.6s ease;">Welcome to</div>' +
-    '<div id="intro-name" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;color:#ffffff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Whitestone Partners</div>' +
-    '<div id="intro-line" style="width:0px;height:1px;background:#b8963e;margin:0 auto;transition:width 0.8s ease;"></div>';
+    '<div id="intro-welcome" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(13px,1.4vw,17px);font-weight:300;color:rgba(255,255,255,0.45);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:16px;transition:opacity 0.5s ease,transform 0.5s ease;">Welcome to</div>' +
+    '<div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;color:#ffffff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Whitestone Partners</div>' +
+    '<div id="intro-line" style="width:0;height:1px;background:#b8963e;margin:0 auto;transition:width 0.8s ease 0.3s;"></div>';
 
   overlay.appendChild(textWrap);
   document.body.appendChild(overlay);
 
-  // STEP 1 -- Fade in text (150ms)
+  // Fade in text
   setTimeout(function() {
     textWrap.style.opacity   = '1';
     textWrap.style.transform = 'translateY(0)';
-    // Animate gold line growing
     setTimeout(function() {
       var line = document.getElementById('intro-line');
       if (line) line.style.width = '48px';
     }, 300);
   }, 150);
 
-  // STEP 2 -- Fade out "Welcome to" (1800ms)
+  // Fade out "Welcome to"
   setTimeout(function() {
-    var welcome = document.getElementById('intro-welcome');
-    if (welcome) {
-      welcome.style.opacity   = '0';
-      welcome.style.transform = 'translateY(-6px)';
-    }
-  }, 1800);
+    var w = document.getElementById('intro-welcome');
+    if (w) { w.style.opacity = '0'; w.style.transform = 'translateY(-6px)'; }
+  }, 1900);
 
-  // STEP 3 -- Fade out "Whitestone Partners" text (2200ms)
-  // The overlay stays navy -- creating seamless merge with hero
+  // Fade out entire text block
   setTimeout(function() {
-    var name = document.getElementById('intro-name');
-    var line = document.getElementById('intro-line');
-    if (name) { name.style.transition = 'opacity 0.5s ease'; name.style.opacity = '0'; }
-    if (line) { line.style.transition = 'opacity 0.5s ease, width 0.5s ease'; line.style.opacity = '0'; line.style.width = '0px'; }
-  }, 2200);
+    textWrap.style.opacity   = '0';
+    textWrap.style.transform = 'translateY(-8px)';
+  }, 2300);
 
-  // STEP 4 -- Remove overlay (the navy hero is now showing through seamlessly)
+  // Remove overlay -- hero is already navy underneath, seamless transition
   setTimeout(function() {
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
     document.body.style.overflow = '';
-    // Reveal hero content
-    revealHeroContent(100);
-  }, 2750);
+    revealHeroContent(80);
+  }, 2900);
 }
 
 function hideHeroContent() {
   ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id) {
     var el = document.getElementById(id);
-    if (el) el.style.opacity = '0';
+    if (!el) return;
+    el.style.opacity   = '0';
+    el.style.transform = el.id === 'hero-scroll' ? 'none' : 'translateY(' + (id === 'hero-label' ? '0' : '24px') + ')';
   });
 }
 
 function revealHeroContent(baseDelay) {
-  var items = [
-    { id: 'hero-label',    delay: baseDelay + 0   },
-    { id: 'hero-headline', delay: baseDelay + 150  },
-    { id: 'hero-sub',      delay: baseDelay + 320  },
-    { id: 'hero-ctas',     delay: baseDelay + 500  },
-    { id: 'hero-scroll',   delay: baseDelay + 800  }
-  ];
-  items.forEach(function(item) {
+  if (baseDelay === 0) {
+    // Instant -- no animation
+    ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.transition = 'none';
+      el.style.opacity    = '1';
+      el.style.transform  = 'translateY(0)';
+    });
+    return;
+  }
+  // Staggered reveal
+  [
+    { id: 'hero-label',    d: baseDelay + 0   },
+    { id: 'hero-headline', d: baseDelay + 150  },
+    { id: 'hero-sub',      d: baseDelay + 320  },
+    { id: 'hero-ctas',     d: baseDelay + 500  },
+    { id: 'hero-scroll',   d: baseDelay + 800  }
+  ].forEach(function(item) {
     setTimeout(function() {
       var el = document.getElementById(item.id);
       if (!el) return;
       el.style.opacity   = '1';
       el.style.transform = 'translateY(0)';
-    }, item.delay);
+    }, item.d);
   });
 }
 
-// Run
+// Init
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', runIntroAnimation);
 } else {
@@ -1103,14 +1048,25 @@ if (document.readyState === 'loading') {
 }
 
 window.addEventListener('scroll', function() {
-  var nav = document.querySelector('nav') || document.querySelector('header') || document.querySelector('#navbar');
+  var nav = document.querySelector('nav, header, #navbar');
   if (!nav) return;
-  var heroHeight = window.innerHeight;
-  if (window.scrollY > heroHeight * 0.85) {
-    nav.style.background = 'rgba(247,248,250,0.97)';
+  if (window.scrollY > window.innerHeight * 0.85) {
+    nav.style.background  = 'rgba(247,248,250,0.97)';
     nav.style.borderBottom = '1px solid #e4eaf0';
-    nav.style.boxShadow = '0 1px 8px rgba(12,30,46,0.06)';
-    nav.querySelectorAll('a:not(.btn-partner)').forEach(function(a) { a.style.color = '#0c1e2e'; });
+    nav.style.boxShadow   = '0 1px 8px rgba(12,30,46,0.06)';
+    nav.querySelectorAll('a:not([class*="partner"]):not([class*="btn"])').forEach(function(a) {
+      a.style.color = '#0c1e2e';
+    });
+  } else {
+    nav.style.background   = 'transparent';
+    nav.style.borderBottom = 'none';
+    nav.style.boxShadow    = 'none';
+    nav.querySelectorAll('a:not([class*="partner"]):not([class*="btn"])').forEach(function(a) {
+      a.style.color = 'rgba(255,255,255,0.85)';
+    });
+  }
+});
+
   } else {
     nav.style.background = 'transparent';
     nav.style.borderBottom = 'none';
