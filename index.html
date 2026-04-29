@@ -16,13 +16,10 @@ h3{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:600;color:var(--n
 p,li,.service-description,.section-body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.75;color:var(--mid);}
 h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--navy);letter-spacing:0.02em;}
 #site-wrap{opacity:1;}
-nav{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(247,248,250,0.97);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;min-height:68px;transition:background 0.3s ease,box-shadow 0.3s ease;border-bottom:1px solid #e4eaf0;box-shadow:0 1px 8px rgba(12,30,46,0.06);}
 
 .logo{cursor:pointer;}.logo img{height:42px;display:block;transition:opacity 0.3s;}
 .nav-links{display:flex;list-style:none;align-items:center;}
-.nav-links li a{display:block;padding:0.5rem 1rem;text-decoration:none;color:#0c1e2e;font-size:13.5px;cursor:pointer;transition:color 0.15s ease;white-space:nowrap;line-height:34px;}
 
-.nav-links li a:hover{color:#b8963e;}
 
 .mobile-menu a:not(.mob-cta){color:#0c1e2e;}
 .mobile-menu a:not(.mob-cta):hover{color:#b8963e;}
@@ -354,8 +351,6 @@ a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="bor
   }
 }
 
-section[style*="background:#0c1e2e"],section[style*="background: #0c1e2e"],.section-dark{background:#ffffff!important;color:#0c1e2e!important;}
-section[style*="background:#0c1e2e"] h2,section[style*="background:#0c1e2e"] h3,section[style*="background:#0c1e2e"] p{color:#0c1e2e!important;}
 #page-home section.ws-video-section:nth-of-type(odd){background:#ffffff;}#page-about section:nth-of-type(odd),#page-contact section:nth-of-type(odd){background:#ffffff;}
 #page-home section.ws-video-section:nth-of-type(even){background:#f7f8fa;}#page-about section:nth-of-type(even),#page-contact section:nth-of-type(even){background:#f8f9fb;}
 .reveal-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease, transform 0.65s ease;}
@@ -394,19 +389,27 @@ nav a:hover, header a:hover {
   40%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
   100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
 }
-  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
-}
-
-nav, header, .navbar, .site-header, #navbar {
+nav, header, #navbar, .site-header {
   position: fixed !important;
   top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-  transition: background 0.3s ease;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
+
+nav a, header a {
+  color: rgba(255,255,255,0.9);
+  transition: color 0.2s ease;
+}
+
+nav a:hover, header a:hover {
+  color: #ffffff;
+}
+
+#hero { background:#0c1e2e !important; }
+
 
 /* FORCE NAVY HERO -- must be last */
 section#hero,
@@ -414,7 +417,6 @@ section#hero,
   background-color: #0c1e2e !important;
   background: #0c1e2e !important;
 }
-
 </style>
 </head>
 <body>
@@ -429,6 +431,55 @@ section#hero,
   </ul>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
+<section id="hero" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 5rem;position:relative;overflow:hidden;background-color:#0c1e2e;">
+
+  <!-- Gold top line -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8963e,#d4ac52,#b8963e,transparent);z-index:2;"></div>
+
+  <!-- Subtle gold glow -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,rgba(184,150,62,0.07) 0%,transparent 55%);pointer-events:none;"></div>
+
+  <!-- Hero content -->
+  <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 3rem;width:100%;">
+
+    <div id="hero-label" style="font-family:'DM Sans',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(184,150,62,0.8);margin-bottom:1.5rem;opacity:0;">
+      Dealer Partner Program
+    </div>
+
+    <h1 id="hero-headline" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(44px,6.5vw,86px);font-weight:300;color:#ffffff;line-height:1.08;letter-spacing:-0.01em;max-width:700px;margin:0 0 1.5rem;opacity:0;transform:translateY(20px);">
+      The program that brings<br>your customers back.<br><span style="color:#d4ac52;">Every season.</span>
+    </h1>
+
+    <p id="hero-sub" style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.65);max-width:480px;line-height:1.75;margin:0 0 2.5rem;opacity:0;transform:translateY(16px);">
+      A turnkey prepaid service contract for certified marine dealers. Your customers stay. Your revenue grows.
+    </p>
+
+    <div id="hero-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);">
+      <a href="#how-it-works"
+        style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;"
+        onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
+        Become a Dealer Partner
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#how-it-works"
+        style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);text-decoration:none;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:500;border:1.5px solid rgba(255,255,255,0.25);font-family:'DM Sans',Arial,sans-serif;"
+        onmouseover="this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='#fff'"
+        onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(255,255,255,0.8)'">
+        How It Works
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div id="hero-scroll" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;">
+    <span style="font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:'DM Sans',Arial,sans-serif;">Scroll</span>
+    <div style="width:1px;height:28px;background:linear-gradient(to bottom,rgba(184,150,62,0.5),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+  </div>
+
+</section>
+
 <div class="mobile-menu" id="mobile-menu">
   <a id="mm-hiw">How It Works</a><a id="mm-about">About</a>
   <a id="mm-contact">Contact</a>
@@ -436,62 +487,6 @@ section#hero,
 </div>
 <div id="page-home" class="page active">
 <!-- ============================================ -->
-<!-- HERO SECTION -->
-<section id="hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 5rem;overflow:hidden;background:#0c1e2e !important;">
-
-  <!-- Subtle gold accent line at very top -->
-  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8963e,#d4ac52,#b8963e,transparent);"></div>
-
-  <!-- Very subtle texture overlay -- adds depth to navy -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, rgba(184,150,62,0.06) 0%, transparent 60%);pointer-events:none;"></div>
-
-  <!-- Content -->
-  <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 3rem;width:100%;">
-
-    <!-- Small label -->
-    <div id="hero-label" style="font-family:'DM Sans',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(184,150,62,0.8);margin-bottom:1.5rem;opacity:0;transition:opacity 0.7s ease;">
-      Dealer Partner Program
-    </div>
-
-    <!-- Main headline -->
-    <h1 id="hero-headline" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(44px,6.5vw,88px);font-weight:300;color:#ffffff;line-height:1.08;letter-spacing:-0.01em;max-width:700px;margin:0 0 1.5rem;opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease;">
-      The program that brings<br>your customers back.<br><span style="color:#d4ac52;">Every season.</span>
-    </h1>
-
-    <!-- Subhead -->
-    <p id="hero-sub" style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,0.6);max-width:500px;line-height:1.75;margin:0 0 2.5rem;opacity:0;transform:translateY(16px);transition:opacity 0.8s ease,transform 0.8s ease;">
-      A turnkey prepaid service contract for certified marine dealers. Your customers stay. Your revenue grows.
-    </p>
-
-    <!-- CTA buttons -->
-    <div id="hero-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;opacity:0;transform:translateY(12px);transition:opacity 0.8s ease,transform 0.8s ease;">
-
-      <a href="#partner-application"
-        style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:15px 32px;border-radius:6px;font-size:15px;font-weight:700;letter-spacing:0.02em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;"
-        onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-2px)'"
-        onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
-        Become a Dealer Partner
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="#how-it-works"
-        style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);text-decoration:none;padding:15px 32px;border-radius:6px;font-size:15px;font-weight:500;border:1.5px solid rgba(255,255,255,0.25);font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;"
-        onmouseover="this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='white'"
-        onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(255,255,255,0.8)'">
-        How It Works
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- Scroll indicator -->
-  <div id="hero-scroll" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;transition:opacity 0.8s ease;">
-    <span style="font-family:'DM Sans',Arial,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Scroll</span>
-    <div style="width:1px;height:32px;background:linear-gradient(to bottom,rgba(184,150,62,0.6),transparent);animation:scrollLine 1.8s ease-in-out infinite;"></div>
-  </div>
-
-</section>
 <!-- ============================================ -->
   <!-- ============================================ -->
   <!-- VIDEO SECTIONS -- replacing hero -->
@@ -954,134 +949,126 @@ section#hero,
 </footer>
 </div>
 <script>
-function runIntroAnimation() {
-  if (sessionStorage.getItem('introShown')) {
-    revealHeroContent(0);
+// -- SCROLL PULSE ANIMATION --
+var scrollStyle = document.createElement('style');
+scrollStyle.textContent = '@keyframes scrollPulse { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} }';
+document.head.appendChild(scrollStyle);
+
+// -- NAV SCROLL BEHAVIOR --
+function updateNav() {
+  var nav = document.querySelector('nav') || document.querySelector('header');
+  if (!nav) return;
+  var past = window.scrollY > (window.innerHeight * 0.8);
+  nav.style.background   = past ? 'rgba(247,248,250,0.97)' : 'transparent';
+  nav.style.boxShadow    = past ? '0 1px 8px rgba(12,30,46,0.08)' : 'none';
+  nav.style.borderBottom = past ? '1px solid #e4eaf0' : 'none';
+  nav.querySelectorAll('a').forEach(function(a) {
+    if (a.style.background && a.style.background.indexOf('b8963e') > -1) return;
+    if (a.className && a.className.indexOf('partner') > -1) return;
+    a.style.color = past ? '#0c1e2e' : 'rgba(255,255,255,0.9)';
+  });
+}
+window.addEventListener('scroll', updateNav);
+
+// -- INTRO + HERO REVEAL --
+function revealHero() {
+  var els = [
+    { id: 'hero-label',    delay: 0   },
+    { id: 'hero-headline', delay: 120 },
+    { id: 'hero-sub',      delay: 280 },
+    { id: 'hero-ctas',     delay: 440 },
+    { id: 'hero-scroll',   delay: 700 }
+  ];
+  els.forEach(function(item) {
+    setTimeout(function() {
+      var el = document.getElementById(item.id);
+      if (!el) return;
+      el.style.transition = 'opacity 0.75s ease, transform 0.75s ease';
+      el.style.opacity    = '1';
+      el.style.transform  = 'translateY(0)';
+    }, item.delay);
+  });
+}
+
+function runIntro() {
+  // Skip if seen this session
+  if (sessionStorage.getItem('ws_intro')) {
+    revealHero();
     return;
   }
-  sessionStorage.setItem('introShown', 'true');
+  sessionStorage.setItem('ws_intro', '1');
 
+  // Lock scroll
   document.body.style.overflow = 'hidden';
-  hideHeroContent();
 
-  // Overlay -- same navy as hero for seamless merge
-  var overlay = document.createElement('div');
-  overlay.id  = 'intro-overlay';
-  overlay.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#0c1e2e;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;';
+  // Build overlay -- same navy so transition is invisible
+  var ov = document.createElement('div');
+  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#0c1e2e;display:flex;flex-direction:column;align-items:center;justify-content:center;';
 
-  var textWrap = document.createElement('div');
-  textWrap.style.cssText = 'text-align:center;opacity:0;transform:translateY(10px);transition:opacity 0.75s ease,transform 0.75s ease;';
-  textWrap.innerHTML =
-    '<div id="intro-welcome" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(13px,1.4vw,17px);font-weight:300;color:rgba(255,255,255,0.45);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:16px;transition:opacity 0.5s ease,transform 0.5s ease;">Welcome to</div>' +
-    '<div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;color:#ffffff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Whitestone Partners</div>' +
-    '<div id="intro-line" style="width:0;height:1px;background:#b8963e;margin:0 auto;transition:width 0.8s ease 0.3s;"></div>';
+  var inner = document.createElement('div');
+  inner.style.cssText = 'text-align:center;opacity:0;transform:translateY(8px);transition:opacity 0.7s ease,transform 0.7s ease;';
+  inner.innerHTML =
+    '<div id="iw" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(12px,1.3vw,16px);font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:14px;transition:opacity 0.5s ease,transform 0.5s ease;">Welcome to</div>' +
+    '<div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,4vw,48px);font-weight:300;color:#ffffff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">Whitestone Partners</div>' +
+    '<div id="il" style="height:1px;background:#b8963e;width:0;margin:0 auto;transition:width 0.8s ease;"></div>';
 
-  overlay.appendChild(textWrap);
-  document.body.appendChild(overlay);
+  ov.appendChild(inner);
+  document.body.appendChild(ov);
 
   // Fade in text
   setTimeout(function() {
-    textWrap.style.opacity   = '1';
-    textWrap.style.transform = 'translateY(0)';
+    inner.style.opacity   = '1';
+    inner.style.transform = 'translateY(0)';
     setTimeout(function() {
-      var line = document.getElementById('intro-line');
-      if (line) line.style.width = '48px';
-    }, 300);
+      var l = document.getElementById('il');
+      if (l) l.style.width = '44px';
+    }, 250);
   }, 150);
 
   // Fade out "Welcome to"
   setTimeout(function() {
-    var w = document.getElementById('intro-welcome');
-    if (w) { w.style.opacity = '0'; w.style.transform = 'translateY(-6px)'; }
-  }, 1900);
+    var w = document.getElementById('iw');
+    if (w) { w.style.opacity = '0'; w.style.transform = 'translateY(-5px)'; }
+  }, 1800);
 
-  // Fade out entire text block
+  // Fade out everything
   setTimeout(function() {
-    textWrap.style.opacity   = '0';
-    textWrap.style.transform = 'translateY(-8px)';
-  }, 2300);
+    inner.style.opacity   = '0';
+    inner.style.transform = 'translateY(-6px)';
+  }, 2200);
 
-  // Remove overlay -- hero is already navy underneath, seamless transition
+  // Remove overlay -- hero is seamlessly underneath
   setTimeout(function() {
-    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    if (ov.parentNode) ov.parentNode.removeChild(ov);
     document.body.style.overflow = '';
-    revealHeroContent(80);
-  }, 2900);
+    revealHero();
+  }, 2800);
 }
 
-function hideHeroContent() {
-  ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.style.opacity   = '0';
-    el.style.transform = el.id === 'hero-scroll' ? 'none' : 'translateY(' + (id === 'hero-label' ? '0' : '24px') + ')';
+// -- VIDEO SECTION SCROLL REVEAL --
+var wsObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('ws-visible');
+      wsObs.unobserve(e.target);
+    }
   });
-}
+}, { threshold: 0.1 });
 
-function revealHeroContent(baseDelay) {
-  if (baseDelay === 0) {
-    // Instant -- no animation
-    ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      el.style.transition = 'none';
-      el.style.opacity    = '1';
-      el.style.transform  = 'translateY(0)';
-    });
-    return;
-  }
-  // Staggered reveal
-  [
-    { id: 'hero-label',    d: baseDelay + 0   },
-    { id: 'hero-headline', d: baseDelay + 150  },
-    { id: 'hero-sub',      d: baseDelay + 320  },
-    { id: 'hero-ctas',     d: baseDelay + 500  },
-    { id: 'hero-scroll',   d: baseDelay + 800  }
-  ].forEach(function(item) {
-    setTimeout(function() {
-      var el = document.getElementById(item.id);
-      if (!el) return;
-      el.style.opacity   = '1';
-      el.style.transform = 'translateY(0)';
-    }, item.d);
-  });
-}
+document.querySelectorAll('[data-ws-reveal],[data-ws-reveal-text]').forEach(function(el) {
+  wsObs.observe(el);
+});
 
-// Init
+// -- RUN --
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', runIntroAnimation);
+  document.addEventListener('DOMContentLoaded', function() {
+    updateNav();
+    runIntro();
+  });
 } else {
-  runIntroAnimation();
+  updateNav();
+  runIntro();
 }
-
-window.addEventListener('scroll', function() {
-  var nav = document.querySelector('nav, header, #navbar');
-  if (!nav) return;
-  if (window.scrollY > window.innerHeight * 0.85) {
-    nav.style.background  = 'rgba(247,248,250,0.97)';
-    nav.style.borderBottom = '1px solid #e4eaf0';
-    nav.style.boxShadow   = '0 1px 8px rgba(12,30,46,0.06)';
-    nav.querySelectorAll('a:not([class*="partner"]):not([class*="btn"])').forEach(function(a) {
-      a.style.color = '#0c1e2e';
-    });
-  } else {
-    nav.style.background   = 'transparent';
-    nav.style.borderBottom = 'none';
-    nav.style.boxShadow    = 'none';
-    nav.querySelectorAll('a:not([class*="partner"]):not([class*="btn"])').forEach(function(a) {
-      a.style.color = 'rgba(255,255,255,0.85)';
-    });
-  }
-});
-
-  } else {
-    nav.style.background = 'transparent';
-    nav.style.borderBottom = 'none';
-    nav.style.boxShadow = 'none';
-    nav.querySelectorAll('a:not(.btn-partner)').forEach(function(a) { a.style.color = 'rgba(255,255,255,0.85)'; });
-  }
-});
-
 </script>
 </body>
 </html>
