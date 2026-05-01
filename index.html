@@ -11,6 +11,14 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--white:#ffffff;--off-white:#f8f9fb;--navy:#0c1e2e;--navy2:#162840;--gold:#b8963e;--gold-light:#d4ac52;--mid:#4a6278;--light:#6b8599;--border:#e4eaf0;--silver-bg:#f0f4f8;--silver:#8fa5b8;--text:#0c1e2e;--blue:#1a5276;}
 html{scroll-behavior:smooth;}
+#how-it-works,
+#about,
+#contact,
+#partner-application,
+section[id],
+div[id]{
+  scroll-margin-top:80px;
+}
 body{font-family:"DM Sans",sans-serif;background:#f8f9fb;color:var(--text);font-size:16px;line-height:1.75;overflow-x:hidden;}
 h1,h2,blockquote{font-family:"Cormorant Garamond",serif;}
 h3{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:600;color:var(--navy);letter-spacing:0.04em;text-transform:uppercase;}
@@ -39,6 +47,7 @@ h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(28px,3.5vw,42p
 @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
 @media(min-width:769px){.mobile-menu{display:none!important;}}
 .page{display:none;}.page.active{display:block;}
+#page-about,#page-contact,#page-partner{display:block;}
 .btn-gold{background:var(--gold);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;transition:background 0.2s;}
 .btn-gold:hover{background:var(--gold-light);}
 .btn-ghost{background:transparent;color:var(--white);padding:15px 36px;border-radius:3px;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;border:1px solid rgba(200,220,235,0.25);cursor:pointer;font-family:"DM Sans",sans-serif;transition:border-color 0.2s;}
@@ -468,7 +477,7 @@ section#hero,
     </p>
 
     <div id="hero-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(12px);">
-      <a href="#how-it-works"
+      <a href="#partner-application"
         style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;"
         onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
         onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
@@ -696,7 +705,7 @@ section#hero,
     </div>
   </section>
 </div>
-<div id="page-partner" class="page" style="display:none;">
+<div id="page-partner" class="page">
   <div class="partner-page" id="partner-application">
     <div class="partner-container">
       <div class="partner-hero">
