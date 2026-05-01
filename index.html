@@ -48,6 +48,223 @@ h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(28px,3.5vw,42p
 @media(min-width:769px){.mobile-menu{display:none!important;}}
 .page{display:none;}.page.active{display:block;}
 #page-about,#page-contact,#page-partner{display:block;}
+
+/* ── MODAL OVERLAY ── */
+.ws-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: #ffffff;
+  display: none;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  overflow-y: auto;
+}
+
+.ws-modal.ws-modal-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Back button */
+.ws-modal-back {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1.25rem 2rem;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e4eaf0;
+  cursor: pointer;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0c1e2e;
+  text-decoration: none;
+  width: 100%;
+  border: none;
+  text-align: left;
+  transition: color 0.15s ease;
+}
+
+.ws-modal-back:hover { color: #b8963e; }
+
+.ws-modal-back svg {
+  transition: transform 0.2s ease;
+}
+
+.ws-modal-back:hover svg {
+  transform: translateX(-3px);
+}
+
+/* Modal content area */
+.ws-modal-body {
+  flex: 1;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* Gold top accent on modal */
+.ws-modal::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #b8963e, #d4ac52, #b8963e, transparent);
+  z-index: 11;
+}
+
+/* Form styles inside modal */
+.ws-modal .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ws-modal .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.ws-modal .form-field label {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b8599;
+}
+
+.ws-modal .form-field input,
+.ws-modal .form-field textarea,
+.ws-modal .form-field select {
+  padding: 11px 14px;
+  border: 1.5px solid #e4eaf0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #0c1e2e;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ws-modal .form-field input:focus,
+.ws-modal .form-field textarea:focus,
+.ws-modal .form-field select:focus {
+  border-color: #b8963e;
+  box-shadow: 0 0 0 3px rgba(184,150,62,0.12);
+}
+
+.ws-modal .form-submit-btn {
+  width: 100%;
+  background: #0c1e2e;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  font-family: 'DM Sans', Arial, sans-serif;
+  transition: background 0.2s ease, transform 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.ws-modal .form-submit-btn:hover {
+  background: #162840;
+  transform: translateY(-1px);
+}
+
+/* Success state */
+.ws-modal-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  min-height: 60vh;
+}
+
+.ws-modal-success.show { display: flex; }
+
+.ws-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #f0f9f4;
+  border: 2px solid #a8d5b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #0F6E56;
+  margin-bottom: 1.5rem;
+  animation: successPop 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+}
+
+@keyframes successPop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.ws-success-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #0c1e2e;
+  margin-bottom: 0.75rem;
+}
+
+.ws-success-sub {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 15px;
+  color: #4a6278;
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.ws-success-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0c1e2e;
+  color: white;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', Arial, sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.ws-success-back:hover { background: #162840; }
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ws-modal .form-row { grid-template-columns: 1fr; }
+  .ws-modal-body { padding: 2rem 1.25rem 4rem; }
+}
 .btn-gold{background:var(--gold);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;transition:background 0.2s;}
 .btn-gold:hover{background:var(--gold-light);}
 .btn-ghost{background:transparent;color:var(--white);padding:15px 36px;border-radius:3px;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;border:1px solid rgba(200,220,235,0.25);cursor:pointer;font-family:"DM Sans",sans-serif;transition:border-color 0.2s;}
@@ -970,6 +1187,161 @@ section#hero,
   <div class="foot-bottom"><p>&copy; 2026 Whitestone Partners LLC. All rights reserved. St. George, Utah.</p></div>
 </footer>
 </div>
+<!-- ── PARTNER APPLICATION MODAL ── -->
+<div id="modal-partner" class="ws-modal" role="dialog" aria-label="Partner Application">
+  <button class="ws-modal-back" onclick="closeModal('modal-partner')">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back to Whitestone Partners
+  </button>
+
+  <div class="ws-modal-body">
+    <div id="partner-form-view">
+      <div style="margin-bottom:2.5rem;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8963e;margin-bottom:0.75rem;">Dealer Partner Program</div>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:300;color:#0c1e2e;line-height:1.2;margin:0 0 0.75rem;">Become a Dealer Partner</h2>
+        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;margin:0;">Fill out the form below and our team will be in touch within 1-2 business days.</p>
+      </div>
+
+      <form id="partner-application-form" action="https://formspree.io/f/mlgonaae" method="POST">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0c1e2e;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid #e4eaf0;">Dealership Information</div>
+
+        <div class="form-field">
+          <label>Dealership Name *</label>
+          <input type="text" name="dealership_name" required placeholder="Lake City Marine">
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>City *</label>
+            <input type="text" name="city" required placeholder="St. George">
+          </div>
+          <div class="form-field">
+            <label>State *</label>
+            <input type="text" name="state" required placeholder="UT">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" required placeholder="(801) 555-0000">
+        </div>
+
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0c1e2e;margin:1.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid #e4eaf0;">Primary Contact</div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name *</label>
+            <input type="text" name="first_name" required placeholder="John">
+          </div>
+          <div class="form-field">
+            <label>Last Name *</label>
+            <input type="text" name="last_name" required placeholder="Smith">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Email Address *</label>
+          <input type="email" name="email" required placeholder="john@dealership.com">
+        </div>
+
+        <div class="form-field">
+          <label>Boat Brands You Carry</label>
+          <input type="text" name="brands" placeholder="Malibu, Mastercraft, Centurion...">
+        </div>
+
+        <div class="form-field">
+          <label>How Did You Hear About Us?</label>
+          <select name="referral">
+            <option value="">Select one</option>
+            <option>Referral</option>
+            <option>Trade Show</option>
+            <option>Online Search</option>
+            <option>Social Media</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Anything else you'd like us to know?</label>
+          <textarea name="notes" rows="3" placeholder="Tell us about your dealership..."></textarea>
+        </div>
+
+        <p style="font-size:11px;color:#9aafbf;margin-bottom:1rem;">By submitting this form you agree to be contacted by Whitestone Partners LLC. Your information is kept confidential.</p>
+        <button type="submit" class="form-submit-btn" id="modal-partner-submit-btn">Submit Application →</button>
+      </form>
+    </div>
+
+    <div class="ws-modal-success" id="partner-success-view">
+      <div class="ws-success-icon">✓</div>
+      <div class="ws-success-title">Application Received!</div>
+      <p class="ws-success-sub">Thank you for your interest in the Whitestone Partners dealer program. Our team will be in touch within 1-2 business days.</p>
+      <button class="ws-success-back" onclick="closeModal('modal-partner')">
+        ← Back to Whitestone Partners
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT MODAL ── -->
+<div id="modal-contact" class="ws-modal" role="dialog" aria-label="Contact Us">
+  <button class="ws-modal-back" onclick="closeModal('modal-contact')">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back to Whitestone Partners
+  </button>
+
+  <div class="ws-modal-body">
+    <div id="contact-form-view">
+      <div style="margin-bottom:2.5rem;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8963e;margin-bottom:0.75rem;">Get In Touch</div>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:300;color:#0c1e2e;line-height:1.2;margin:0 0 0.75rem;">Let's Talk</h2>
+        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;margin:0;">Whether you're a dealer exploring the program or have a question — we'd love to hear from you.</p>
+      </div>
+
+      <form id="contact-us-form" action="https://formspree.io/f/mvzvzkqa" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name *</label>
+            <input type="text" name="first_name" required placeholder="John">
+          </div>
+          <div class="form-field">
+            <label>Last Name *</label>
+            <input type="text" name="last_name" required placeholder="Smith">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Email Address *</label>
+          <input type="email" name="email" required placeholder="john@example.com">
+        </div>
+
+        <div class="form-field">
+          <label>Dealership Name</label>
+          <input type="text" name="dealership" placeholder="Lake City Marine (optional)">
+        </div>
+
+        <div class="form-field">
+          <label>Message *</label>
+          <textarea name="message" required rows="5" placeholder="Tell us what you're looking for..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit-btn" id="modal-contact-submit-btn">Send Message →</button>
+      </form>
+    </div>
+
+    <div class="ws-modal-success" id="contact-success-view">
+      <div class="ws-success-icon">✓</div>
+      <div class="ws-success-title">Message Sent!</div>
+      <p class="ws-success-sub">Thanks for reaching out. We'll be in touch within 1 business day at the email you provided.</p>
+      <button class="ws-success-back" onclick="closeModal('modal-contact')">
+        ← Back to Whitestone Partners
+      </button>
+    </div>
+  </div>
+</div>
 <script>
 // -- SCROLL PULSE ANIMATION --
 var scrollStyle = document.createElement('style');
@@ -1073,6 +1445,164 @@ var wsObs = new IntersectionObserver(function(entries) {
 document.querySelectorAll('[data-ws-reveal],[data-ws-reveal-text]').forEach(function(el) {
   wsObs.observe(el);
 });
+
+// ── MODAL SYSTEM ──
+function openModal(id) {
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  document.body.style.overflow = 'hidden';
+  modal.style.display = 'flex';
+  modal.scrollTop = 0;
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      modal.classList.add('ws-modal-open');
+    });
+  });
+}
+
+function closeModal(id) {
+  var modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('ws-modal-open');
+  document.body.style.overflow = '';
+  setTimeout(function() {
+    modal.style.display = 'none';
+    resetModal(id);
+  }, 400);
+}
+
+function resetModal(id) {
+  if (id === 'modal-partner') {
+    var form = document.getElementById('partner-application-form');
+    var formView = document.getElementById('partner-form-view');
+    var successView = document.getElementById('partner-success-view');
+    var btn = document.getElementById('modal-partner-submit-btn');
+    if (form) form.reset();
+    if (formView) formView.style.display = 'block';
+    if (successView) successView.classList.remove('show');
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit Application →'; }
+  }
+  if (id === 'modal-contact') {
+    var form = document.getElementById('contact-us-form');
+    var formView = document.getElementById('contact-form-view');
+    var successView = document.getElementById('contact-success-view');
+    var btn = document.getElementById('modal-contact-submit-btn');
+    if (form) form.reset();
+    if (formView) formView.style.display = 'block';
+    if (successView) successView.classList.remove('show');
+    if (btn) { btn.disabled = false; btn.textContent = 'Send Message →'; }
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  ['modal-partner', 'modal-contact'].forEach(function(id) {
+    var m = document.getElementById(id);
+    if (m && m.classList.contains('ws-modal-open')) closeModal(id);
+  });
+});
+
+// ── INTERCEPT ANCHOR LINKS ──
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href]');
+  if (!link) return;
+  var href = link.getAttribute('href');
+
+  if (href === '#partner-application' || href === '#contact-form') {
+    e.preventDefault();
+    openModal('modal-partner');
+    return;
+  }
+  if (href === '#contact') {
+    e.preventDefault();
+    openModal('modal-contact');
+  }
+});
+
+// Map on-page CTA buttons that are not anchor tags.
+var aboutContactBtn = document.getElementById('about-contact');
+if (aboutContactBtn) {
+  aboutContactBtn.addEventListener('click', function() {
+    openModal('modal-contact');
+  });
+}
+var aboutPartnerBtn = document.getElementById('about-partner');
+if (aboutPartnerBtn) {
+  aboutPartnerBtn.addEventListener('click', function() {
+    openModal('modal-partner');
+  });
+}
+
+// ── FORM SUBMISSIONS ──
+var partnerForm = document.getElementById('partner-application-form');
+if (partnerForm) {
+  partnerForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('modal-partner-submit-btn');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      var res = await fetch(partnerForm.action, {
+        method: 'POST',
+        body: new FormData(partnerForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        var pFormView = document.getElementById('partner-form-view');
+        var pSuccessView = document.getElementById('partner-success-view');
+        var pModal = document.getElementById('modal-partner');
+        if (pFormView) pFormView.style.display = 'none';
+        if (pSuccessView) pSuccessView.classList.add('show');
+        if (pModal) pModal.scrollTop = 0;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit Application →';
+        alert('Something went wrong. Please email us at support@whitestone-partners.com');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit Application →';
+    }
+  });
+}
+
+var contactForm = document.getElementById('contact-us-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('modal-contact-submit-btn');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      var res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        var cFormView = document.getElementById('contact-form-view');
+        var cSuccessView = document.getElementById('contact-success-view');
+        var cModal = document.getElementById('modal-contact');
+        if (cFormView) cFormView.style.display = 'none';
+        if (cSuccessView) cSuccessView.classList.add('show');
+        if (cModal) cModal.scrollTop = 0;
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Message →';
+        alert('Something went wrong. Please email us at support@whitestone-partners.com');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Message →';
+    }
+  });
+}
 
 // -- RUN --
 function initPage() {
