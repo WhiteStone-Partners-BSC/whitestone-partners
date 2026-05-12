@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/dealer/:slug", "destination": "/dealer.html" },
+    { "source": "/dealer/:slug/", "destination": "/dealer.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
