@@ -4,5 +4,11 @@
     { "source": "/dealer/:slug/", "destination": "/dealer.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    {
+      "path": "/api/send-followup",
+      "schedule": "0 17 * * *"
+    }
   ]
 }
