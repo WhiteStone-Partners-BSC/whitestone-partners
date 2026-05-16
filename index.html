@@ -891,88 +891,29 @@ section#hero,
 
   <div class="ws-modal-body">
     <div id="partner-form-view">
-      <div style="margin-bottom:2.5rem;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8963e;margin-bottom:0.75rem;">Dealer Partner Program</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:300;color:#0c1e2e;line-height:1.2;margin:0 0 0.75rem;">Become a Dealer Partner</h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;margin:0;">Fill out the form below and our team will be in touch within 1-2 business days.</p>
+      <div class="partner-form-card">
+        <div class="partner-form-section" style="text-align:center;padding:3rem 2rem;">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#b8963e;margin-bottom:1.25rem;">
+            Founding Dealer Cohort
+          </div>
+          <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:300;color:#0c1e2e;margin:0 0 1rem;line-height:1.3;">
+            Our dealer program is currently<br/>invitation-only.
+          </h2>
+          <p style="font-size:15px;color:#3d5870;line-height:1.7;max-width:520px;margin:0 auto 1.75rem;">
+            We're onboarding our founding cohort of certified marine dealers one partner at a time. If you operate a marine dealership and would like to express interest in joining the Whitestone Partners network, we'd love to hear from you.
+          </p>
+          <a
+            href="mailto:support@whitestone-partners.com?subject=Dealer%20Program%20Interest&body=Hello%20Whitestone%20Partners%20team%2C%0A%0AI%27m%20interested%20in%20learning%20more%20about%20joining%20the%20Whitestone%20Partners%20dealer%20program.%0A%0ADealership%20name%3A%20%0ALocation%3A%20%0AYears%20in%20business%3A%20%0ANumber%20of%20boats%20serviced%20annually%3A%20%0A%0AThank%20you%2C%0A"
+            style="display:inline-block;background:#0c1e2e;color:white;text-decoration:none;padding:0.95rem 2.25rem;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;"
+          >
+            Reach Out to Us
+          </a>
+          <div style="font-size:13px;color:#6b8599;margin-top:1.5rem;">
+            Or email us directly at
+            <a href="mailto:support@whitestone-partners.com" style="color:#b8963e;text-decoration:none;font-weight:500;">support@whitestone-partners.com</a>
+          </div>
+        </div>
       </div>
-
-      <form id="partner-application-form" action="https://formspree.io/f/mlgonaae" method="POST">
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0c1e2e;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid #e4eaf0;">Dealership Information</div>
-
-        <div class="form-field">
-          <label>Dealership Name *</label>
-          <input type="text" name="dealership_name" required placeholder="Lake City Marine">
-        </div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label>City *</label>
-            <input type="text" name="city" required placeholder="St. George">
-          </div>
-          <div class="form-field">
-            <label>State *</label>
-            <input type="text" name="state" required placeholder="UT">
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" required placeholder="(801) 555-0000">
-        </div>
-
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0c1e2e;margin:1.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid #e4eaf0;">Primary Contact</div>
-
-        <div class="form-row">
-          <div class="form-field">
-            <label>First Name *</label>
-            <input type="text" name="first_name" required placeholder="John">
-          </div>
-          <div class="form-field">
-            <label>Last Name *</label>
-            <input type="text" name="last_name" required placeholder="Smith">
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label>Email Address *</label>
-          <input type="email" name="email" required placeholder="john@dealership.com">
-        </div>
-
-        <div class="form-field">
-          <label>Boat Brands You Carry</label>
-          <input type="text" name="brands" placeholder="Malibu, Mastercraft, Centurion...">
-        </div>
-
-        <div class="form-field">
-          <label>How Did You Hear About Us?</label>
-          <select name="referral">
-            <option value="">Select one</option>
-            <option>Referral</option>
-            <option>Trade Show</option>
-            <option>Online Search</option>
-            <option>Social Media</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="form-field">
-          <label>Anything else you'd like us to know?</label>
-          <textarea name="notes" rows="3" placeholder="Tell us about your dealership..."></textarea>
-        </div>
-
-        <p style="font-size:11px;color:#9aafbf;margin-bottom:1rem;">By submitting this form you agree to be contacted by Whitestone Partners LLC. Your information is kept confidential.</p>
-        <button type="submit" class="form-submit-btn" id="modal-partner-submit-btn">Submit Application →</button>
-      </form>
-    </div>
-
-    <div class="ws-modal-success" id="partner-success-view">
-      <div class="ws-success-icon">✓</div>
-      <div class="ws-success-title">Application Received!</div>
-      <p class="ws-success-sub">Thank you for your interest in the Whitestone Partners dealer program. Our team will be in touch within 1-2 business days.</p>
-      <button class="ws-success-back" onclick="closeModal('modal-partner')">
-        ← Back to Whitestone Partners
-      </button>
     </div>
   </div>
 </div>
@@ -1165,16 +1106,6 @@ function closeModal(id) {
 }
 
 function resetModal(id) {
-  if (id === 'modal-partner') {
-    var form = document.getElementById('partner-application-form');
-    var formView = document.getElementById('partner-form-view');
-    var successView = document.getElementById('partner-success-view');
-    var btn = document.getElementById('modal-partner-submit-btn');
-    if (form) form.reset();
-    if (formView) formView.style.display = 'block';
-    if (successView) successView.classList.remove('show');
-    if (btn) { btn.disabled = false; btn.textContent = 'Submit Application →'; }
-  }
   if (id === 'modal-contact') {
     var form = document.getElementById('contact-us-form');
     var formView = document.getElementById('contact-form-view');
@@ -1227,40 +1158,6 @@ if (aboutPartnerBtn) {
 }
 
 // ── FORM SUBMISSIONS ──
-var partnerForm = document.getElementById('partner-application-form');
-if (partnerForm) {
-  partnerForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var btn = document.getElementById('modal-partner-submit-btn');
-    if (!btn) return;
-    btn.disabled = true;
-    btn.textContent = 'Submitting...';
-
-    try {
-      var res = await fetch(partnerForm.action, {
-        method: 'POST',
-        body: new FormData(partnerForm),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        var pFormView = document.getElementById('partner-form-view');
-        var pSuccessView = document.getElementById('partner-success-view');
-        var pModal = document.getElementById('modal-partner');
-        if (pFormView) pFormView.style.display = 'none';
-        if (pSuccessView) pSuccessView.classList.add('show');
-        if (pModal) pModal.scrollTop = 0;
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Submit Application →';
-        alert('Something went wrong. Please email us at support@whitestone-partners.com');
-      }
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'Submit Application →';
-    }
-  });
-}
 
 var contactForm = document.getElementById('contact-us-form');
 if (contactForm) {
