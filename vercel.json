@@ -3,6 +3,8 @@
     { "source": "/dealer/:slug", "destination": "/dealer.html" },
     { "source": "/dealer/:slug/", "destination": "/dealer.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/become-a-dealer", "destination": "/become-a-dealer.html" },
+    { "source": "/become-a-dealer/", "destination": "/become-a-dealer.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "crons": [
