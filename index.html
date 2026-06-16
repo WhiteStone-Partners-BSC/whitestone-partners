@@ -592,8 +592,7 @@ a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="bor
 .form-field input,.form-field textarea{box-sizing:border-box;}
 
 #hero {
-  background: #0c1e2e !important;
-  background-color: #0c1e2e !important;
+  background-color: #0c1e2e;
 }
 
 nav a, header a, .nav-link, .navbar a {
@@ -647,14 +646,13 @@ nav a, header a {
   white-space: nowrap;
 }
 
-#hero { background:#0c1e2e !important; }
+#hero { background-color:#0c1e2e; }
 
 
-/* FORCE NAVY HERO -- must be last */
+/* Hero fallback color only — image + gradient live on the inline <section> style */
 section#hero,
 #hero {
-  background-color: #0c1e2e !important;
-  background: #0c1e2e !important;
+  background-color: #0c1e2e;
 }
 </style>
 </head>
