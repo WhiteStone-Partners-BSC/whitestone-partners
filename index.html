@@ -3,1208 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whitestone Partners — The Dealer Program Built for Growth</title>
+<title>Whitestone Partners — Prepaid Maintenance for Marine Dealers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--white:#ffffff;--off-white:#f8f9fb;--navy:#0c1e2e;--navy2:#162840;--gold:#b8963e;--gold-light:#d4ac52;--mid:#4a6278;--light:#6b8599;--border:#e4eaf0;--silver-bg:#f0f4f8;--silver:#8fa5b8;--text:#0c1e2e;--blue:#1a5276;}
+
+:root{
+  --white:#ffffff;
+  --off-white:#fafbfc;
+  --navy:#0c1e2e;
+  --navy2:#162840;
+  --navy3:#1d3454;
+  --navy-deep:#06121d;
+  --navy-soft:#4a6278;
+  --gold:#b8963e;
+  --gold-light:#d4ac52;
+  --gold-pale:#e8d28a;
+  --mid:#4a6278;
+  --light:#6b8599;
+  --border:#e4eaf0;
+  --silver:#a8b8c8;
+  --silver-light:#d5dde5;
+  --text:#0c1e2e;
+}
+
 html{scroll-behavior:smooth;}
-#how-it-works,
-#about,
-#contact,
-#partner-application,
-section[id],
-div[id]{
-  scroll-margin-top:80px;
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--off-white);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
-body{font-family:"DM Sans",sans-serif;background:#f8f9fb;color:var(--text);font-size:16px;line-height:1.75;overflow-x:hidden;}
-h1,h2,blockquote{font-family:"Cormorant Garamond",serif;}
-h3{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:600;color:var(--navy);letter-spacing:0.04em;text-transform:uppercase;}
-p,li,.service-description,.section-body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.75;color:var(--mid);}
-h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--navy);letter-spacing:0.02em;}
-#site-wrap{opacity:1;}
+h1,h2,h3,h4,blockquote{font-family:"Cormorant Garamond",serif;font-weight:300;}
 
-.logo{cursor:pointer;}.logo img{height:42px;display:block;transition:opacity 0.3s;}
-.nav-links{display:flex;list-style:none;align-items:center;}
-
-
-.mobile-menu a:not(.mob-cta){color:#0c1e2e;}
-.mobile-menu a:not(.mob-cta):hover{color:#b8963e;}
-.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:0 1.25rem!important;border-radius:3px!important;font-size:12px!important;height:34px!important;line-height:34px!important;margin-left:0.5rem;font-weight:500!important;}
-.nav-cta:hover{background:var(--gold-light)!important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-.hamburger span{display:block;width:22px;height:2px;background:#0c1e2e;border-radius:2px;transition:all 0.3s;}
-
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;top:78px;left:0;right:0;background:rgba(247,248,250,0.99);z-index:199;padding:0.5rem 0 1rem;border-top:1px solid #e4eaf0;box-shadow:0 10px 26px rgba(12,30,46,0.08);}
-.mobile-menu.open{display:block;}
-.mobile-menu a{display:block;padding:13px 2rem;font-size:15px;color:#0c1e2e;cursor:pointer;text-decoration:none;border-bottom:1px solid #e4eaf0;}
-.mob-cta{background:var(--gold);color:var(--navy)!important;font-weight:500;margin:0.75rem 1.5rem 0;border-radius:3px;text-align:center;display:block;border-bottom:none!important;padding:13px!important;}
-@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
-@media(min-width:769px){.mobile-menu{display:none!important;}}
-.page{display:none;}.page.active{display:block;}
-#page-about,#page-contact,#page-partner{display:block;}
-
-/* ── MODAL OVERLAY ── */
-.ws-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 5000;
-  background: #ffffff;
-  display: none;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-  overflow-y: auto;
+/* ============== NAV ============== */
+nav.site-nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(12,30,46,0.92);
+  backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  z-index:100;padding:16px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
-
-.ws-modal.ws-modal-open {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo .wordmark{font-family:"Cormorant Garamond",serif;font-size:22px;color:#fff;letter-spacing:0.02em;}
+.nav-cta{
+  font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--white);
+  background:var(--gold);padding:13px 26px;border:none;cursor:pointer;
+  transition:all 0.3s ease;text-decoration:none;display:inline-block;
 }
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
 
-/* Back button */
-.ws-modal-back {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 1.25rem 2rem;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e4eaf0;
-  cursor: pointer;
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: #0c1e2e;
-  text-decoration: none;
-  width: 100%;
-  border: none;
-  text-align: left;
-  transition: color 0.15s ease;
+/* ============== HERO ============== */
+#hero{
+  background-color:var(--navy);
+  background-image:linear-gradient(to top, rgba(12,30,46,0.96) 0%, rgba(12,30,46,0.88) 30%, rgba(12,30,46,0.55) 55%, rgba(12,30,46,0.18) 78%, rgba(12,30,46,0.05) 100%), url('assets/img/hero.jpg');
+  background-size:cover;
+  background-position:center 38%;
+  background-repeat:no-repeat;
+  min-height:100vh;display:flex;align-items:flex-end;justify-content:center;
+  padding:140px 24px 90px;position:relative;overflow:hidden;
 }
-
-.ws-modal-back:hover { color: #b8963e; }
-
-.ws-modal-back svg {
-  transition: transform 0.2s ease;
+/* The lifestyle photo (assets/img/hero.jpg) shows behind the bottom-up navy gradient scrim —
+   identical treatment to the live homepage hero. To SEE the photo in this demo, open the file
+   from inside the "WhiteStone Landing Page" folder (so assets/img/hero.jpg resolves). Opened
+   from anywhere else, the navy fallback shows instead. */
+.hero-inner{max-width:1100px;text-align:center;position:relative;z-index:2;}
+.hero-eyebrow{
+  font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:0.6em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;
 }
-
-.ws-modal-back:hover svg {
-  transform: translateX(-3px);
+.hero-headline{
+  font-family:"Cormorant Garamond",serif;font-size:clamp(38px,5.8vw,72px);
+  font-weight:300;color:var(--white);line-height:1.08;letter-spacing:-0.005em;margin-bottom:28px;
 }
+.hero-headline em{font-style:italic;color:var(--gold-light);font-weight:400;}
+.hero-sub{
+  font-family:"Cormorant Garamond",serif;font-size:clamp(17px,1.9vw,22px);
+  font-weight:300;font-style:italic;color:var(--silver-light);margin-bottom:56px;
+  line-height:1.55;max-width:720px;margin-left:auto;margin-right:auto;
+}
+.hero-cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
 
-/* Modal content area */
-.ws-modal-body {
-  flex: 1;
-  max-width: 680px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 3rem 2rem 5rem;
+.btn-primary,.btn-secondary{
+  font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;padding:20px 42px;
+  border:none;cursor:pointer;transition:all 0.3s ease;display:inline-block;text-decoration:none;
+}
+.btn-primary{background:var(--gold);color:var(--white);box-shadow:0 4px 20px rgba(184,150,62,0.25);}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,150,62,0.35);}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);}
+.btn-secondary:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.5);}
+
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+}
+.scroll-hint::after{content:"";display:block;width:1px;height:28px;background:rgba(255,255,255,0.3);margin:12px auto 0;}
+
+/* ============== SECTIONS ============== */
+section.band{padding:140px 24px;position:relative;}
+section.band.alt{background:var(--white);}
+.section-inner{max-width:1120px;margin:0 auto;}
+.section-eyebrow{
+  font-family:"DM Sans",sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:20px;
+}
+.section-divider{width:40px;height:1px;background:var(--gold);margin:0 auto 28px;}
+.section-title{
+  font-family:"Cormorant Garamond",serif;font-size:clamp(32px,4.2vw,52px);
+  font-weight:300;color:var(--navy);text-align:center;line-height:1.15;margin-bottom:28px;letter-spacing:-0.005em;
+}
+.section-title em{font-style:italic;color:var(--gold);font-weight:400;}
+.section-lead{
+  font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:300;font-style:italic;
+  color:var(--mid);text-align:center;max-width:740px;margin:0 auto 72px;line-height:1.55;
 }
 
-/* Gold top accent on modal */
-.ws-modal::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #b8963e, #d4ac52, #b8963e, transparent);
-  z-index: 11;
+/* WHY / WHAT / HOW */
+.whw-block{position:relative;padding-left:0;}
+.whw-label{
+  font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;
+  color:var(--gold);font-style:italic;letter-spacing:0.04em;margin-bottom:14px;line-height:1;
+}
+.whw-text{font-size:18px;line-height:1.7;color:var(--navy);font-weight:300;max-width:680px;}
+
+/* Video-paired WHW rows */
+.whw-video-row{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;margin-bottom:72px;}
+.whw-video-row:last-of-type{margin-bottom:0;}
+.whw-video-card{
+  position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;
+  border-radius:4px;box-shadow:0 12px 50px rgba(12,30,46,0.12);background:var(--navy);
+}
+.whw-video-card video{width:100%;height:100%;object-fit:cover;display:block;}
+.whw-copy .whw-label{margin-bottom:16px;}
+@media (min-width:860px){
+  .whw-video-row{grid-template-columns:1fr 1fr;gap:56px;}
+  .whw-video-row.text-left .whw-video-card{order:2;}
+  .whw-video-row.text-left .whw-copy{order:1;}
 }
 
-/* Form styles inside modal */
-.ws-modal .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+/* Sold Through */
+.sold-through-list{list-style:none;padding:0;margin:60px 0 0;display:grid;gap:28px;}
+.sold-through-list li{
+  display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;
+  padding:28px 32px;background:#fff;border:1px solid var(--border);text-align:left;
+}
+.sold-through-list .st-marker{display:block;width:8px;height:48px;background:var(--gold);}
+.sold-through-list h4{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--navy);margin:0 0 8px;letter-spacing:0.01em;}
+.sold-through-list p{font-size:14px;color:var(--navy-soft);line-height:1.6;margin:0;}
+
+/* Benefits */
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:60px;text-align:left;}
+.benefit-card{background:#fff;border:1px solid var(--border);padding:36px 28px;transition:transform 0.3s ease,border-color 0.3s ease;}
+.benefit-card:hover{transform:translateY(-4px);border-color:var(--gold);}
+.benefit-icon{width:48px;height:48px;color:var(--navy);margin-bottom:24px;transition:color 0.3s ease;}
+.benefit-card:hover .benefit-icon{color:var(--gold);}
+.benefit-icon svg{width:100%;height:100%;}
+.benefit-card h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--navy);margin:0 0 10px;line-height:1.3;letter-spacing:0.005em;}
+.benefit-card p{font-size:13.5px;color:var(--navy-soft);line-height:1.65;margin:0;}
+
+/* Tighter section variant (less gap between header and content) */
+.band.tight .section-lead{margin-bottom:40px;}
+.band.tight .sold-through-list{margin-top:36px;}
+.band.tight .benefits-grid{margin-top:40px;}
+
+/* Scroll slide-in/out animations (reversible via IntersectionObserver) */
+.slide-from-right{opacity:0;transform:translateX(80px);transition:opacity 0.8s ease, transform 0.8s ease;}
+.slide-from-left{opacity:0;transform:translateX(-80px);transition:opacity 0.8s ease, transform 0.8s ease;}
+.slide-from-right.in-view,.slide-from-left.in-view{opacity:1;transform:translateX(0);}
+@media (prefers-reduced-motion:reduce){
+  .slide-from-right,.slide-from-left{opacity:1;transform:none;transition:none;}
 }
 
-.ws-modal .form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 1rem;
+/* Signature */
+section#signature{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--white);padding:120px 24px;text-align:center;position:relative;}
+.sig-inner{max-width:720px;margin:0 auto;position:relative;z-index:2;}
+.sig-line{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,2.3vw,26px);font-weight:300;font-style:italic;color:var(--silver-light);margin-bottom:56px;line-height:1.65;}
+.sig-line .quote-mark{font-size:1.4em;color:var(--gold);vertical-align:-0.1em;margin:0 0.04em;}
+.sig-divider{width:50px;height:1px;background:var(--gold);margin:0 auto 32px;}
+.sig-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:var(--white);margin-bottom:8px;}
+.sig-title{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
+.sig-contact{font-family:"DM Sans",sans-serif;font-size:14px;color:rgba(255,255,255,0.65);}
+.sig-contact a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;}
+.sig-contact a:hover{border-color:var(--gold-light);}
+
+footer{background:var(--navy-deep);color:rgba(255,255,255,0.4);text-align:center;padding:32px 24px;font-family:"DM Sans",sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;}
+
+@media (max-width:768px){
+  nav.site-nav{padding:14px 20px;}
+  .nav-cta{padding:11px 20px;font-size:11px;letter-spacing:0.15em;}
+  #hero{padding:120px 20px 80px;}
+  section.band{padding:90px 20px;}
+  section#signature{padding:90px 20px;}
+  .scroll-hint{display:none;}
 }
-
-.ws-modal .form-field label {
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #6b8599;
-}
-
-.ws-modal .form-field input,
-.ws-modal .form-field textarea,
-.ws-modal .form-field select {
-  padding: 11px 14px;
-  border: 1.5px solid #e4eaf0;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: 'DM Sans', Arial, sans-serif;
-  color: #0c1e2e;
-  background: white;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.ws-modal .form-field input:focus,
-.ws-modal .form-field textarea:focus,
-.ws-modal .form-field select:focus {
-  border-color: #b8963e;
-  box-shadow: 0 0 0 3px rgba(184,150,62,0.12);
-}
-
-.ws-modal .form-submit-btn {
-  width: 100%;
-  background: #0c1e2e;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  font-family: 'DM Sans', Arial, sans-serif;
-  transition: background 0.2s ease, transform 0.15s ease;
-  margin-top: 0.5rem;
-}
-
-.ws-modal .form-submit-btn:hover {
-  background: #162840;
-  transform: translateY(-1px);
-}
-
-/* Success state */
-.ws-modal-success {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  min-height: 60vh;
-}
-
-.ws-modal-success.show { display: flex; }
-
-.ws-success-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #f0f9f4;
-  border: 2px solid #a8d5b5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: #0F6E56;
-  margin-bottom: 1.5rem;
-  animation: successPop 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
-}
-
-@keyframes successPop {
-  0%   { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1);   opacity: 1; }
-}
-
-.ws-success-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 32px;
-  font-weight: 300;
-  color: #0c1e2e;
-  margin-bottom: 0.75rem;
-}
-
-.ws-success-sub {
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 15px;
-  color: #4a6278;
-  line-height: 1.7;
-  max-width: 400px;
-  margin-bottom: 2rem;
-}
-
-.ws-success-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #0c1e2e;
-  color: white;
-  text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'DM Sans', Arial, sans-serif;
-  cursor: pointer;
-  border: none;
-  transition: background 0.2s ease;
-}
-
-.ws-success-back:hover { background: #162840; }
-
-/* Mobile */
-@media (max-width: 600px) {
-  .ws-modal .form-row { grid-template-columns: 1fr; }
-  .ws-modal-body { padding: 2rem 1.25rem 4rem; }
-}
-.btn-gold{background:var(--gold);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;transition:background 0.2s;}
-.btn-gold:hover{background:var(--gold-light);}
-.btn-ghost{background:transparent;color:var(--white);padding:15px 36px;border-radius:3px;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;border:1px solid rgba(200,220,235,0.25);cursor:pointer;font-family:"DM Sans",sans-serif;transition:border-color 0.2s;}
-.btn-ghost:hover{border-color:rgba(200,220,235,0.65);}
-.btn-navy{background:var(--navy);color:var(--white);padding:15px 36px;border-radius:3px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;transition:opacity 0.2s;}
-.btn-navy:hover{opacity:0.85;}
-.hero-section{position:relative;}
-.hiw{background:#ffffff;padding:6rem 3rem;border-top:3px solid #0c1e2e;}
-.hiw-inner{max-width:1000px;margin:0 auto;}
-.eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--navy);margin-bottom:0.85rem;}
-.hiw h2{font-size:clamp(30px,4vw,54px);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:3.5rem;}
-.hiw h2::after,.services h2::after,.about-body h2::after,.contact-info h2::after{content:'';display:block;width:40px;height:2px;background:#0c1e2e;margin:12px 0 0;}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.step{background:var(--white);border:1px solid rgba(12,30,46,0.12);border-radius:10px;padding:2.25rem;}
-.step-num{font-family:"Cormorant Garamond",serif;font-size:56px;font-weight:400;color:#0c1e2e;line-height:1;margin-bottom:1rem;}
-.step h3{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;color:var(--navy);margin-bottom:0.6rem;}
-.step p{font-size:14.5px;color:var(--light);line-height:1.8;}
-.services{background:#f8f9fb;padding:6rem 3rem;border-top:3px solid #0c1e2e;}
-.services-inner{max-width:860px;margin:0 auto;}
-.services h2{font-size:clamp(30px,4vw,54px);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:0.75rem;}
-.services-sub{font-size:17px;color:var(--mid);margin-bottom:3rem;font-weight:300;max-width:560px;line-height:1.85;}
-.svc-grid{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.svc{background:var(--white);padding:1.1rem 1.75rem 1.1rem calc(1rem + 3px);transition:background 0.2s;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:1rem;border-bottom:1px solid var(--border);border-left:3px solid #0c1e2e;}
-.svc:last-child{border-bottom:none;}
-.svc:hover{background:var(--silver-bg);}
-.svc-n{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:400;color:#0c1e2e;line-height:1;text-align:center;}
-.svc h3{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:500;color:var(--text);margin:0;}
-.svc-freq{font-size:12px;color:var(--navy);font-weight:500;text-align:right;white-space:nowrap;background:var(--silver-bg);padding:4px 12px;border-radius:20px;border:1px solid var(--border);}
-.svc-carousel-wrap{display:none;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding:0 0 1rem;}
-.svc-carousel-wrap::-webkit-scrollbar{display:none;}
-.svc-card-mobile{scroll-snap-align:start;flex-shrink:0;width:82vw;max-width:320px;background:var(--white);border:1px solid rgba(12,30,46,0.12);border-left:3px solid #0c1e2e;border-radius:10px;padding:1.75rem;display:flex;flex-direction:column;min-height:140px;}
-.svc-card-mobile .svc-n{font-family:"Cormorant Garamond",serif;font-size:36px;font-weight:400;color:#0c1e2e;line-height:1;margin-bottom:0.75rem;}
-.svc-card-mobile h3{font-family:"DM Sans",sans-serif;font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.5rem;}
-.svc-card-mobile .svc-freq{font-size:12px;color:var(--navy);font-weight:500;margin-top:auto;padding-top:10px;}
-.svc-dots{display:none;justify-content:center;gap:6px;margin-top:0.75rem;}
-.svc-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background 0.2s;}
-.svc-dot.active{background:var(--navy);}
-.quote-band{background:#f8f9fb;padding:6rem 3rem;text-align:center;border-top:3px solid #0c1e2e;border-bottom:1px solid var(--border);}
-.quote-band blockquote{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,4.5vw,56px);font-weight:300;color:var(--navy);line-height:1.25;max-width:820px;margin:0 auto 1.5rem;font-style:italic;}
-.quote-band blockquote strong{color:var(--navy);font-weight:500;font-style:normal;}
-.quote-band p{font-size:12.5px;color:var(--light);letter-spacing:0.12em;text-transform:uppercase;}
-.owner-link{display:block;font-size:13px;color:rgba(12,30,46,0.4);margin-top:1.5rem;cursor:pointer;text-decoration:underline;}
-.owner-link:hover{color:rgba(12,30,46,0.7);}
-.page-wrap{padding:5rem 3rem;padding-top:calc(68px + 3rem);background:var(--silver-bg);min-height:100vh;}
-.form-card{background:var(--white);border:1px solid rgba(12,30,46,0.12);border-radius:12px;padding:2.75rem;max-width:780px;margin:0 auto;}
-.form-title{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:300;color:var(--navy);margin-bottom:0.4rem;line-height:1.15;}
-.form-sub{font-size:14.5px;color:var(--light);margin-bottom:2rem;line-height:1.75;}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.fg{margin-bottom:1rem;}
-.fg label{display:block;font-size:11.5px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:5px;}
-.fg input,.fg select,.fg textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:4px;font-size:14.5px;font-family:"DM Sans",sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);}
-.fg textarea{resize:vertical;min-height:100px;}
-.fdiv{border:none;border-top:1px solid var(--border);margin:1.75rem 0;}
-.slbl{font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);font-weight:500;margin-bottom:10px;}
-.sub-btn{width:100%;padding:14px;background:var(--navy);color:var(--white);border:none;border-radius:4px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;cursor:pointer;transition:background 0.2s;font-weight:500;}
-.sub-btn:hover{background:var(--blue);}
-.sub-btn:disabled{background:var(--silver);cursor:not-allowed;}
-.form-ok{display:none;background:#f0f9f4;border:1px solid #a8d5b5;border-radius:8px;padding:1.75rem;margin-top:1rem;text-align:center;}
-.form-ok h3{font-family:"Cormorant Garamond",serif;font-size:26px;color:#1b5e20;margin-bottom:0.35rem;}
-.form-ok p{font-size:14px;color:#2e7d32;line-height:1.7;}
-.form-err{display:none;background:#fff0f0;border:1px solid #ffb3b3;border-radius:8px;padding:1.25rem;margin-top:1rem;text-align:center;font-size:14px;color:#c0392b;}
-.reg-note{font-size:12px;color:var(--light);text-align:center;margin-top:0.75rem;display:flex;align-items:center;justify-content:center;gap:6px;}
-.stripe-badge-sm{background:#635bff;color:white;font-size:9px;padding:2px 7px;border-radius:3px;font-weight:500;}
-.checkbox-row{display:flex;align-items:flex-start;gap:10px;background:var(--silver-bg);border:1px solid var(--border);border-radius:6px;padding:12px 14px;margin-bottom:1rem;}
-.checkbox-row input[type="checkbox"]{width:16px;height:16px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:var(--navy);}
-.checkbox-row label{font-size:14px;color:var(--mid);line-height:1.6;cursor:pointer;}
-.checkbox-row label a{color:var(--blue);text-decoration:underline;cursor:pointer;}
-.contact-wrap{background:#ffffff;padding:5rem 3rem;padding-top:calc(68px + 3rem);min-height:100vh;}
-.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:3.5rem;max-width:980px;margin:0 auto;align-items:start;}
-.contact-info h2{font-size:clamp(28px,4vw,46px);font-weight:300;color:var(--navy);margin-bottom:1rem;line-height:1.15;}
-.contact-info p{font-size:15.5px;color:var(--mid);line-height:1.85;margin-bottom:2rem;font-weight:300;}
-.c-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:1.25rem;}
-.c-icon{width:38px;height:38px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
-.c-detail h4{font-size:11px;font-weight:500;color:var(--navy);margin-bottom:2px;letter-spacing:0.1em;text-transform:uppercase;}
-.c-detail p{font-size:14.5px;color:var(--mid);}
-.c-detail a{color:var(--blue);text-decoration:none;}
-.about-hero{background:var(--white);padding:5rem 3rem;padding-top:calc(68px + 5rem);position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
-.about-hero-inner{max-width:680px;position:relative;z-index:1;}
-.about-hero h1{font-size:clamp(38px,5vw,68px);font-weight:300;color:var(--navy);line-height:1.1;margin-bottom:1.25rem;}
-.about-hero p{font-size:15px;color:var(--mid);max-width:540px;line-height:1.75;font-weight:400;}
-.about-body{padding:6rem 3rem;background:#f8f9fb;}
-.about-body-inner{max-width:820px;margin:0 auto;}
-.about-body p{font-size:17px;color:var(--mid);line-height:1.95;margin-bottom:1.5rem;font-weight:300;}
-.about-vals{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem;}
-.about-val{padding:1.5rem;background:var(--silver-bg);border-radius:8px;border:1px solid var(--border);}
-.about-val h4{font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:4px;}
-.about-val p{font-size:13.5px;color:var(--light);line-height:1.65;margin:0;}
-.tc-wrap{padding:5rem 3rem;padding-top:calc(68px + 3rem);background:var(--silver-bg);min-height:100vh;}
-.tc-card{background:var(--white);border:1px solid rgba(12,30,46,0.12);border-radius:12px;padding:3rem;max-width:860px;margin:0 auto;}
-.tc-title{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:300;color:var(--navy);margin-bottom:0.5rem;}
-.tc-sub{font-size:14px;color:var(--light);margin-bottom:1.5rem;line-height:1.75;}
-.tc-dl{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);padding:11px 22px;border-radius:4px;font-size:12px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;border:none;font-family:"DM Sans",sans-serif;margin-bottom:2rem;}
-.tc-st{font-size:14px;font-weight:500;color:var(--navy);margin:1.5rem 0 0.5rem;}
-.tc-body{font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:0.75rem;}
-.tc-hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
-/* PARTNER APPLICATION FORM */
-#page-partner.active{display:block!important;}
-.partner-page{background:#f8f9fb;min-height:100vh;padding:4rem 1.5rem;}
-.partner-container{max-width:680px;margin:0 auto;}
-.partner-hero{text-align:center;margin-bottom:3rem;}
-.partner-hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
-.partner-hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,5vw,48px);font-weight:300;color:var(--navy);line-height:1.2;margin-bottom:1rem;}
-.partner-hero-sub{font-size:15px;color:#6b8599;max-width:480px;margin:0 auto;line-height:1.7;}
-.partner-form-card{background:white;border-radius:16px;box-shadow:0 4px 24px rgba(12,30,46,0.07);overflow:hidden;}
-.partner-form-section{padding:1.75rem 2rem;border-bottom:1px solid #eef0f3;}
-.partner-form-section:last-of-type{border-bottom:none;}
-.partner-section-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
-.partner-section-label::after{content:"";flex:1;height:1px;background:var(--border);}
-.partner-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.partner-grid-3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;}
-.partner-field{display:flex;flex-direction:column;gap:6px;}
-.partner-field label{font-size:12px;font-weight:600;color:#3d5870;letter-spacing:0.02em;}
-.partner-field label .req{color:var(--mid);margin-left:2px;}
-.partner-field input,.partner-field select,.partner-field textarea{padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:14px;font-family:"DM Sans",sans-serif;color:var(--navy);background:white;transition:border-color 0.2s,box-shadow 0.2s;outline:none;-webkit-appearance:none;appearance:none;}
-.partner-field input:focus,.partner-field select:focus,.partner-field textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(12,30,46,0.08);}
-.partner-field input::placeholder,.partner-field textarea::placeholder{color:#b0bec5;}
-.partner-field textarea{min-height:100px;resize:vertical;}
-.partner-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8599' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
-.partner-field .field-note{font-size:11px;color:#9aafbf;}
-.partner-submit-section{padding:1.75rem 2rem;background:#f8f9fb;}
-.partner-submit-btn{width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:"DM Sans",sans-serif;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.1s;}
-.partner-submit-btn:hover{background:#1a3650;}
-.partner-submit-btn:active{transform:scale(0.99);}
-.partner-submit-btn:disabled{opacity:0.6;cursor:not-allowed;}
-.partner-legal{font-size:11.5px;color:#9aafbf;text-align:center;margin-top:1rem;line-height:1.6;}
-.partner-success{display:none;text-align:center;padding:3rem 2rem;}
-.partner-success-icon{width:56px;height:56px;background:#f0f9f4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:24px;}
-.partner-success-title{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:300;color:var(--navy);margin-bottom:0.5rem;}
-.partner-success-sub{font-size:14px;color:#6b8599;line-height:1.7;}
-footer{background:#0c1e2e;padding:3.5rem 3rem 2rem;}
-.foot-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
-.foot-brand img{height:44px;display:block;margin-bottom:1rem;opacity:0.85;}
-.foot-brand p{font-size:14px;color:rgba(143,163,184,0.4);line-height:1.7;max-width:230px;}
-.foot-col h4{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(143,165,184,0.4);margin-bottom:1rem;}
-.foot-col ul{list-style:none;}
-.foot-col li{margin-bottom:0.55rem;}
-.foot-col a{color:rgba(143,163,184,0.35);font-size:14px;text-decoration:none;transition:color 0.2s;cursor:pointer;}
-.foot-col a:hover{color:var(--silver);}
-.foot-bottom{max-width:1100px;margin:0 auto;padding-top:1.75rem;border-top:1px solid rgba(143,165,184,0.08);}
-.foot-bottom p{font-size:12px;color:rgba(143,163,184,0.25);}
-@media(max-width:900px){.steps,.contact-grid{grid-template-columns:1fr;}.foot-in{grid-template-columns:1fr 1fr;}.about-vals{grid-template-columns:1fr;}}
-@media(max-width:600px){.hiw,.services,.quote-band,.about-body{padding:4.5rem 1.5rem;}.about-hero{padding:3.5rem 1.5rem;padding-top:calc(68px + 3.5rem);}.page-wrap,.tc-wrap,.contact-wrap{padding:3.5rem 1.5rem;padding-top:calc(68px + 2rem);}.form-card,.tc-card{padding:2rem 1.25rem;}.fr{grid-template-columns:1fr;}.foot-in{grid-template-columns:1fr;}.svc-grid{display:none!important;}.svc-carousel-wrap{display:flex!important;}.svc-dots{display:flex!important;}.partner-form-section{padding:1.5rem;}.partner-grid-2,.partner-grid-3{grid-template-columns:1fr;}.partner-submit-section{padding:1.5rem;}}
-/* CTA / button hovers (customer site) */
-a[style*="background:var(--gold)"],button[style*="background:var(--gold)"],.btn-gold{transition:background 0.2s ease,transform 0.15s ease,box-shadow 0.2s ease;}
-a[style*="background:var(--gold)"]:hover,button[style*="background:var(--gold)"]:hover,.btn-gold:hover{background:#c9a44a!important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(184,150,62,0.35);}
-a[style*="background:var(--navy)"],button[style*="background:var(--navy)"],.btn-navy{transition:background 0.2s ease,transform 0.15s ease;}
-a[style*="background:var(--navy)"]:hover,button[style*="background:var(--navy)"]:hover,.btn-navy:hover{background:#162840!important;transform:translateY(-1px);}
-a[style*="border:1.5px solid"],button[style*="border:1.5px solid"]{transition:all 0.2s ease;}
-a[style*="border:1.5px solid"]:not(.hero-cta-secondary):hover,button[style*="border:1.5px solid"]:hover{background:var(--silver-bg)!important;border-color:var(--navy)!important;}
-.step,.form-card,.svc,.svc-card-mobile,.tc-card,.contact-form-card{box-shadow:0 1px 4px rgba(12,30,46,0.06),0 2px 8px rgba(12,30,46,0.04);transition:box-shadow 0.2s ease;}
-.step:hover,.form-card:hover,.svc:hover,.svc-card-mobile:hover,.tc-card:hover{box-shadow:0 2px 8px rgba(12,30,46,0.1),0 4px 16px rgba(12,30,46,0.06);}
-.stat-number,.counter-number,.display-number,[class*="stat"] .number,[class*="number"],.coverage-count,.service-count{color:var(--navy)!important;font-weight:400;}
-.partner-form-card{border:1px solid rgba(12,30,46,0.12);}
-
-/* -- VIDEO SECTION STYLES -- */
-.ws-video-section {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 6rem 4rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.ws-video-section:nth-of-type(odd) {
-  background: #ffffff;
-}
-
-.ws-video-section:nth-of-type(even) {
-  background: #f7f8fa;
-}
-
-.ws-section-inner {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-
-.ws-video-section.vid-right .ws-section-inner {
-  direction: rtl;
-}
-.ws-video-section.vid-right .ws-section-inner > * {
-  direction: ltr;
-}
-
-.ws-video-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 4px 6px rgba(12,30,46,0.04),
-    0 16px 48px rgba(12,30,46,0.10),
-    0 40px 80px rgba(12,30,46,0.06);
-  opacity: 0;
-  transform: translateY(48px);
-  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1);
-}
-
-.ws-video-card.ws-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.ws-video-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(184,150,62,0.30) 0%,
-    transparent 30%,
-    transparent 70%,
-    rgba(184,150,62,0.12) 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-.ws-video-card video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.ws-text-side {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: translateX(-32px);
-  transition:
-    opacity 0.85s cubic-bezier(0.16,1,0.3,1) 0.2s,
-    transform 0.85s cubic-bezier(0.16,1,0.3,1) 0.2s;
-}
-
-.ws-video-section.vid-right .ws-text-side {
-  transform: translateX(32px);
-}
-
-.ws-text-side.ws-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.ws-section-num {
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(12,30,46,0.28);
-}
-
-.ws-gold-bar {
-  width: 36px;
-  height: 2px;
-  background: #b8963e;
-}
-
-.ws-skel {
-  height: 13px;
-  border-radius: 7px;
-  background: linear-gradient(90deg, #e8edf2 25%, #f0f4f8 50%, #e8edf2 75%);
-  background-size: 300% 100%;
-  animation: wsSkel 2.2s ease-in-out infinite;
-}
-.ws-skel.lg  { width: 80%; }
-.ws-skel.md  { width: 64%; height: 11px; }
-.ws-skel.sm  { width: 48%; height: 11px; }
-.ws-skel.xl  { width: 90%; height: 11px; }
-.ws-skel.btn {
-  width: 148px; height: 48px; border-radius: 8px;
-  background: rgba(12,30,46,0.07);
-  animation: none;
-}
-
-@keyframes wsSkel {
-  0%   { background-position:  100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-.ws-divider {
-  width: 85%;
-  max-width: 1000px;
-  height: 1px;
-  margin: 0 auto;
-  background: linear-gradient(90deg, transparent, #e4eaf0, transparent);
-}
-
-@media (max-width: 900px) {
-  .ws-video-section {
-    padding: 4rem 1.5rem;
-    min-height: auto;
-  }
-  .ws-section-inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .ws-video-section.vid-right .ws-section-inner {
-    direction: ltr;
-  }
-  .ws-text-side {
-    transform: translateY(20px) !important;
-  }
-}
-
-#page-home section.ws-video-section:nth-of-type(odd){background:#ffffff;}#page-about section:nth-of-type(odd),#page-contact section:nth-of-type(odd){background:#ffffff;}
-#page-home section.ws-video-section:nth-of-type(even){background:#f7f8fa;}#page-about section:nth-of-type(even),#page-contact section:nth-of-type(even){background:#f8f9fb;}
-.reveal-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease, transform 0.65s ease;}
-.reveal-up.visible{opacity:1;transform:translateY(0);}
-.reveal-up:nth-child(2){transition-delay:0.1s;}
-.reveal-up:nth-child(3){transition-delay:0.2s;}
-.reveal-up:nth-child(4){transition-delay:0.3s;}
-.reveal-up:nth-child(5){transition-delay:0.4s;}
-.contact-detail-item:hover > div:first-child{background:#0c1e2e!important;border-color:#0c1e2e!important;}
-.contact-detail-item:hover > div:first-child svg{stroke:white!important;}
-@media (max-width: 768px){.contact-grid{grid-template-columns:1fr!important;gap:3rem!important;}}
-.form-field input,.form-field textarea{box-sizing:border-box;}
-
-#hero {
-  background-color: #0c1e2e;
-}
-
-nav a, header a, .nav-link, .navbar a {
-  color: rgba(255,255,255,0.85) !important;
-  transition: color 0.15s ease;
-}
-nav a:hover, header a:hover {
-  color: #ffffff !important;
-}
-
-
-/* Hero entrance animations */
-@keyframes heroScrollFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes scrollLine {
-  0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
-  40%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
-  100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
-}
-nav, header, #navbar, .site-header {
-  position: fixed !important;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: transparent;
-  border-bottom: none;
-  box-shadow: none;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-nav a, header a {
-  color: rgba(255,255,255,0.9);
-  transition: color 0.2s ease;
-}
-
-nav a:hover, header a:hover {
-  color: #ffffff;
-}
-
-nav ul, header ul, .nav-links, .nav-menu {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  list-style: none;
-}
-
-nav a, header a {
-  padding: 0 0.5rem;
-  white-space: nowrap;
-}
-
-#hero { background-color:#0c1e2e; }
-
-
-/* Hero fallback color only — image + gradient live on the inline <section> style */
-section#hero,
-#hero {
-  background-color: #0c1e2e;
-}
+@media (max-width:640px){.whw-label{font-size:36px;}.whw-text{font-size:16px;}}
 </style>
 </head>
 <body>
-<div id="site-wrap">
-<nav id="nav">
-  <div class="logo" id="nav-logo"><img id="nav-logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU0AAADICAYAAABs+rMbAAA9tUlEQVR42u19ebgkVZH9iarXr6GBXliVfZVNEBWUpUVQcWNGRdAZFQUVFRfGlR/OKIroqOM2giOj4oKKOsqigqjIDqPsu7IvNkszQANNL3T3e1V1fn9kRL94tzOzsurV2+N8X371XlXmzXtv3nsyIm7cCCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCCwJkgKSYmeCAQCgXKyrKf/B3kGAoFAgXTp/p5Hcpb7vxY9FAgEAomESfIYkjeQfJzkgyR/RvJZeVJoIBAITFfC7NPPLzEfd5PcPCTOQCAQhDlEmEcoQQ6SbJBs6TGg3/+N5Ia6QBTEGQgEprVKvjvJFY4sUwzq54UkayT7YnEoEAhMN8Ks6bEhybuUFJv62VICzSPOL+v1M6IXA4HAdCFMcWr5+UqGjRwJs1VAnG/wkmogEAhMddI0wvxMQoZNJcqHSZ6RQ5wtPedpkjuZxBo9GggEpjJhmh3z1Y4wWwl5vlbPedwtCDGRSK8n2R/O74FAYCoTZk1V881IPuEkR0+Y/+lU+O8mv6Vq+qlecg0EAoGpRJhiq94kL0ikRvu8SIm1X695VbJAlEec/xzEGQgEpiJpmh3z6zl2zCbJx0huYSq8I9l7CojTVtiXkdzFJNno6UAgMBUI0+yYr89Rt1M7Zj0h2VMKVHQvoV6nBBv2zUAgMOkJs6af25Jc7FbIPRGemKrYjjz3dtIoS9T0k0JNDwQCk50wRaW/tTQIh1ezTUr8g1fJC66/p8S26YnzsCDOQCAwmUnTVOxTc+yYJPkIyY2K9pO76z+v0ulgAWnaKvxiZxcN+2YgEJiUhHlUQphGfoMkX+JV8ZwyTEV/URtJ0/92JckZYd8MBAKTiTCN7F6sUYoaOXbM91dRpVUKnUny1grEaWV/Va+N/emBQGDCE2ZNpby5JO9MiM5I7ddVCDORWL9Ysooe9s1AIDDp1fKzC+yYt5OcU1V9dlLrXsnKe5ma3iL5VAQuDgQCk4Uw/6XAjrmc5B7dEJmq6bdUUNH9yvxfwr4ZCAQmKmGaRHiQIy6TCi36+ru6UZkdGX+5ooruz/mKXhv2zUAgMGEI0xzYtyK5KHFGN/I6pRvCTMp/bkl09zLiPLTbewcCgUCvCdMc0GeoOpwXiONSt0AkI7hXXW2iVVT0sG8GAoEJSZqmOn+rIKDwIpJbjjQhmrvPiR2o6Kl9M+JvBgKBCUGY7ypY+GmRPMikxBHey2yme3YgaaZq+rdDTQ8EAuNFmD6gxqoCB/aP95KkXLi4m0ZAnIf1gsQDgUCgE/KyhZnNSC4scGD/fq+lOifZntChik6XNmNp7E8PBAJjSZi28NNH8pKChZ+rRsM/Mtme2exQ0vTEfo1GXgr7ZiAQGHXSnKGf3yuJwL7taEpyHTq6F6np/9VrSTgQCASK1ON3lyz8vNJLhaNYh290oaKnxPnW0axrIBCY3oRpqvH8kshFnxht6c3VY98uVXQffzPyCwUCgVEhKr/j59GChZ/TqxKmpfIdKXmSvL9LFd3bX/+qoedqYd8MBAK9IExb+FmH5I0FCz9XKvG0XVjphSrsUgF/ZQQqur/uNF9uPPVAIDASgrKFn58UhHp7iOSzq6i4zh75ApI7GCl3Q5r6+aOEvEdCnB9IyhbbxaRkGup7IBCoTE6fyVn4aer/+1aRIF1Zb9S96OsbMXVZp4NHoJrn5U9fQXKfKmaKQCAQKCOnI0pylb/Nn1um3uvfRypJ7dUNCblydtAgHFWCElclTpJ8Wk0QN+nnjST/pO5Ve/XKvBAIBKYeYfqV8qItkv9RgTBXL66Q/OxItla6xahNdPGmF1JmHnGWOcYf003dA4HA1CZMv1L+SMFK+ZlGHkXqtSPePpLf1esu7EZac3WaQfLaHtgx27ki+aPhfFBJ8oCQOAOBwDDJkOS6JG8oWCm/VX+vlRCmqfYbuq2Wy0ju3GmIOLcg00/ydyNcLR8JzBTwMMlna/vDxhkITGPC9HvKzy1YKb+f5KZe+sspx1bbdyV5hyOd93Uqobk61XMStY02WjnSrP1/fqjpgUCQppHdd5K8PkYeK0nuWUZ8TsLcz6n2JPm7bglT/z59jAmzUWLrtDocH8QZCARhHpcQpieJI4pIwuJc6t9v0cUjK+dRXbyprJYnhHnaGBOm3WexOu2nxGkvkSbJ+Z2+DAKBwOQnzLwgHOlK+b+VEKZfIT/WEYsR56s6IZaEML+TQ+KpRNjssc3SchrtrHW42y0QpecuUH/TsG8GAtOMMF/uCCglzJ+WEaYRIsn/coRiJHdyF2q5lXlSiYTZaqNCd+tu1NI0wXVXn0MKVuvt/9+Gmh4ITA/CNGlud3UUb+W4Fp2vC0Nr7Cl3169H8hx3nZHJDW4RR6rWSSXNMsL05HUxyXtG6IJk7f4ryYOdtFtzbTyn4B5Wv48FcQYCU5swTZrbXF1o/Aq5EcMdJOf683MI89kaBd1UaJMAl5LcMe/aClLvUQUquZculzqieo4GPh5ptKN/1vLWSk0PJLcu2IFkdVrVbpEsEAhMfsKc5xKUNXLS7u6cRwLJVsb7EonLiO6oTiUvJacZKvE1E6nO//17krsmRLsHySe6JE4fW/M1ab3dPT5cIP16d6zZEWIuEJhahGlqZ79zOh/M2Q0zP4/0HOFuS/LvyfX2eUYXhGlq+UtziK/hnOM/mENm9vkSdYtqdWHjtPNXusjzfUn9aiSvbmPfPDPU9EBgahGm2RjPzCFMm/iHFhGmlrGhy8+TOr/fQXJup9KWk15/ntTFPi8kuYerR61AtX+Nk1JbXaye5xJnkq64UWA/tb74aBBnIDA1SNMI4JQSX8yPFRCm3y30vwWEO9CNXc+5K21GcnmSc4gkT0rJtU37/skRbi+J0z6/WaCmW51XWoi5sG8GApOXMM15/Qs5hGl/f9GfW0BIvygh3KO7kbBybIYNV+apTj2ud1DWR9r4d1YlzgOsXPfi2ED9M1s59lP7/271KogUwYHAJCbMT+Q4rxupnFJEeO76E0riav6yW5XUBeT4m5ZlTvF/dEQlXbT38z0gzsf8gphT099c4hJl3/081PRAYPKq5G/PUVltcp/jSEHaXO8J14jlPl2J73hXjFsAOjDZRXTtCMr0Wzq/nbhDdUOcD5N8rpM4jTjPK/EPzU2hEQgEJgdhHuxUyZQw/0RyrbyFG3f9gXp+M9k5Y0E89jYCHEEdT3dl/53kxvp9rcu2+62Ypzhy69QB3s5/lOROWl6/891cWhA93vtv7tFt/wQCgbEnzJcrsTVzdvvcbI7cJc7rO5J8PMd+Z2V8ZARqubkvbU1ySQ451UfYB+Lu8eNEgmx2QZwPu7rN1M/jK+xcujXsm4HA5CDMPUg+U7Db53aSmxUQprkWbUDythwV1P4+aySqp6vncc6WOb+X6mxCnAeS/M0IQ8UNI049bipxqg/7ZiAwwQnTJMTn5KSqsIl/Vwlh2sJLf4Ejt0/bO6/TKOw59+p3gYoPHi1iSQJwvErb1mlStoZr+06uDfske+6LiPPdQZyBwMQlzAdztkeS5JMkdymavK6Mn+WonZayt3La3gp1nT9WCya2q8f9f08X2y49ce7gyvphyaKQt2++oBemh0Ag0DvC3LgNYe5VQpimLn8hhzA9GRw3UoJz9T2f5Of17xlj0U+6Av4SJbFuAnxYv/yN5DzX74+WSK8+CErYNwOBcSZMs9nNdSp1ur1xiVvlLiPMj5Zsr3zCqZj1EdTXdgBtS/KrY6myOrL+7QjDydl115DcQMt8X5sI8/b9z0JNDwQmBmFelUOYTZWoXlkkzSWuSd6X0xPKeSS38ffsQd3XMRIdC6nLEebzulhBLyPBa0luqGVf1IaMw74ZCIwnYSrhzMkhTO+X+cYKEuZ+utLeTMKyLbIwbyOVMCeQCeOMHuZNt/6+Tl9c2+tLqmjfu7dvPn+y92kgMJkIQBxpnp+TPdKI700lhGkksh3JhTlbDv9gix2jlQNnrOx6rq926nFeoZQ4ZzgXqsE2qv0dmj8+7JuBwBgS5v/kEKZN1neWqOR2/frOz3Cls10elUqjk7zP7AVx1ihltrTyrtR+va3Nyrydf3qo6YHA2BPmYA5hfqiEMMWVc3kShPe3JLcdTelyHPrMIhQ9T18uTY4OVjuykzyggkRr578viDMQGD3CNIkpT8JstAuC66MGkfyVm8CPmmQ6lSZwkl749z20ZbYjwu+T/Emb+9kzW1GUWiQQCIyMMG3R5jslMS0/WUZ6royvu2vPIbnFVJIuE5W83+09b3L0YST5F/WNLUsx3HBxAMK+GQiMAmF+rZsgwv57F2dyIcn3TDXpMnk5bOBMEA2OHZod2E7DvhkI9Jgwjez+vYQwT/b2uxISOVrP/xXJzaeadJm0dTcX2HiAY49O9rVb/d4bxBkI9IYATsyRXGyifbsNYZoD/Mc1B8+7p6J0mfTXvhrSbjRWykeLYM2+uYt/boFAoHMCOK4kTcUPzH5XQJhm13uXJkTbbopKl36R7J9dBPjGCCXAsYTV9TaS60T+9ECgMxIwlfxjIyBMcy3ayrJMTlHpUtwK+bGJg3+eNDeRidOk4l+Emh4IdC5hHlVCmD8uI8w8aXMqqnzO9FB3+YDytjB6iXORI87WBCbOsG8GAh0Q5pElidAu1u16lVXsqajqOXV8HZK/K7Bf+sAcy0meRHIjkseMIDf6WNo390hffIFAYE2V/I1tCHPWSCKmT7GXy+Ykb8ghzFby/y9tgcWV8UFHrK0JbN+cHfbNQKCYBF6uEkZeIrSLSc6aimp2l321p+bsKcrFbrmQXumvTdy4PjSBJU5rx5mhpgcC+STwUpLLCpyjLw3CXCP25+JEKvPEt4jkv7o+q+fkQzLifO8EJk6zYX84iDMQwBqBcYsI8xqSc6YzYSYuRce4PmrmBEw+leRWaR+3IeH3TlBV3do2GPbNQBDm8HiWf8+Rmkjybrdzpz5N+0nc319KXIq8Kv5nkvunqngH0ut7JihxpvbN2J8emJZEYK4yG5C8v4Qwt5zmhOmDbvzI9Y8ny4fUPUucKi4d3sdU9aMmqKpu7T0j1PTAtCRMVTdnq3TkJ0XDBdPYfjpPEEeYs0j+SfvFZ5BcRfJbJDdJVfgu75eq6hOVOI8O4gxMO9ucqo5/LMgc+ZTLHzNdCdMIbCuS12u/rHAE8hvro15K4jkbCyaSqm72zYGIvxmYVoSpf/8sJ4iwpZw40KmktZxDio4pRph7kFyQ9M+dJP/Rn9vrdk9wVd1erH+N/emB6aRufrogEdpikvv1iJzFSbV5R18PjlqboyNyT+KGvt65FJn0fQLJ2c5uWXdpO8qObtq7lt7ngxMw0IdpJt8LNX18EG+pMbJjikiLWe7wu7Tfa/rZ0r/PB3AKgHUB3A9ghV3uinoSwLKi24jI4skidYsI00/97cMAvuna/gMAJ4jIw+NU17doHWbqc5oIaADoA3CkiPyYZJ+INGKmBWlOKRudiDRIvksnYBNAN/aoFQBWFt0GwEKdUAJgAMDfk9+NpO925zEpZxmABwp+M7S07KIyBgE8UnDtEhFp5vTROgC+CuD92j/LAHwAwNlKEGvr9/5e/QCeVTK2CWBDAOtXmAcEsImeb31Vd/XY0n0/7kNKj+UA9hKRO+3FHLMtSHOqkeZHAHxdSacvZyLYoK8VTOrJ9LyeKvh+EYBncto+B8A2TvIeAPAQgA0cSaToA7DeNB1W9uK9BsB+2m80iT0wegh7yNjiSSWEZsELrF5BGmongaTSyGi9TGttrp9X8Nu8CkRgUuS2FaWuKlIZRlBWfQK+sOoq6b8IwBtE5Ey1mzdjmgVpTgmpQBdAfg3gCwC2KFFt25GZlJCbVCS1sVIhOyW5eoeEWIXgJ7J0XrWPioi/qXN4o9AcQz2fiiq6LQY9F8BpAF44BhMyj5RbXUhrUjBWZIKNKY7w926k03btrY3y/LsRwAEAlgJAqOdBmlONOG21uAbgFcjseDMA7JCjhm8DYBaG2zI30WsIYHaJqrveOGoRnqxbHZJVJ2O2NgXG8nJkttsUy5CZcqwvHwOw2P3+iP5+H4CzRWS590AIBGlOSYmzB+XMQOaelIcNAKyTQ8TrAtg05/v1MLQ63K9/z3TnPUtJ2hO4aFlepZ6VXDfWWNyGoB/HkCtXGeE/rITmv1us33vpfQUy97AiM8tKlHsiFNVnpYis6PRlHLMrSHNKS5wY8tPsRJ2kqvgTYpJoyDov8c3Rw7CVkuhaqLao0w6P6yHIXJ5WJVLtwgLzgyHX3WkCj5Ei84j/uxmEGaQZ6HxSVX2u0sEzL12Jn6wT1TvUl5xW69FcaWcbLfwtiDBIMzA9iFtGQNK9IKS2RBNkFAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCY4hxj3LUJkTXUEULotPkXd/JuWX3qnp+2X27LWOsrutq0IzBvapGI9I6WHxSj8rZGceyzyq2yWKt+npR29Pq9fxqV7eJNhbHO1JVhIYLTEpo5kW0CyqsBFQD0JrIecGVYOpoE1S46nmd3jtC5k0S0tSBP7vi6U/nDXqSMzE8l84yERkc4b0W68DsJKd2booCkusiywNUBU0RWdLtdUoQc8bg0S0RkSbJuaM0hgZEZHkRCfpxoHXYFllOJZM2m8giuz8kIo8lY4DJ9Z2Mi5Hg6SLSJln35E9yWwDbAZjrxvXTAO4VkXuLrit4Yczptl4jGcOj3K/jGoF/XEiTZJ+INEi+EcD3MTzfNXLUrBqAw0TkYn0YLY2+XQdwBYCdAAzqg/1fAK/PhBBpuXu9BcC3kaXO7Wtzr5fp35e67woHidb9YhE5TAcqtX4zAFwNYOs25djEeAbAC5CldLgZwOYVr1sBYHu99twKde4W1tYjRORckvclE3uksGfzWxF5Zw6ZrP6f5KEA3gxgf2Q5jPLwFIDrdYycLiL32fhTKbVB8hAAP2gzBrse6hhKx/EiEbk3h/QtS+lsAEcAOBTA3sjPtTQA4BoAZwH4sYg85cdb2k8k9wHwO71/rWCs3wDgNdp+etVax/BsHcObVByLK/Ul9moAP+xxv1pZR4nI2Ta3x5q/xjvv+brIMipWmeSzErK3jI17JxP2QABzRGRxYlOxe5VNcPttbX348zpoywYFL6WNOijHv9E7uW497b9ZHda5W5gEMU9Jc7TKRw4RvAjANwHskzy3VFqqaf1eocexJH8D4HMico++0KzvxqLP6jlqtr3Y3wngs8hyKnlSYzKW+gHM1+PjJD8jIj8iWSOZZ+tbG8D6ber1cgDHiMg39GXSyCHqOR30UVPr+uwK861n42MsUcP4os/VwwaJP4oGXU0H3SH6/6Ce30SWhfGFOe2bkUjXeffy6WHryaTMO1pushZlYVzbTYJWSTlIVKBZyeQpu3ef1r2pvzXceU3tH380C8psd+6gK9/Xsax/BtscjZLyvTTWJPlWlRr30Xo19R5N9wzTtjT0WBfA4QCuJ3m067tWcm+7f9U+Kzu3lXx6wjQJ81SVyLbSsny70peC/dZQLeSHJH+gkqvkLLy0G8NW5mdJbg6gpZJrOn7ntnnOfg7V9e+1EwGn6njrZPxNK9K0Dr4HwJ8B3IGh7Iz+GACwAMBVAB70D07fqvMxtHIq7q12aPLAAOBOAH/Rcho591oF4CYAFyBL1fqknr8w51y/YrtS63/5apFgKHFXU9Wje/XvWkE5QJbq9UIMpXQ9B1le60bJvUX75yIdUH0559WVjP1RLyiz6rk2Gf+ILIVtWR1ntDn6SvrEJMwWyfkAfqrXmJpmfdCnR9393efKr7vJNhvAfwN4t5vk6b37OuizqucOIzN9CXwfwFH67FpOiKi7eteT9tlLsqXteRfJ000F13FnY/4RAFeWjOGak9y+YOSbkPsAgD/oWFxVMhcGdT6fo/W6Ueftw24uVhlvVft93CW9sTWkql1KRC4HMJ/kOgBuQ5Zvu+UI/W4Ae4vIMk+4OonWA7BXQv7Wmfs6ozT1XhcBuIjk+om9kPpg/iwiL0+qup8awd8C4HvOjGCT9jwAHwTwsNlWzF6l920COJJkv9p5zgSwq5Yjzo73WgD/KyIr3b3frirkDgAuAbBxct2jet3tdp3Z6hJTw936MvAS9o4Adk9sbqL2sgXJuTsDeG4i+de0ja/Xtu0C4GKnjsEtXvypxAzSUNXvtSU295be45Sk773ad7ran5e69myupptX6j2o431Qy9k8x65vZZ6nL02TllYC2FNt53aOjYVz1W66lkpkLQAHaJ+0cux5dREZJPlxJe5Bp2HY+XcA+DWAW/S7GQB2U1v9Tu7eNSW1twH4PxH5hLf7ishfAeyrY/htAL6TYwqra5++g+RpInJpYkteDuBQHYvbq6S/QfKcH1Gz2L3OxngJgH303u/Q9QR7dlaH67X/ajnmFavXQQD2Q3lq5ukDkmK2JZI/ZYYGyZb+vZjkPD2vZpKHfr7CnW9o6bGC5A6m2tl1Ws5mJFe68wf176/ref16nhgJkdxbz2nqp13zTSOrHLVmtWppahPJC3LauJLkRinpWTv17wfd/a0Od7rf+/Xz1fr7gJbbJPmpnDodk7TDPg/LOfdDWs4qPZok36a/zXR99pjrU6vjTRXGwGySy/S6Vfr5y6RdByTP2p7zcl1MLCt/M5I3unpZWz+tvx+R076X5ZRzYtJXVpeX5px7rJZjz6BBcns35nfXew26cWDlfY3kWgVtWZvkF3P6wup0UDJH/BjeNxnDHlbWzTpe617VT8pb0GYs1t24t3u/LLmP1ffzFcbHIdrGAT1aJA/PERKmh01TpTFTZe/IWXGcA2CbxMBtD3O/RNWHs+utpQbuYVKolrOP2h+biah/iZdOk7rNKmjCTCPLIrcN/b6m5xW5bczS+/gyWjpIZxWoI3Ula0lsonafmfr3EzoJ1iI5Uwd1UXvW1XNnunMf13L69bC/V9dRy8urY5+Wl3f06aBvqUQqWm9JbN1QjcLbzezZfVNXUWdaeckxU0QeBvAbJx2m46g/p31z9Pp+K9tJnSns3Jnax33anpp7BqZm25j/mt5L3JitA/i6iHwCwCots+7bIyIrROTfAHzBSWJ+DH/Vz4mKY9ikuoZqHx9VKbOejkXtgzzOqKVjUcc93XVF477P+i19dm58iFPXZbwXsMd79dzUbZK8AsNdI5pav/2RuUWYCG/G6tfkqFce+6s6ki4ozU+M2nVkrj7X5pCw2SdbJXVvFUmZOecVORC3nB208r3ddXQq+02ubQLgNrWf2YujWVJmS38X/btF8h41Z3hTxkPJsyvrnzI/QhGRZSTv0ok1oGSyJMc7QHII70qdWM081xOSpmnc4RZRkBDoQ9q+hiOiG9UdqaYLNo2SNjb1d+vgJsn71aZn/TWoYwwkX6ir+a1EVb0PwKecL2lee6w+x5M8GMDzHeE2AexO8mAROS9R09uNI3F1+SzJXwB4xLtHtSmj2zHc0r5D2l5mg6NJcjky17GWs/sumdak6SbVtTrpn5UQ197JJGuR3BTAHok04u08APBykrPV0dZPkl2TRSLRxYxFVv4ktHTYwL5GJ1JuP3eizrjJcr3r6zUIoweaBtRW5yWbAWfvRY49y67bXCfdWiTzdsjYy+p+L+0lK8t/FJE/FPVBhRdinq3+Al1QTAkPalsUtzBoRPBVEVmlEmWzQn2O10VGScjvSLXJVq528iJZD8DXROStnbR9FHnhYmSO/h5L9JzGtCRNG1AisoLk7Uqa3li9kz68plMj9nQqdj0hTxuIGyuBXKbG94baT3dMBkkNwDWOVBqYpCja6zuSLXIjLFOqELXtgirBfckEt4Wg40n+RURuSezALTWx2MS7BZlHhV9Aut7VcbT7TFR4mqEvCBuntji1HMB5OSaashfVRQD+L2e+7EtyXZXgq6wyL8GQ36NJrG8h+R0Rudw2k4yWeVDHR1+xEgaKyFMTaZ71TZB6GNFdi2wVzqvp2wCYJyJPuEHwhkTiWAXgOrVz0tlBXmykqWS4K4BNXfk2GM7LU80rkkJd7YtsMzgmVFCIMSqzUVUayFPr3PO5wpGFt3lvCuAykv8J4PsisjBdkFACXQng7DKJejT7zO362RzAZslLuw7gShF5MN0tVFS2qt4r1aT1JmcGsD7ZDZmrUZWdbD9B5h1xQNLH39CNBKOJFTo+Gp2Mj/HeJz9RSNM64Y8A/h+G/O+a+hbcF7o9UKXO+YnksRjAcfr2nYkh4/ghJL/mJt/zHYHW3UC7u0vSHFBppp2aalv/povbhD2X9Um+qc1zFwD3icj1aeAIJZq6iNxP8mQAH3V2TyPOuQA+B+CjJH8N4BcArhWRxW7C9RXY08b6eWyq47PlJE0AeMAc3itKdda/VzvStHHWpyR4JYb7KRfNuSUAPoDM5c9Lmy8E8JGSnUK9GB+76/iot5lDF4nIkxMlsMhEIc2WU6OexpBfnXXQHgDOVRV6N5U+fefdLyJ/Jnm3Dhg4ktxERB7R/3dLBk0NmfPtPR2Spkkxh5B8dpvB6fGCxJQw1UlzCwC/qnD+eQD+AUN+mMPGhr4oPwngOQAOdufUnWYxF8A79XiE5AXIfB3/ICKrTPocp0AP1h9bu/Hux8CjKkF2Wu6ygu9ndVDG+iJyO8mfAni7EyhayBamTgfweI81JZs//6hHO+yHbKNJDSO0o08Z0rRVN1XB71Oy8yNoNyeiH6z19m++3+rnTRhyxG7qW/1FAH6r174gx555qYg80+GE8qSwRZeTaDqE4mKbQd5wNr2ysQERGVCfzG8g21Bg5EMntdniyrOROVS/A8BtJH8C4GS1m9fHMUJOEZk90qVmtqDgJbxdJwKLzo1PI9tkMM/dY30AXxGRI0fJvNRqI1n7TRATBhNJ4rG3z2U5b+Pnqs8dkdkp02vMx/IXOaT0en3gG2PNFXfoG8wTYacPfaCDY7rFLBRnBik7ahVfqgMi8iFku0QuxJAPpL0ExT1728e9C4AvA7iB5GtUW6mPU380eyy8LC34fmYnY1gXzR4AcAKG77pqAjiC5P469+qjwD9VxseEivs7EdXEy9yEs87aGcDmuiVr3+T3R5w95jpk/nC+o/fRB761qv02uaztN3eomqf919/BMR2DPkvJMaOq1G3EqZLihSJyELIQfmdhKP5pPdEiTM1sINt++HuS7x9H4uzrkEzbYYOCsftkxypBtrL/XQC3aj3TRSH/Yhqr8ZEXwX7c0TeB6mJi+u0YvmfX3npb6SDZGMOj2vxRRJaS7BeRx0heiaHdQATwHLU7bpncp4bMZePW5Puq6pEAWIShgARVsB2yaDtTXeI00roHwGEVzl/U7hk49bDlHNovAXAJyWepbewVyLwvNkrGjreFnUJyhYicNg6q+qMFWs0WXRANkC0s5ZHmg90IAOonejSymLTA8EWhY0Tk5B5tXfQr99/IMbeluLuLOTr1SVNXSs3R/E6VLn1IrR20vmnYuMsSqflcJU2zcfUhC4j63Byb0A0WZbrDyWPl/lLVxapv84t1Uo9WkOCJhmdE5OYOxgAr/tbQ/rStif8H4FQAp5LcGJnd+z3ItsymO15McvotgMVjtCLrow7lxZd8Vpflzisg02e6ITKdB3/RHUFvxXAH/ONJno1s8WmTHvXHw70aH9NZPa+LyACG7IxeHXgDMgdlH5JrFYZCshnpXe/aZtcejGxByL63zr+l4M1fuf8s6IgL8pF31F0CsOmEmgZuaHfU0+9S1VEDt9gxV8muads+ba+2iDwmIj8SkX0BfARDsSnpJM55AI4cJTtdKUnomK0l5LmrCyXYiVaWut5Zv93WpcmJ2vfHAngiGa8bItsz3xjhnPHo1+fd32ZspONDgjTXxC2eSPXz1SqleVyvPnw19zCvQ5YfxpPmqzF85dzafWmXgyt9+9GCfOQdqJgVcUoaNEVaFY5m+p3OYNOEjkEWk/QO/bwHWZgycxyniDRyCPQkAF/Bmv6PTEw4o06aOtEfUS0KGL7qvxsydyq027qYpMfYx81jEzDuBXBzxd1FazwrVdMXIvN9rTlpkwD+yerZI9K0fE3txkY6PhikueYb+c8ozy3izzN7DHXf7konfdqgWQfD3T1qyJx6r51ItpLpCpLPIfk8DZn2PJJbJxNznh4b6+cGRprp5DUCder7fyOLh+mlO3Eq5qg/e5NolSB+mWhRZuo5VM+rVZyz/6x9YZGOVu+eUr/UepfkYotk6aKQYHRSV7QbGzN0TOyhn88jOU9/GxeJc0KRprMr3qDSYtHb0tsv86SFy3JIlskkuXcMbVqB/Alhg/4MZD62N+rn1xMtw1JiWAoEAthNJ3etRIWlqsONCWAasXF3FoYCIXtp82MkN9IYCX0F/VVXUutD5uzvt5SaVPjdkUjQLmj3AID3J3NIxnBs2LPfIxkbN2HIIX5cXMdqE3Ai1fTBFe3SsQHyuJKrH5D2+UdkxvC+RLrw5V2jb/6yjl+9t7zEZldHyd5y2x6n5xUNurqqZZLcu1Zybym4DhXaU2vXng7KK6sjymy9GB693ueAaea0NT22UbVtMI07qaQyQ5/vvsg8Fry0RGThxqrMgXZ9Um/zbFervmoyuAuZP7FXfVsqPZ+q5zZy2lTX9hJZ9sxtMDyGQg3A5SJyleVUqviM1hjD5pIlIn/Wurbb5tjt/FmdYC5vbOjnZhiei4kYZ++TiWjTtDr9pYA0jRhvFZHl+nDpBqaoTeZvBeqXDe7ft3sjm50M2dbOPKzQgTxQJK16e5s+9Dw8ZfabHFvg8gJpuyEig94GWEGKGNR7FO3AWWrt6dBe+VRBP5baevV5rY3MdaYs/0te4q5DSR5Fcq7WuZEcAyR3B3BSjpQkyPLXoALZWXyBFQWnPG3378C2eaySthGekdLrSf6B5LY5bWqS3Irkr5DtdGomttoBAB/MCXzS0PHR6Ri2RaF/VVNWrVOyqjB/zLF+MGdsNLQ+A5hA+YGAieWnmdor/4Rsh0K94Pf/KRj0FpDjcgxF/E6l1CaGG+RzJV5kK4aWw9nfywbQHppi4GEA9+SRjeYy2gyZAT3PDlcDcBjJqwEsEJGlet0sZL6lO6tNNr1uAw12cJtet6ydbQiZa8sWGNpV5WMpEsCrSD6GLMnbQ+3csDS305bIIn7PzHnx7dAm5YWFRtu4zUt8ZmL/AzJfzFMBnEjyQmTBKx7X82Yj89l8HbIo/kxsmisB/LidTVP7bFPXRiZ9BiW6BrItjQvLXmBO2nyM5PuQ7cs304ER56sB/JXkpchs7gu1f16EbCF0HQzPk9REtkngA7qH3OeGtzG8JYYytyJ55rtqyo4FyFyABl1d+0RkAcnj9eXT6IQzNI3L1lgzYLjN6SNJvqpNMbPd2GgiUGzn0twxi1weFP9Jkju6gbGGLYTk/JycKPb3ApffRgqufzHJp1gNTfVtS3MCzSB5Q1LvMvyd5EaqolzfwXX3uTxDaXssT8vRmounCp4heay/Puf5rEPyFvYWljvmV67/RI3/D7lzmto3jQplttwzGtC/j0/sZijosxO0L6pgmeUWarfbyJX/r66OjZycVyzJ59Nw4/lzSbk2hvfRPFtVn/nXk+vNXW4Gydty6mf3v9vl4rI6vIXkE6M0Pt6eNzanrXru9hkvUWnQtsFZjuaWLuIsSNKVpur7TQAeczYzK6cJ4HwXJbtI5bB8zwMYSrGaHg2VWoAsSESe3XEjtyDRLChnQD83w1D+nc3aXNcsuK7sjb2O1rdRUI9B/X1tJ/2VjZ3NXf2L6jiIarmt02tXP0t1gN4bWTT0Pjdu07zjjeR/nxfdcid9TUQ+X3FDw4baF+36bBXW9NAoVVt17H0JwIe0/7zzfdO1w3/6fOpmZ/24iHxW29PIGcNzXH+UjeG1nVQnyaLQILLwcUjmYfq8vDS5BbKAH6tK7l1lfOT1e9g084zr+nmZG+w1N2F+p65Fa7hVuCCty5DtK/fX9WvZ11YZ2/rZ7+6fHn2q/pUlTbPkWjPdQE+Pflce3H3LrqtjzURnVZ71Wq4/0mOG/l51ZTLt17w6zkC13Na+H9ZOnmdNRB4SkVci26lyLYbnO/c51OtJuXbcAeCNInJsslBShsGKfTaz0/lkiz0i8m1kTup/cmOg7tpVT9pm9bgEwHyNd1n0ArD6zKgwhk24SOtpi0KXqknMPy+ry7ol955Zcu8q46MvZ570jyc59U1Q0jQi/AOycFXNZJXwnHaLOIr/xtBedR8+7IoSe5YPznoz2m95NPvSjXmGbl1w2LJNOWYre8YtOFypEmSV65aVLFRYexZiKIFY2XO33+9q08ctZBsJ1kfv3FHs3sPszW6LLUTkFwB+QfIlyHaJ7af9tA4yv0XRZ9dA5kx+KzLfyPM1NFytwsKZtXmR9lmzzUvEfn+q4rj0hNQnItepPXk/fSnM1zbNVEJaptLow7pA+nMRudxU6RzC9PW/CWt6kBT1+4KC+tui0MfVxrsehrs63Ys1Xfpu0Xvb+O3F+LB+fqiTfu65NhxW1MAks3mvQRK6aDZTTSQzlCwH09wy4xxLs6xNNSS7xkjOVQlwEzUzrfTtMVe2idieqQ6Z4BNEymyf43l91TK7LaMX9x6N9oykvB63xXwjm2Xnp8nWejX+uq13hTahTdrjtueM5Pm06cvK82m0d+uM54aUkDQDU0H6TN2AON4Tq8dtmvTtCQQCgUCo54FAICT1oa9Dug3SLBoo3fSZrcR3HaaqIM/3WLbDVjQrb8McTTtVsggixad1lna3Sp3Hwh7Xw3vUnMo+0vFX07qV2VD9OAkCDUmzJ+Rbn+wrmJNpJTaiUo18/KVuV7pddA4y7wMj5IUAlqs/9JQZ60GaIxhkJD+ALCWCRb/xOYlyg0/o52PIUnL8HsBlGjREqkqL7v5vRhYMgQCOQubnWau6KqpO3zOR5QzfAEM+bBZOr0wiW4Us9N7fkPkvXl80Kdy9tgRwNobiK5a1tWo9oOX9VUQOV5/FBskDAfwnhkcmqiPb1PBpO69iP/8HgFdiKJ/3ai3BSW2Hisi9et1HAByBId/eWptxgQrtu0ZE3usCCIv25dZJPdqlPB7UsXc7Muf2K53zebPD8d+HLMTaW5Htq382Mv9LwzJke/lvA3AmgHNE5MlOxnpg6pCm7Y39Rg/2wt5L8v1GLlVULrdH9wpXzk9sQHeicpJcm+SjPWjHFUpUa9TB1fe5HD3clTybw0rOPahKX7n907+ucP+d3XX/PgrtuyHpy5ru1x4prif5D77sin2yD8mrkrIGSD7pjpXJ7w+QfO9YmGpC0pyg6p2mA95O3/SHAPisvun/HdluBh92y0cQ3w5ZeoJXYGg71w8AvLed7cdJGrupZGmRap5CFh9ySSfqpw7cTVXSnAPgFGRRkW4A8B9YM82DSYHbIdultBeyTIMmSX8i3Zbn6ryz65eTkWUszIuz2Afgq8h2tFyFLNtgWg+77hgALwFwo4jsmaiL22tZ+yDb2WW7Vu4D8HxkO6DK+tqe81yV6KCS/WHa3+9SqW0QwF0uxcYsvTeRhWD7mNb1E8h25FRJOWzt/TiyiFJXiMgBXi0muaH2UQ1Z4OAXIsu6+OlEs/Hjb64+3xcj2wll+KyInFgmcbrneLiO137VOM5CFm3pBmQhA+2+awHYEcCbkEWJX1+//y2At6skGhLnNJY+X+DeqPtUvGZPkn92153UTgJyktQX9Zr7XSSnwy2/zQjacZGWdXZV0iV5KMmHXTvekEglJh3t4qLaHNKm3L/oeT9vc95PTWIqOWeHnAhX3/L92UH/fFqvf6ji+Ye5yD6bdvE8vqTXX1omDZL8jZ53QQdlH0jyJtcnHygaf+5Z+nF+t27brHKvrUie6a79TV4CvOmC2jQmSssiWVMpzTBHI2XPTKOB+8P2CyPLftkC8C8k55uNqUAqNFuS5QL/ob7lCeDNloStU6O+RfbGUNCQ/iptyAQFOUttfou1HV9SSS/PFmmRaRYVlD9Dy623qcdaet5CLa+Z94LRZzPbff2E9s8HSR5oQS8qPOd+LcuiENU0o2Utxxzhz1/H/TRP69Rf1qdJ+4Ch6ERl4880lhkV71HXnO+vVcm7BeALJOdZcrk1b0dR7QMqaR8sIn/WOli2x7wsqn0iskBEDlMNo4ksPuazVHKtBWlOF7tERlDmbuMHtUXhbuREA199kJyhkZTejaFoOEeUmD2sr1+m6t8qAD9BFkxCABxEcicd9J1Ey7Fsfn6hglXaoIO+X0T+BuCLWsedAOxv0aISFdEIcVVe+fZ/u3q485ZreevlEXTybATAt5ClMhEA3yU5p519LXnOreQ5r7FQ1eb8Kn3q27eu9tm8NvXq9Lk1Sc7UDAUn6HObh6EMm7VULVdTgEmW/yUid+mzH3TZHtPo6U0b69rHZ+rzGsQ09ryZtqTZA9Id1LfwzciiMUGJb5YONCmYKEfpv9eJyAK1Jd2vNqSDx+G5NJSkz3bkv68jKpvQ9yPLO/9mDOVv6jaToxHhz7S8oytet0TPbQDYAcAX9GVRn2DDw/rlDwA+D+A7OXbKkWJAx9i5AB7Vsg/MeWnb3zvpGGsB+H2nedZ17M5CNY+IIM1AufqHoVTCGyMLOjxs4Fr8RpKbqKQpAH6uixVLkRnXAeAdqtY1x3B10nJPL0LmYgKvlrpAtM+IyNkicoaIPOl/61LKh4jcq+VdVvHSeSLyALJc5uhETR/jF6oFT/69iHxGRL43kv5q049L1bQibV4ec/WcBoAnOyRxO+8h5Yz1pjN3BGn2ZuAuaTMIrZ/fhmyleymAM90kOkvf3rsBeGHF/NejJR0VxsZ0NrWeEHpij60qFQuAzwH4q1PTZ7ZT08fphdpp+7oaglgz904eHlLJsh/AXpaLvUPSfByZDf8qDCXnm3ar50GavZE013b9mdenZjB/ow6yczS5Vt1Jqjfq4H/vWPO+1m0zlZQF2YJL3gui4bIE9kQicxkLK7+kNIGd2ZJ3APDvE1FN76Z9nZKykqBpBstLXoa3qoRprlCrTUwdaAaPicieIrLPSLWNIM2QNM3X8WlHOBYXs67q2m7I8twIshVzkxIsZYep6P9AcnbBKuhoEH6f1u+dSjqrXF0mpO2K5Foicg0yH1AA+AjJfUdZTZeiHN0FOd1HG/363A5H5qtrGssw6c+lf1kO4DSd83uQ/In2Y8NpEbV2dR/D9gVpTkEJs47M9rgBsu1oRLatbYnPxe5UpzcrKf0dwOXOEG/E9COVFDYG8I/6e30EE7wPQDu3FWp+8JdgyDn/1yJyZ8W0EOMFc+s6AdlW0DqAU0muNYpq+qBbUW6Xz52j+Nz61Ba+iuTWAP5Nn9sFInJFQf4j03Q+h2xTgiBzUL+c5JstKZutoKsGVC9azJzuDu1Bmjl9ogOsZg68yVFXdyOLGH4yhozsP/REqYO7obtM3qG//UpEFpuEab5uIvIQskRyXftsOgzoJFjVxm1lLZJHAvidtuF2AMdY+oWJ/M7SCbwSWfyAAQC7APjcKKrp89S3c339LDvWHQExN0RkoI1LU59uQrgUwFbIcvu8p+hlYWNJpc3XIkuQBmQ7wn4J4CqSx5N8vhvbTUegwRMOfdEFa+CZPP+9HElnDrKgEm/V734tIucqATYcAbeQOY9vrpLl2akKhaFtdz/VQW0+m3d0KPGtTp9K8lDkb6MEsm2Ue6pZYVv97hIA7xCRRXrPCS1NuKRkV5L8L2TbHT9G8gwRua5HEXl8JPhLKpgrLPjG1foMqz47/9wOyxkffhvv8wEcgGw7JZAl4Hu3iCwou59Ljb0UwFtI/gLAJ5FtU91Tj88BuIPk1WqiuUJEnnCaVYSHC9LMxS4kn8bwfdXmrzhDSWY3tSVto79fAeDIHAmNOliP1u9vBnCNDt5hDvX6eSEyY/36yBaNvlhCfHkwCWtPZI7IVbAKwJdF5ARng50s4b9MTf8MMh/XHQF8T7fCNiZRGDmT5HYEcEZVbQLAySJyrNkk20V+MuLM/pRzSP4OmcP7O5Dt8tlMyXhnAEcCWEjyNwBOE5Fr9T4T2WwTpDkOaGHIEbkKViALfvD/ND2suMRoFiBhGx2YAuB0Hbh9cDmmnbF+EclzdRD/E8mvKDFUnfx2zpPInNHzgkvYdxsD2AJZFsejSW6PLGDH/00WstF+g4bnex+Ai1USO04DWAzr527NANpnByILqFHlJdbQ+rU6vM/TGNo4gILntq6Sa7++qLfT8XdPFUIzVd29HK8AcIUGNtlLNZ0X67EpgA+o6n8agE+b10fE1ZymcIEM9tdABE2SS0g+oeGxnkiORSQfIXkeyU+S3NWVJUnZFpzjo1r2MpKbmk3UGdvtsP3Zr3N1eZGvZ0k7LKjGZXrtORXaPlfvdZ4LxHAbyQ2qrKIWlGm2XAs7dkaV+rdp0x6ufp/xfZvT1yfpeStJ7mH3dr9/QX9fSHK9vOeWlPd2F7Bj+1Ecf/YMLq5wTT/J+SR/5PrlQZLb6cp2rZPnZeMv57cXkDxBg8oY7rOANmHnDNLc3w2MQ0jOU/KY5465+jknLaNg4plj85Va7ukd1OsGveYHXZLmuRYxqYorDMn/cFGE/qfbSTGOpGmTf45ObGof2stpRg9Ic2d3n564HOWQ5iVF9yi4/iitG0leUBZ5qEJZqwN0+HN0zJ/o7vMUye07JehQz6c2nhaRpypM6BqGAmWsMRl0oWJvZL6ZDQDba6g0KVHv7Lf1VBV7Hcl1RWRZpyqzqq4sizepNlCKyHEa4/NVes8tReSByWK/cmr606qmn69q+vEi8hklzcGRvmPb9WkP29LuudWQRfn/vkp+70IW33VXEbk177m1q7P+3kzHuM6Fz5C8D8D3kHlZfEtEXhOkGVjdJ45QmgUDrGrQgnco+fU5O1En2FBtmz/U+jR6OTmRLZZYe/8T2WLA2gBerROkk0Wo8SZOS/twAcnvAXgfgONIniciV0+VwWnkRtKI7SRk23P79bndmvfcSNrOoaXtFoz8GNexMUNETlOCfg+Al5HccRL48wZpjpXWPhKJwlbGSc5D5tAuAP6i0g8qkJDtJX4nMh+8t4nID9R1aTRgDs23I4vGvS6G3JAmG8yJ+zglkK0AnERyPqpH9Oml+Wf1ttoqRNXlc/sbgAeRhRvcPs/UoPf+NIAPAThVXyaVFnP0Hhau8LvItq/2I4uEdedkerEGaU5c1Ek2kbnAzNPJ+nERuarDCfc0gG8C2JPk9lVXR7uZ2/r5FLJoOetikgZh0AleUzX9vchib74YwKdE5HMjiYrfZX3GIoya95AYbKO1zEPmjoYOn7FtwnhK71HHxAvHN2aIFbBRktyQ+bkRwE0ArtZFiRkVon736+Q+C9m2yvVUYh3t5+Wj5Uxm9dWc3v+kUhUAfIrkZshcesZKwgTJnUh+luTR3Xok9HA+D+p4HBzBIp/P5hmh4QK9mSz6Rt4OwIuUhM5x29gG20X91gg+1G2VF+kAPVz3VY92EI+pstvD1MlPAngE2aaEb2EoHchYzasDke2PP9HuPUrPz8psVjhnU5WAOwm8YbEUdtV2CLJQc1NpzARpVm2/tzuVfFfZ3KED8e0qIQ4A+KV+14maZu4cZ+gA3RnZdjdJTSq2mqrnS3J9J9KNuDaLusN05PPXo3qUPYdK5ekEF135/aB+/Tr3d71iO3LHRUFMgppz+bHPrZAt3i1DthLNUegvAlipf69XMnb79T5bkdzfZRvtS93mnHtSTfeiD2rM0hP1fgsAXNrFuA7SnAKq3KC+dX0cwmc02stgF+UN6MSwbI0XisidFpijE0lJzz8T2c4eAjg8r15adkPPt8WGQTu3oqsJkG2nXKb32k0DNgx00HaLANRVPXLKa+Q8mwEtb6BCu0xN/zWA05Uo14iqX9COAb33M+6nZS4+ZqvNMeDsmX15JK33GUz6q+Hu0fa5uYhGj+hz29Xu781FSm4/0uc7G8DvSH4SWXi5hgs+4+tGe3YktwJwHoDdlTM+JSLPpC+C6YJpuxCkktT2+gbew70xdyK5WG1A91UlDn0TbwlgfwDPVVXpMpK7AHhAk7BVJiCSz0IW5f0GlVheozuEHgbwmJto85AFA7Etdi0AG6nfpei9F7epe5+GiDsfwHMAHKALKZcDuF9EVlVo/yYANtF7ztV6zNN61LWcpyv2ZU37cj1kWwbt2Wyq5bUA3F3h2dhq+rHIgqasjzarvWoG2U7P20XPJYC9dGNDldVic1fbsuhcjXy1jZY32/XX7nrKg+38hV1dLgNwEIDdSH5ECe4hEVnhomhdTfIgZDE1dwTwJTX7fB9ZJPYFIvKI1m2GjqttVQA4CkN5z78sIj8rCEEXmKJkabs9PsX2+IC/pk15Xy8p55vtyvH2Lg3Z9mBJefP1vHVJPtCmDbe5cot2g1j61h1Jrkiuf1tR3d2Cx3NcTvQiXNfOpuf68vUVns1pFfvUdt0c5q5dSnJ20ufpVste4nEf61P7++Y21zyj8TLL8qXbc1tfdzl5fDhpl/XDbJIn67ZgjyVap+tI3kVycfL7fSQP92VNV0xHSdMHR7hZJbY6hocBa2rfPF3B2G2/ParlDeq1FmS4rpJhJ0ZzArgDWbIzW6mkShUzkAUKgf5/D7Jo8RaWTNy5NZVM20m2LfUvvZPkAQA+rNLWTLTPf2T1uA3Dne/TejyQmAPK+nIpgFu0vFrBs1lYpU+d0/uZJE9BFjxlEdZcNLFyFuWMi25V0JaWcReyVWtxkYYWuvb452Y5mgbRJg+Pe25PknwpgONVipyp43H1tZYaWkSWAPgXkl9D5uHxYmSBOjZS9dvjMQDXAPgTgJ+oK9e0D9YxrcPWB9aUdKeqjSraNkybGaZak9wQWVi4rfSlPIhssechi6dpEmao5NOYNKusTnYyySqs5vasfjmrsOjVvW0113IUdTgZR70ve9A2trt2NNyC8u7X4z4zabVV5dokfkKrwnnNCEAckmYgEBgib3+YmYBBlIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAhMQPx/b2hRGmxaqCkAAAAASUVORK5CYII=" alt="Whitestone Partners"></div>
-  <ul class="nav-links">
-    <li><a id="nl-hiw" href="#how-it-works">How It Works</a></li>
-    <li><a id="nl-about" href="#about">About</a></li>
-    <li><a id="nl-contact" href="#contact">Contact</a></li>
-    <li><a id="nl-partner" class="nav-cta" href="#partner-application">Become a Partner</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="#" class="nav-logo"><span class="wordmark">Whitestone Partners</span></a>
+  <a href="/become-a-dealer" class="nav-cta">Become a Partner</a>
 </nav>
-<section id="hero" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 5rem;position:relative;overflow:hidden;background-color:#0c1e2e;background-image:linear-gradient(to top, rgba(12,30,46,0.92) 0%, rgba(12,30,46,0.78) 22%, rgba(12,30,46,0.45) 45%, rgba(12,30,46,0.12) 70%, rgba(12,30,46,0.05) 100%), url('assets/img/hero.jpg');background-size:cover;background-position:center 38%;background-repeat:no-repeat;">
 
-  <!-- Gold top line -->
-  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8963e,#d4ac52,#b8963e,transparent);z-index:2;"></div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Dealer Partner Program</div>
+    <h1 class="hero-headline">Prepaid maintenance plans,<br>built for <em>elite marine dealers</em>.</h1>
+    <p class="hero-sub">A turnkey program that creates recurring revenue, deepens service retention, and gives your customers years of worry-free time on the water.</p>
+    <div class="hero-cta-row">
+      <a href="/become-a-dealer" class="btn-primary">Become a Partner</a>
+      <a href="#why-what-how" class="btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
 
-  <!-- Subtle gold glow -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,rgba(184,150,62,0.07) 0%,transparent 55%);pointer-events:none;"></div>
+<!-- WHY / WHAT / HOW -->
+<section class="band alt" id="why-what-how">
+  <div class="section-inner" style="max-width:920px;">
+    <h2 class="section-title" style="margin-bottom:14px;">Prepaid Maintenance <em>Programs</em>.</h2>
+    <p class="section-lead" style="margin-bottom:0;">Take a deeper look into dealer growth &mdash; exclusive programs built for elite marine dealerships.</p>
+    <div class="section-divider" style="margin:36px auto 0;"></div>
 
-  <!-- Hero content -->
-  <div style="position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 3rem;width:100%;text-align:center;">
+    <div style="margin-top:64px;">
+      <div class="whw-video-row">
+        <div class="whw-video-card">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-dbee4238-50ab-4855-af41-9bfdde66b1d6_pv7e01.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="whw-copy">
+          <div class="whw-label">Why</div>
+          <p class="whw-text">Exceptional ownership experiences don&rsquo;t happen by accident&mdash;they&rsquo;re built through proactive care. Customers who maintain their boats with you stay loyal to you.</p>
+        </div>
+      </div>
 
-    <div id="hero-label" style="font-family:'DM Sans',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(184,150,62,0.8);margin-bottom:1.5rem;opacity:0;">
-      Dealer Partner Program
+      <div class="whw-video-row text-left">
+        <div class="whw-video-card">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-9c20243c-537b-4d95-9b7a-6268725ce92d_qw6pqo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="whw-copy">
+          <div class="whw-label">What</div>
+          <p class="whw-text">Whitestone Partners empowers elite marine dealerships with prepaid maintenance programs that generate additional income while helping customers protect performance, reliability, and long-term value.</p>
+        </div>
+      </div>
+
+      <div class="whw-video-row">
+        <div class="whw-video-card">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-c39048cd-ec2c-41cb-bb75-c385c73c9d83_i20wml.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="whw-copy">
+          <div class="whw-label">How</div>
+          <p class="whw-text">Partner with Whitestone and offer seamless prepaid maintenance directly through your dealership&mdash;sold at point of purchase or during routine service, fully supported by our platform.</p>
+        </div>
+      </div>
     </div>
 
-    <h1 id="hero-headline" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(34px,4.8vw,58px);font-weight:300;color:#ffffff;line-height:1.12;letter-spacing:-0.01em;max-width:760px;margin:0 auto 1.5rem;opacity:0;transform:translateY(20px);">
-      The program that brings your customers back.<br><span style="color:#d4ac52;">Every season.</span>
-    </h1>
-
-    <p id="hero-sub" style="font-family:'DM Sans',Arial,sans-serif;font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.65);max-width:480px;line-height:1.75;margin:0 auto 2.5rem;opacity:0;transform:translateY(16px);">
-      A turnkey prepaid service contract for certified marine dealers. Your customers stay. Your revenue grows.
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.4vw,28px);font-weight:300;font-style:italic;color:var(--navy);text-align:center;max-width:760px;margin:72px auto 0;line-height:1.5;">
+      We cover the services that keep your customers coming back to your dealership.
     </p>
-
-    <div id="hero-ctas" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(12px);">
-      <a href="#partner-application"
-        style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;"
-        onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
-        onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
-        Become a Dealer Partner
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#how-it-works"
-        style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);text-decoration:none;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:500;border:1.5px solid rgba(255,255,255,0.25);font-family:'DM Sans',Arial,sans-serif;"
-        onmouseover="this.style.borderColor='rgba(255,255,255,0.6)';this.style.color='#fff'"
-        onmouseout="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(255,255,255,0.8)'">
-        How It Works
-      </a>
-    </div>
-
   </div>
-
-  <!-- Scroll indicator -->
-  <div id="hero-scroll" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;">
-    <span style="font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-family:'DM Sans',Arial,sans-serif;">Scroll</span>
-    <div style="width:1px;height:28px;background:linear-gradient(to bottom,rgba(184,150,62,0.5),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
-  </div>
-
 </section>
 
-<div class="mobile-menu" id="mobile-menu">
-  <a id="mm-hiw" href="#how-it-works">How It Works</a><a id="mm-about" href="#about">About</a>
-  <a id="mm-contact" href="#contact">Contact</a>
-  <a id="mm-partner" class="mob-cta" href="#partner-application">Become a Partner</a>
-</div>
-<div id="page-home" class="page active">
-<!-- ============================================ -->
-<!-- ============================================ -->
-  <!-- ============================================ -->
-  <!-- VIDEO SECTIONS -- replacing hero -->
+<!-- SOLD THROUGH -->
+<section class="band tight slide-from-right" id="sold-through">
+  <div class="section-inner" style="max-width:760px;">
+    <div class="section-eyebrow">Sold Through</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">Two natural <em>points of sale</em>.</h2>
+    <p class="section-lead">Your team is already trained for this &mdash; Whitestone fits the conversations they have every day.</p>
+    <ul class="sold-through-list">
+      <li><span class="st-marker"></span><div><h4>F&amp;I Department</h4><p>Bundled at point of purchase. A premium add-on that strengthens the close.</p></div></li>
+      <li><span class="st-marker"></span><div><h4>Service Department</h4><p>Offered during routine service visits. Locks in years of recurring maintenance revenue.</p></div></li>
+    </ul>
+  </div>
+</section>
 
-<!-- SECTION 01 -- Video LEFT -->
-<section class="ws-video-section vid-left" id="how-it-works">
-  <div class="ws-section-inner">
-    <div class="ws-video-card" data-ws-reveal>
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-dbee4238-50ab-4855-af41-9bfdde66b1d6_pv7e01.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="ws-text-side" data-ws-reveal-text>
-      <span class="ws-section-num">WHAT</span>
-      <div class="ws-gold-bar"></div>
-      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-        What.
-      </h2>
-      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-        Whitestone Partners empowers elite marine dealerships with pre-paid maintenance programs that generate additional income while helping customers protect performance, reliability, and long-term value.
-      </p>
-      <a href="#contact"
-        style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-        onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
-        onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
-        Apply to the Network
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+<!-- BENEFITS -->
+<section class="band alt tight slide-from-left" id="benefits">
+  <div class="section-inner" style="max-width:1080px;">
+    <div class="section-eyebrow">Benefits</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">Built for <em>compounding</em> dealership value.</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 44 L24 36 L32 42 L48 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 24 L48 24 L48 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
+        <h4>Recurring dealership revenue</h4>
+        <p>Predictable, repeating income that compounds over time.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 32 L32 16 L48 32 L48 48 L16 48 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 48 L28 36 L36 36 L36 48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
+        <h4>Increased service retention</h4>
+        <p>Customers keep coming back to your shop, not a competitor.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M32 50 C20 42 14 34 14 26 C14 20 19 16 24 16 C28 16 31 18 32 21 C33 18 36 16 40 16 C45 16 50 20 50 26 C50 34 44 42 32 50 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Improved customer satisfaction</h4>
+        <p>Proactive maintenance prevents the breakdowns that frustrate buyers.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="ws-divider"></div>
-
-<!-- SECTION 02 -- Video RIGHT -->
-<section class="ws-video-section vid-right">
-  <div class="ws-section-inner">
-    <div class="ws-video-card" data-ws-reveal>
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-9c20243c-537b-4d95-9b7a-6268725ce92d_qw6pqo.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="ws-text-side" data-ws-reveal-text>
-      <span class="ws-section-num">HOW</span>
-      <div class="ws-gold-bar"></div>
-      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-        How.
-      </h2>
-      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-        Partner with Whitestone and offer seamless maintenance solutions directly through your dealership.
-      </p>
-      <a href="#how-it-works"
-        style="display:inline-flex;align-items:center;gap:8px;background:#0c1e2e;color:white;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-        onmouseover="this.style.background='#162840';this.style.transform='translateY(-1px)'"
-        onmouseout="this.style.background='#0c1e2e';this.style.transform='translateY(0)'">
-        Learn More
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+<!-- PARTNERSHIP / CTA -->
+<section class="band alt" id="partnership">
+  <div class="section-inner" style="max-width:760px;">
+    <div class="section-eyebrow">Partnership</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">Become an Exclusive <em>Whitestone Dealer</em>.</h2>
+    <p class="section-lead">We&rsquo;re onboarding our founding cohort of certified marine dealers one partner at a time.</p>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/become-a-dealer" class="btn-primary" style="color:#fff;">Apply to the Network</a>
     </div>
   </div>
 </section>
 
-<div class="ws-divider"></div>
-
-<!-- SECTION 03 -- Video LEFT -->
-<section class="ws-video-section vid-left">
-  <div class="ws-section-inner">
-    <div class="ws-video-card" data-ws-reveal>
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-c39048cd-ec2c-41cb-bb75-c385c73c9d83_i20wml.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="ws-text-side" data-ws-reveal-text>
-      <span class="ws-section-num">WHY</span>
-      <div class="ws-gold-bar"></div>
-      <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#0c1e2e;line-height:1.15;letter-spacing:0.01em;margin:0;">
-        Why.
-      </h2>
-      <p style="font-family:'DM Sans',Arial,sans-serif;font-size:16px;color:#4a6278;line-height:1.75;max-width:420px;margin:0;">
-        Exceptional ownership experiences don&rsquo;t happen by accident&mdash;they&rsquo;re built through proactive care.
-      </p>
-      <a href="#partner-application"
-        style="display:inline-flex;align-items:center;gap:8px;background:#b8963e;color:#0c1e2e;text-decoration:none;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.03em;font-family:'DM Sans',Arial,sans-serif;transition:all 0.2s;width:fit-content;"
-        onmouseover="this.style.background='#c9a44a';this.style.transform='translateY(-1px)'"
-        onmouseout="this.style.background='#b8963e';this.style.transform='translateY(0)'">
-        Become a Partner
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0c1e2e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+<!-- SIGNATURE -->
+<section id="signature">
+  <div class="sig-inner">
+    <p class="sig-line"><span class="quote-mark">&ldquo;</span>We built Whitestone to be a meaningful profit and retention partner for elite marine dealers. We&rsquo;d welcome the opportunity to introduce what we&rsquo;re building.<span class="quote-mark">&rdquo;</span></p>
+    <div class="sig-divider"></div>
+    <div class="sig-name">Whitestone Partners</div>
+    <div class="sig-title">A clearer view of dealership growth</div>
+    <div class="sig-contact">
+      <a href="tel:+13855054256">385-505-4256</a><br>
+      <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:0.1em;margin-top:4px;display:inline-block;">Call to set up a demo or get more information</span><br><br>
+      <a href="mailto:support@whitestone-partners.com">support@whitestone-partners.com</a>
     </div>
   </div>
 </section>
 
-<div class="ws-divider"></div>
+<footer>© 2026 Whitestone Partners LLC · PO Box 221, Draper, UT 84020</footer>
 
-  <!-- ============================================ -->
-  </div>
-<div id="page-about" class="page">
-  <section class="about-hero">
-    <div class="about-hero-inner">
-      <p class="eyebrow" style="color:var(--gold);">Our story</p>
-      <h1>Visionaries for a better boating industry.</h1>
-      <p>We believe boats were built for family memories — not financial headaches.</p>
-    </div>
-  </section>
-  <section class="about-body" id="about">
-    <div class="about-body-inner">
-      <p class="eyebrow" style="color:var(--gold);">Who we are</p>
-      <h2 style="font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--navy);line-height:1.15;margin-bottom:1.5rem;">A new standard for marine service contracts.</h2>
-      <p>Whitestone Partners LLC is a boat service contract company based in Utah. We partner with certified marine dealers to deliver comprehensive annual maintenance contracts to boat owners.</p>
-      <p>Our program is dealer-first by design. We handle the contracts, billing, and administration. Dealers handle the work. Boat owners get peace of mind. Everyone wins.</p>
-      <div class="about-vals">
-        <div class="about-val"><h4>Transparency</h4><p>No surprises.</p></div>
-        <div class="about-val"><h4>Reliability</h4><p>Certified dealers, consistent standards, documented history.</p></div>
-        <div class="about-val"><h4>Simplicity</h4><p>One contract covers everything for a full year.</p></div>
-        <div class="about-val"><h4>Partnership</h4><p>We succeed when our dealers and customers succeed.</p></div>
-      </div>
-      <div style="margin-top:3rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <button class="btn-navy" id="about-contact">Contact Us</button>
-        <button class="btn-gold" id="about-partner">Become a Partner</button>
-      </div>
-    </div>
-  </section>
-</div>
-<div id="contact" style="height:0;overflow:hidden;"></div>
-<div id="partner-application" style="height:0;overflow:hidden;"></div>
-
-<footer>
-  <div class="foot-in">
-    <div class="foot-brand">
-      <img src="data:image/png;base64,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" alt="Whitestone Partners">
-      <p>A movement for a better boating industry — built on transparency, loyalty, and the dealers who make it all possible.</p>
-    </div>
-    <div class="foot-col">
-      <h4>For Dealers</h4>
-      <ul>
-        <li><a id="f-partner" href="#partner-application">Become a Partner</a></li>
-        <li><a id="f-hiw" href="#how-it-works">How It Works</a></li>
-        <li><a href="https://whitestone-dealer-portal.vercel.app" target="_blank">Dealer Portal Login</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a id="f-about" href="#about">About</a></li>
-        <li><a id="f-contact" href="#contact">Contact</a></li>
-        <li><a id="f-terms">Terms &amp; Conditions</a></li>
-        <li><a id="f-register">Boat Owner Registration</a></li>
-        <li><a href="mailto:support@whitestone-partners.com">support@whitestone-partners.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom"><p>&copy; 2026 Whitestone Partners LLC. All rights reserved. PO Box 221, Draper, UT 84020.</p></div>
-</footer>
-</div>
-<!-- ── PARTNER APPLICATION MODAL ── -->
-<div id="modal-partner" class="ws-modal" role="dialog" aria-label="Partner Application">
-  <button class="ws-modal-back" onclick="closeModal('modal-partner')">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    Back to Whitestone Partners
-  </button>
-
-  <div class="ws-modal-body">
-    <div id="partner-form-view">
-      <div class="partner-form-card">
-        <div class="partner-form-section" style="text-align:center;padding:3rem 2rem;">
-          <div style="font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#b8963e;margin-bottom:1.25rem;">
-            Founding Dealer Cohort
-          </div>
-          <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:300;color:#0c1e2e;margin:0 0 1rem;line-height:1.3;">
-            Our dealer program is currently<br/>invitation-only.
-          </h2>
-          <p style="font-size:15px;color:#3d5870;line-height:1.7;max-width:520px;margin:0 auto 1.75rem;">
-            We're onboarding our founding cohort of certified marine dealers one partner at a time. If you operate a marine dealership and would like to express interest in joining the Whitestone Partners network, we'd love to hear from you.
-          </p>
-          <a
-            href="mailto:support@whitestone-partners.com?subject=Dealer%20Program%20Interest&body=Hello%20Whitestone%20Partners%20team%2C%0A%0AI%27m%20interested%20in%20learning%20more%20about%20joining%20the%20Whitestone%20Partners%20dealer%20program.%0A%0ADealership%20name%3A%20%0ALocation%3A%20%0AYears%20in%20business%3A%20%0ANumber%20of%20boats%20serviced%20annually%3A%20%0A%0AThank%20you%2C%0A"
-            style="display:inline-block;background:#0c1e2e;color:white;text-decoration:none;padding:0.95rem 2.25rem;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;"
-          >
-            Reach Out to Us
-          </a>
-          <div style="font-size:13px;color:#6b8599;margin-top:1.5rem;">
-            Or email us directly at
-            <a href="mailto:support@whitestone-partners.com" style="color:#b8963e;text-decoration:none;font-weight:500;">support@whitestone-partners.com</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── CONTACT MODAL ── -->
-<div id="modal-contact" class="ws-modal" role="dialog" aria-label="Contact Us">
-  <button class="ws-modal-back" onclick="closeModal('modal-contact')">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    Back to Whitestone Partners
-  </button>
-
-  <div class="ws-modal-body">
-    <div id="contact-form-view">
-      <div style="margin-bottom:2.5rem;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8963e;margin-bottom:0.75rem;">Get In Touch</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:300;color:#0c1e2e;line-height:1.2;margin:0 0 0.75rem;">Let's Talk</h2>
-        <p style="font-family:'DM Sans',Arial,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;margin:0;">Whether you're a dealer exploring the program or have a question — we'd love to hear from you.</p>
-      </div>
-
-      <form id="contact-us-form" action="https://formspree.io/f/mvzvzkqa" method="POST">
-        <div class="form-row">
-          <div class="form-field">
-            <label>First Name *</label>
-            <input type="text" name="first_name" required placeholder="John">
-          </div>
-          <div class="form-field">
-            <label>Last Name *</label>
-            <input type="text" name="last_name" required placeholder="Smith">
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label>Email Address *</label>
-          <input type="email" name="email" required placeholder="john@example.com">
-        </div>
-
-        <div class="form-field">
-          <label>Dealership Name</label>
-          <input type="text" name="dealership" placeholder="Lake City Marine (optional)">
-        </div>
-
-        <div class="form-field">
-          <label>Message *</label>
-          <textarea name="message" required rows="5" placeholder="Tell us what you're looking for..."></textarea>
-        </div>
-
-        <button type="submit" class="form-submit-btn" id="modal-contact-submit-btn">Send Message →</button>
-      </form>
-    </div>
-
-    <div class="ws-modal-success" id="contact-success-view">
-      <div class="ws-success-icon">✓</div>
-      <div class="ws-success-title">Message Sent!</div>
-      <p class="ws-success-sub">Thanks for reaching out. We'll be in touch within 1 business day at the email you provided.</p>
-      <button class="ws-success-back" onclick="closeModal('modal-contact')">
-        ← Back to Whitestone Partners
-      </button>
-    </div>
-  </div>
-</div>
 <script>
-// -- SCROLL PULSE ANIMATION --
-var scrollStyle = document.createElement('style');
-scrollStyle.textContent = '@keyframes scrollPulse { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} }';
-document.head.appendChild(scrollStyle);
-
-// -- NAV SCROLL BEHAVIOR --
-function updateNav() {
-  var nav = document.querySelector('nav') || document.querySelector('header');
-  if (!nav) return;
-  var past = window.scrollY > (window.innerHeight * 0.8);
-  nav.style.background   = past ? 'rgba(247,248,250,0.97)' : 'transparent';
-  nav.style.boxShadow    = past ? '0 1px 8px rgba(12,30,46,0.08)' : 'none';
-  nav.style.borderBottom = past ? '1px solid #e4eaf0' : 'none';
-  nav.querySelectorAll('a').forEach(function(a) {
-    if (a.style.background && a.style.background.indexOf('b8963e') > -1) return;
-    if (a.className && a.className.indexOf('partner') > -1) return;
-    a.style.color = past ? '#0c1e2e' : 'rgba(255,255,255,0.9)';
-  });
-}
-window.addEventListener('scroll', updateNav);
-
-// -- INTRO + HERO REVEAL --
-function revealHero() {
-  ['hero-label','hero-headline','hero-sub','hero-ctas','hero-scroll'].forEach(function(id, i) {
-    setTimeout(function() {
-      var el = document.getElementById(id);
-      if (!el) return;
-      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-      el.style.opacity    = '1';
-      el.style.transform  = 'translateY(0)';
-    }, i * 150);
-  });
-}
-
-function runIntro() {
-  // Skip if seen this session
-  if (sessionStorage.getItem('ws_intro')) {
-    setTimeout(function() { revealHero(); }, 50);
+(function(){
+  var targets = document.querySelectorAll('.slide-from-right, .slide-from-left');
+  if(!('IntersectionObserver' in window)){
+    // No observer support: just show everything.
+    targets.forEach(function(el){ el.classList.add('in-view'); });
     return;
   }
-  sessionStorage.setItem('ws_intro', '1');
-
-  // Lock scroll
-  document.body.style.overflow = 'hidden';
-
-  // Build overlay -- same navy so transition is invisible
-  var ov = document.createElement('div');
-  ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#0c1e2e;display:flex;flex-direction:column;align-items:center;justify-content:center;';
-
-  var inner = document.createElement('div');
-  inner.style.cssText = 'text-align:center;opacity:0;transform:translateY(8px);transition:opacity 0.7s ease,transform 0.7s ease;';
-  inner.innerHTML =
-    '<div id="iw" style="font-family:Georgia,serif;font-size:clamp(12px,1.3vw,16px);font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:14px;transition:opacity 0.5s ease,transform 0.5s ease;">Welcome to</div>' +
-    '<div style="font-family:Georgia,serif;font-size:clamp(26px,4vw,48px);font-weight:300;color:#ffffff;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">Whitestone Partners</div>' +
-    '<div id="il" style="height:1px;background:#b8963e;width:0;margin:0 auto;transition:width 0.8s ease;"></div>';
-
-  ov.appendChild(inner);
-  document.body.appendChild(ov);
-
-  // Fade in text
-  setTimeout(function() {
-    inner.style.opacity   = '1';
-    inner.style.transform = 'translateY(0)';
-    setTimeout(function() {
-      var l = document.getElementById('il');
-      if (l) l.style.width = '44px';
-    }, 250);
-  }, 150);
-
-  // Fade out "Welcome to"
-  setTimeout(function() {
-    var w = document.getElementById('iw');
-    if (w) { w.style.opacity = '0'; w.style.transform = 'translateY(-5px)'; }
-  }, 1800);
-
-  // Fade out everything
-  setTimeout(function() {
-    inner.style.opacity   = '0';
-    inner.style.transform = 'translateY(-6px)';
-  }, 2200);
-
-  // Remove overlay -- hero is seamlessly underneath
-  setTimeout(function() {
-    if (ov.parentNode) ov.parentNode.removeChild(ov);
-    document.body.style.overflow = '';
-    revealHero();
-  }, 2800);
-}
-
-// -- VIDEO SECTION SCROLL REVEAL --
-var wsObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('ws-visible');
-      wsObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('[data-ws-reveal],[data-ws-reveal-text]').forEach(function(el) {
-  wsObs.observe(el);
-});
-
-// ── MODAL SYSTEM ──
-function openModal(id) {
-  var modal = document.getElementById(id);
-  if (!modal) return;
-  document.body.style.overflow = 'hidden';
-  modal.style.display = 'flex';
-  modal.scrollTop = 0;
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() {
-      modal.classList.add('ws-modal-open');
-    });
-  });
-}
-
-function closeModal(id) {
-  var modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.remove('ws-modal-open');
-  document.body.style.overflow = '';
-  setTimeout(function() {
-    modal.style.display = 'none';
-    resetModal(id);
-  }, 400);
-}
-
-function resetModal(id) {
-  if (id === 'modal-contact') {
-    var form = document.getElementById('contact-us-form');
-    var formView = document.getElementById('contact-form-view');
-    var successView = document.getElementById('contact-success-view');
-    var btn = document.getElementById('modal-contact-submit-btn');
-    if (form) form.reset();
-    if (formView) formView.style.display = 'block';
-    if (successView) successView.classList.remove('show');
-    if (btn) { btn.disabled = false; btn.textContent = 'Send Message →'; }
-  }
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key !== 'Escape') return;
-  ['modal-partner', 'modal-contact'].forEach(function(id) {
-    var m = document.getElementById(id);
-    if (m && m.classList.contains('ws-modal-open')) closeModal(id);
-  });
-});
-
-// ── INTERCEPT ANCHOR LINKS ──
-document.addEventListener('click', function(e) {
-  var link = e.target.closest('a[href]');
-  if (!link) return;
-  var href = link.getAttribute('href');
-
-  if (href === '#partner-application' || href === '#contact-form') {
-    e.preventDefault();
-    openModal('modal-partner');
-    return;
-  }
-  if (href === '#contact') {
-    e.preventDefault();
-    openModal('modal-contact');
-  }
-});
-
-// Map on-page CTA buttons that are not anchor tags.
-var aboutContactBtn = document.getElementById('about-contact');
-if (aboutContactBtn) {
-  aboutContactBtn.addEventListener('click', function() {
-    openModal('modal-contact');
-  });
-}
-var aboutPartnerBtn = document.getElementById('about-partner');
-if (aboutPartnerBtn) {
-  aboutPartnerBtn.addEventListener('click', function() {
-    openModal('modal-partner');
-  });
-}
-
-// ── FORM SUBMISSIONS ──
-
-var contactForm = document.getElementById('contact-us-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var btn = document.getElementById('modal-contact-submit-btn');
-    if (!btn) return;
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    try {
-      var res = await fetch(contactForm.action, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        var cFormView = document.getElementById('contact-form-view');
-        var cSuccessView = document.getElementById('contact-success-view');
-        var cModal = document.getElementById('modal-contact');
-        if (cFormView) cFormView.style.display = 'none';
-        if (cSuccessView) cSuccessView.classList.add('show');
-        if (cModal) cModal.scrollTop = 0;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');   // slide in
       } else {
-        btn.disabled = false;
-        btn.textContent = 'Send Message →';
-        alert('Something went wrong. Please email us at support@whitestone-partners.com');
+        entry.target.classList.remove('in-view'); // slide back out (reversible)
       }
-    } catch (err) {
-      btn.disabled = false;
-      btn.textContent = 'Send Message →';
-    }
-  });
-}
-
-// -- RUN --
-function initPage() {
-  updateNav();
-  runIntro();
-}
-
-// Use multiple triggers to guarantee it fires
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  setTimeout(initPage, 0);
-} else {
-  document.addEventListener('DOMContentLoaded', initPage);
-  window.addEventListener('load', initPage);
-}
+    });
+  }, { threshold: 0.2 });
+  targets.forEach(function(el){ observer.observe(el); });
+})();
 </script>
+
 </body>
 </html>
