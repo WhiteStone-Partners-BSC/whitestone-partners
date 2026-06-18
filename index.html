@@ -3,371 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whitestone Partners — Prepaid Maintenance for Marine Dealers</title>
+<title>Whitestone Partners — How It Works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
 :root{
-  --white:#ffffff;
-  --off-white:#fafbfc;
-  --navy:#0c1e2e;
-  --navy2:#162840;
-  --navy3:#1d3454;
-  --navy-deep:#06121d;
-  --navy-soft:#4a6278;
-  --gold:#b8963e;
-  --gold-light:#d4ac52;
-  --gold-pale:#e8d28a;
-  --mid:#4a6278;
-  --light:#6b8599;
-  --border:#e4eaf0;
-  --silver:#a8b8c8;
-  --silver-light:#d5dde5;
-  --text:#0c1e2e;
+  --white:#ffffff;--off-white:#fafbfc;--navy:#0c1e2e;--navy2:#162840;
+  --navy-deep:#06121d;--gold:#b8963e;--gold-light:#d4ac52;--mid:#4a6278;
+  --light:#6b8599;--border:#e4eaf0;--silver-light:#d5dde5;--text:#0c1e2e;
 }
-
 html{scroll-behavior:smooth;}
-body{
-  font-family:"DM Sans",sans-serif;
-  background:var(--off-white);
-  color:var(--text);
-  font-size:16px;
-  line-height:1.75;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4,blockquote{font-family:"Cormorant Garamond",serif;font-weight:300;}
+body{font-family:"DM Sans",sans-serif;background:var(--off-white);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:300;}
 
-/* ============== NAV ============== */
-nav.site-nav{
-  position:fixed;top:0;left:0;right:0;
-  background:rgba(12,30,46,0.92);
-  backdrop-filter:blur(16px) saturate(1.2);
-  -webkit-backdrop-filter:blur(16px) saturate(1.2);
-  z-index:100;padding:16px 48px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,0.06);
-}
-.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+/* NAV */
+nav.site-nav{position:fixed;top:0;left:0;right:0;background:rgba(12,30,46,0.94);backdrop-filter:blur(16px);z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);}
 .nav-logo .wordmark{font-family:"Cormorant Garamond",serif;font-size:22px;color:#fff;letter-spacing:0.02em;}
-.nav-cta{
-  font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--white);
-  background:var(--gold);padding:13px 26px;border:none;cursor:pointer;
-  transition:all 0.3s ease;text-decoration:none;display:inline-block;
-}
-.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+.nav-cta{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);background:var(--gold);padding:13px 26px;text-decoration:none;transition:all 0.3s ease;}
+.nav-cta:hover{background:var(--gold-light);}
 
-/* ============== HERO ============== */
-#hero{
-  background-color:var(--navy);
-  background-image:linear-gradient(to top, rgba(12,30,46,0.96) 0%, rgba(12,30,46,0.88) 30%, rgba(12,30,46,0.55) 55%, rgba(12,30,46,0.18) 78%, rgba(12,30,46,0.05) 100%), url('assets/img/hero.jpg');
-  background-size:cover;
-  background-position:center 38%;
-  background-repeat:no-repeat;
-  min-height:100vh;display:flex;align-items:flex-end;justify-content:center;
-  padding:140px 24px 90px;position:relative;overflow:hidden;
-}
-/* The lifestyle photo (assets/img/hero.jpg) shows behind the bottom-up navy gradient scrim —
-   identical treatment to the live homepage hero. To SEE the photo in this demo, open the file
-   from inside the "WhiteStone Landing Page" folder (so assets/img/hero.jpg resolves). Opened
-   from anywhere else, the navy fallback shows instead. */
-.hero-inner{max-width:1100px;text-align:center;position:relative;z-index:2;}
-.hero-eyebrow{
-  font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;
-  letter-spacing:0.6em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;
-}
-.hero-headline{
-  font-family:"Cormorant Garamond",serif;font-size:clamp(38px,5.8vw,72px);
-  font-weight:300;color:var(--white);line-height:1.08;letter-spacing:-0.005em;margin-bottom:28px;
-}
-.hero-headline em{font-style:italic;color:var(--gold-light);font-weight:400;}
-.hero-sub{
-  font-family:"Cormorant Garamond",serif;font-size:clamp(17px,1.9vw,22px);
-  font-weight:300;font-style:italic;color:var(--silver-light);margin-bottom:56px;
-  line-height:1.55;max-width:720px;margin-left:auto;margin-right:auto;
-}
-.hero-cta-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+/* HERO (WHAT) */
+#what{background-color:var(--navy);background-image:linear-gradient(to top, rgba(12,30,46,0.95) 0%, rgba(12,30,46,0.82) 32%, rgba(12,30,46,0.5) 60%, rgba(12,30,46,0.2) 100%), url('assets/img/hero.jpg');background-size:cover;background-position:center 38%;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:140px 24px 90px;position:relative;}
+.what-inner{max-width:920px;text-align:center;}
+.eyebrow{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold-light);margin-bottom:24px;}
+.what-headline{font-size:clamp(36px,5.4vw,64px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:24px;}
+.what-headline em{font-style:italic;color:var(--gold-light);}
+.what-sub{font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2vw,24px);font-style:italic;color:var(--silver-light);max-width:680px;margin:0 auto 40px;line-height:1.5;}
+.btn-primary{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;padding:18px 40px;background:var(--gold);color:#fff;text-decoration:none;display:inline-block;transition:all 0.3s ease;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
 
-.btn-primary,.btn-secondary{
-  font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;
-  letter-spacing:0.22em;text-transform:uppercase;padding:20px 42px;
-  border:none;cursor:pointer;transition:all 0.3s ease;display:inline-block;text-decoration:none;
-}
-.btn-primary{background:var(--gold);color:var(--white);box-shadow:0 4px 20px rgba(184,150,62,0.25);}
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,150,62,0.35);}
-.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);}
-.btn-secondary:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.5);}
-
-.scroll-hint{
-  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
-  color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
-}
-.scroll-hint::after{content:"";display:block;width:1px;height:28px;background:rgba(255,255,255,0.3);margin:12px auto 0;}
-
-/* ============== SECTIONS ============== */
-section.band{padding:140px 24px;position:relative;}
+/* SECTION SHELL */
+section.band{padding:110px 24px;}
 section.band.alt{background:var(--white);}
-.section-inner{max-width:1120px;margin:0 auto;}
-.section-eyebrow{
-  font-family:"DM Sans",sans-serif;font-size:10px;font-weight:600;
-  letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:20px;
-}
-.section-divider{width:40px;height:1px;background:var(--gold);margin:0 auto 28px;}
-.section-title{
-  font-family:"Cormorant Garamond",serif;font-size:clamp(32px,4.2vw,52px);
-  font-weight:300;color:var(--navy);text-align:center;line-height:1.15;margin-bottom:28px;letter-spacing:-0.005em;
-}
-.section-title em{font-style:italic;color:var(--gold);font-weight:400;}
-.section-lead{
-  font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:300;font-style:italic;
-  color:var(--mid);text-align:center;max-width:740px;margin:0 auto 72px;line-height:1.55;
-}
+.inner{max-width:1080px;margin:0 auto;}
+.section-eyebrow{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:16px;}
+.section-title{font-size:clamp(32px,4.2vw,52px);font-weight:300;color:var(--navy);text-align:center;line-height:1.15;margin-bottom:16px;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-lead{font-family:"Cormorant Garamond",serif;font-size:20px;font-style:italic;color:var(--mid);text-align:center;max-width:720px;margin:0 auto 12px;line-height:1.5;}
+.divider{width:44px;height:2px;background:var(--gold);margin:28px auto 0;}
 
-/* WHY / WHAT / HOW */
-.whw-block{position:relative;padding-left:0;}
-.whw-label{
-  font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;
-  color:var(--gold);font-style:italic;letter-spacing:0.04em;margin-bottom:14px;line-height:1;
-}
-.whw-text{font-size:18px;line-height:1.7;color:var(--navy);font-weight:300;max-width:680px;}
+/* STORY STRIP */
+.story-label{font-family:"Cormorant Garamond",serif;font-size:28px;font-style:italic;color:var(--navy);text-align:center;margin:64px 0 8px;}
+.story-sublabel{text-align:center;font-size:13px;color:var(--light);letter-spacing:0.04em;margin-bottom:40px;}
+.story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;}
 
-/* Video-paired WHW rows */
-.whw-video-row{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;margin-bottom:72px;}
-.whw-video-row:last-of-type{margin-bottom:0;}
-.whw-video-card{
-  position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;
-  border-radius:4px;box-shadow:0 12px 50px rgba(12,30,46,0.12);background:var(--navy);
-}
-.whw-video-card video{width:100%;height:100%;object-fit:cover;display:block;}
-.whw-copy .whw-label{margin-bottom:16px;}
-@media (min-width:860px){
-  .whw-video-row{grid-template-columns:1fr 1fr;gap:56px;}
-  .whw-video-row.text-left .whw-video-card{order:2;}
-  .whw-video-row.text-left .whw-copy{order:1;}
-}
+/* Flip card */
+.story-step{position:relative;height:220px;perspective:1200px;background:none;border:none;padding:0;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform 0.6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.story-step:hover .flip-inner,.story-step.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;text-align:center;}
+.flip-front{background:var(--off-white);border:1px solid var(--border);}
+.story-step:hover .flip-front{border-color:var(--gold);}
+.flip-back{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);border:1px solid var(--gold);transform:rotateY(180deg);}
+.flip-back::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent);}
+.story-num{position:absolute;top:10px;right:12px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px;color:var(--gold);opacity:0.55;z-index:2;}
+.story-icon{width:64px;height:64px;margin:0 auto 14px;}
+.story-icon svg{width:100%;height:100%;}
+.flip-front h4{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--navy);text-transform:uppercase;margin-bottom:7px;}
+.flip-front p{font-size:13px;color:var(--mid);line-height:1.5;}
+.flip-back h4{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;font-weight:400;color:var(--gold-light);margin-bottom:10px;}
+.flip-back p{font-size:13px;color:rgba(255,255,255,0.82);line-height:1.6;}
+.flip-hint{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);opacity:0.6;}
+.story-step:hover .flip-hint{opacity:0;}
 
-/* Sold Through */
-.sold-through-list{list-style:none;padding:0;margin:60px 0 0;display:grid;gap:28px;}
-.sold-through-list li{
-  display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;
-  padding:28px 32px;background:#fff;border:1px solid var(--border);text-align:left;
-}
-.sold-through-list .st-marker{display:block;width:8px;height:48px;background:var(--gold);}
-.sold-through-list h4{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--navy);margin:0 0 8px;letter-spacing:0.01em;}
-.sold-through-list p{font-size:14px;color:var(--navy-soft);line-height:1.6;margin:0;}
+/* MONEY HIGHLIGHT */
+.money-callout{margin-top:48px;background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:44px 40px;text-align:center;}
+.money-callout .mc-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;}
+.money-callout h3{font-family:"Cormorant Garamond",serif;font-size:clamp(24px,3vw,34px);font-weight:300;line-height:1.3;}
+.money-callout h3 em{font-style:italic;color:var(--gold-light);}
+.money-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:24px;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;}
+.money-flow .chip{background:rgba(255,255,255,0.08);border:1px solid rgba(184,150,62,0.4);padding:10px 18px;color:#fff;}
+.money-flow .arrow{color:var(--gold-light);font-size:18px;}
 
-/* Benefits */
-.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:60px;text-align:left;}
-.benefit-card{background:#fff;border:1px solid var(--border);padding:36px 28px;transition:transform 0.3s ease,border-color 0.3s ease;}
-.benefit-card:hover{transform:translateY(-4px);border-color:var(--gold);}
-.benefit-icon{width:48px;height:48px;color:var(--navy);margin-bottom:24px;transition:color 0.3s ease;}
-.benefit-card:hover .benefit-icon{color:var(--gold);}
-.benefit-icon svg{width:100%;height:100%;}
-.benefit-card h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--navy);margin:0 0 10px;line-height:1.3;letter-spacing:0.005em;}
-.benefit-card p{font-size:13.5px;color:var(--navy-soft);line-height:1.65;margin:0;}
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;text-align:left;}
+.why-card{background:var(--white);border:1px solid var(--border);padding:36px 30px;transition:transform 0.3s ease,border-color 0.3s ease;}
+.why-card:hover{transform:translateY(-4px);border-color:var(--gold);}
+.why-icon{width:46px;height:46px;color:var(--gold);margin-bottom:20px;}
+.why-icon svg{width:100%;height:100%;}
+.why-card h4{font-family:"Cormorant Garamond",serif;font-size:23px;font-weight:400;color:var(--navy);margin-bottom:10px;}
+.why-card p{font-size:14px;color:var(--mid);line-height:1.65;}
 
-/* Tighter section variant (less gap between header and content) */
-.band.tight .section-lead{margin-bottom:40px;}
-.band.tight .sold-through-list{margin-top:36px;}
-.band.tight .benefits-grid{margin-top:40px;}
-
-/* Scroll slide-in/out animations (reversible via IntersectionObserver) */
-.slide-from-right{opacity:0;transform:translateX(80px);transition:opacity 0.8s ease, transform 0.8s ease;}
-.slide-from-left{opacity:0;transform:translateX(-80px);transition:opacity 0.8s ease, transform 0.8s ease;}
-.slide-from-right.in-view,.slide-from-left.in-view{opacity:1;transform:translateX(0);}
-@media (prefers-reduced-motion:reduce){
-  .slide-from-right,.slide-from-left{opacity:1;transform:none;transition:none;}
-}
-
-/* Signature */
-section#signature{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--white);padding:120px 24px;text-align:center;position:relative;}
-.sig-inner{max-width:720px;margin:0 auto;position:relative;z-index:2;}
-.sig-line{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,2.3vw,26px);font-weight:300;font-style:italic;color:var(--silver-light);margin-bottom:56px;line-height:1.65;}
-.sig-line .quote-mark{font-size:1.4em;color:var(--gold);vertical-align:-0.1em;margin:0 0.04em;}
-.sig-divider{width:50px;height:1px;background:var(--gold);margin:0 auto 32px;}
-.sig-name{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:var(--white);margin-bottom:8px;}
-.sig-title{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;}
-.sig-contact{font-family:"DM Sans",sans-serif;font-size:14px;color:rgba(255,255,255,0.65);}
-.sig-contact a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;}
-.sig-contact a:hover{border-color:var(--gold-light);}
-
-footer{background:var(--navy-deep);color:rgba(255,255,255,0.4);text-align:center;padding:32px 24px;font-family:"DM Sans",sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;}
+/* CTA */
+#cta{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;text-align:center;padding:100px 24px;}
+#cta h2{font-size:clamp(30px,4vw,46px);font-weight:300;margin-bottom:16px;}
+#cta h2 em{font-style:italic;color:var(--gold-light);}
+#cta p{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;color:var(--silver-light);max-width:600px;margin:0 auto 36px;}
+footer{background:var(--navy-deep);color:rgba(255,255,255,0.4);padding:0;}
+.footer-nav{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);padding:64px 24px 48px;border-top:1px solid rgba(184,150,62,0.25);}
+.footer-nav-inner{max-width:1080px;margin:0 auto;}
+.footer-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:48px;}
+.footer-option{display:block;text-decoration:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);padding:30px 28px;transition:all 0.3s ease;text-align:left;}
+.footer-option:hover{border-color:var(--gold);background:rgba(184,150,62,0.06);transform:translateY(-3px);}
+.footer-option .fo-icon{width:30px;height:30px;color:var(--gold);margin-bottom:16px;}
+.footer-option .fo-icon svg{width:100%;height:100%;}
+.footer-option h4{font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:400;color:#fff;margin-bottom:6px;}
+.footer-option p{font-family:"DM Sans",sans-serif;font-size:13px;color:var(--light);line-height:1.5;}
+.footer-option .fo-arrow{display:inline-block;margin-top:12px;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light);}
+.footer-bottom{text-align:center;padding:26px 24px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);border-top:1px solid rgba(255,255,255,0.06);}
+@media (max-width:768px){.footer-nav{padding:48px 18px 32px;}}
 
 @media (max-width:768px){
   nav.site-nav{padding:14px 20px;}
-  .nav-cta{padding:11px 20px;font-size:11px;letter-spacing:0.15em;}
-  #hero{padding:120px 20px 80px;}
-  section.band{padding:90px 20px;}
-  section#signature{padding:90px 20px;}
-  .scroll-hint{display:none;}
+  section.band{padding:72px 18px;}
+  #what{padding:120px 18px 70px;}
+  .money-flow{font-size:12px;}
 }
-@media (max-width:640px){.whw-label{font-size:36px;}.whw-text{font-size:16px;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="site-nav">
   <a href="#" class="nav-logo"><span class="wordmark">Whitestone Partners</span></a>
   <a href="/become-a-dealer" class="nav-cta">Become a Partner</a>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Dealer Partner Program</div>
-    <h1 class="hero-headline">Prepaid maintenance plans,<br>built for <em>elite marine dealers</em>.</h1>
-    <p class="hero-sub">A turnkey program that creates recurring revenue, deepens service retention, and gives your customers years of worry-free time on the water.</p>
-    <div class="hero-cta-row">
-      <a href="/become-a-dealer" class="btn-primary">Become a Partner</a>
-      <a href="#why-what-how" class="btn-secondary">See How It Works</a>
+<!-- ===================== WHAT ===================== -->
+<section id="what">
+  <div class="what-inner">
+    <div class="eyebrow">Whitestone Partners</div>
+    <h1 class="what-headline">Prepaid Service Program</h1>
+    <p class="what-sub">You sell it to keep customers coming back.</p>
+    <a href="#how" class="btn-primary">See How It Works</a>
+  </div>
+</section>
+
+<!-- ===================== HOW ===================== -->
+<section class="band alt" id="how">
+  <div class="inner">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="section-title">Two simple <em>stories</em>.</h2>
+    <p class="section-lead">One shows what your customer experiences. One shows how the money moves. That&rsquo;s the whole thing.</p>
+    <div class="divider"></div>
+
+    <!-- STORY 1: CUSTOMER JOURNEY -->
+    <div class="story-label">The Customer Journey</div>
+    <div class="story-sublabel">What happens, start to finish</div>
+    <div class="story-grid">
+
+      <div class="story-step"><span class="story-num">1</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="20" r="9" fill="#0c1e2e"/><path d="M16 52c0-9 7-16 16-16s16 7 16 16" fill="#0c1e2e"/><path d="M27 20c1.5 1.5 8.5 1.5 10 0" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <h4>Comes In</h4><p>Shopping for a boat</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>Comes In</h4><p>A customer walks into your dealership shopping for a new boat.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">2</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="18" y="12" width="28" height="40" rx="2" fill="#0c1e2e"/><line x1="24" y1="22" x2="40" y2="22" stroke="#fff" stroke-width="2"/><line x1="24" y1="30" x2="40" y2="30" stroke="#fff" stroke-width="2"/><line x1="24" y1="38" x2="34" y2="38" stroke="#fff" stroke-width="2"/></svg></div>
+            <h4>You Offer It</h4><p>At the sale or in service</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>You Offer It</h4><p>Present the prepaid plan at the point of sale &mdash; or through your service department.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">3</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="10" y="26" width="13" height="22" rx="1.5" fill="#b8963e"/><rect x="25" y="20" width="13" height="28" rx="1.5" fill="#0c1e2e"/><rect x="40" y="14" width="13" height="34" rx="1.5" fill="#b8963e"/></svg></div>
+            <h4>They Choose</h4><p>1, 2, or 3 years</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>They Choose</h4><p>The customer picks a 1, 2, or 3-year plan &mdash; whatever fits how they&rsquo;ll use the boat.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">4</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="6" y="34" width="20" height="12" rx="1.5" fill="#0c1e2e"/><path d="M30 46l6-10h14l-4 10z" fill="#b8963e"/><circle cx="14" cy="48" r="4" fill="#0c1e2e"/><circle cx="44" cy="48" r="4" fill="#0c1e2e"/></svg></div>
+            <h4>Brings It Back</h4><p>Returns for service</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>Brings It Back</h4><p>When service is due, the customer comes back to your shop.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">5</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="12" y="14" width="40" height="28" rx="2" fill="#0c1e2e"/><path d="M24 28l6 6 12-12" stroke="#b8963e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="26" y="44" width="12" height="4" fill="#0c1e2e"/></svg></div>
+            <h4>You Submit</h4><p>One-click claim</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>You Submit</h4><p>Log the completed service as a claim in the portal &mdash; it only takes seconds.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">6</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="18" fill="#b8963e"/><path d="M32 22v20M27 27c0-3 10-3 10 1s-10 1-10 5 10 3 10 0" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+            <h4>We Reimburse</h4><p>You get paid</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>We Reimburse</h4><p>Whitestone pays you back for the covered service you performed.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY 2: MONEY JOURNEY -->
+    <div class="story-label">The Money Journey</div>
+    <div class="story-sublabel">How the money moves &mdash; and how you profit</div>
+    <div class="story-grid">
+
+      <div class="story-step"><span class="story-num">1</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="18" fill="#b8963e"/><text x="32" y="39" font-size="18" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">$</text><path d="M14 14l6 6M50 14l-6 6" stroke="#0c1e2e" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+            <h4>You Set The Price</h4><p>You pick your retail</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>You Set The Price</h4><p>You decide the retail price you sell the plan for. You&rsquo;re in full control of your markup.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">2</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="22" cy="22" r="8" fill="#0c1e2e"/><path d="M10 48c0-7 5-12 12-12s12 5 12 12" fill="#0c1e2e"/><path d="M38 30h14M46 24l6 6-6 6" stroke="#b8963e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>You Sell It</h4><p>Offer it to the customer</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>You Sell It</h4><p>Offer the plan to your customer &mdash; at the boat sale or through your service desk.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">3</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="18" fill="#0c1e2e"/><path d="M23 32l6 6 12-13" stroke="#b8963e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>Customer Accepts</h4><p>They buy it at your price</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>Customer Accepts</h4><p>The customer says yes and pays you directly &mdash; at the retail price you set.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">4</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="26" rx="3" fill="#b8963e"/><circle cx="32" cy="33" r="6" fill="#fff"/><path d="M12 27h40" stroke="#0c1e2e" stroke-width="2.5"/></svg></div>
+            <h4>Easy Pay</h4><p>Auto-billing or per contract</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>Easy Pay</h4><p>Pay your wholesale cost the way that works for you &mdash; automatic billing, or pay per contract. Your choice.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">5</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="18" fill="#b8963e"/><text x="32" y="38" font-size="16" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">%</text></svg></div>
+            <h4>You Keep The Difference</h4><p>Retail minus wholesale</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>You Keep The Difference</h4><p>Your retail price minus our wholesale price is your profit &mdash; on every single plan you sell.</p></div>
+        </div>
+      </div>
+
+      <div class="story-step"><span class="story-num">6</span>
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <div class="story-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M40 18a9 9 0 00-11 11L16 42l6 6 13-13a9 9 0 005-17z" fill="#0c1e2e"/><circle cx="40" cy="24" r="3" fill="#fff"/><circle cx="48" cy="46" r="10" fill="#b8963e"/><path d="M44 46l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>Service &amp; We Cover It</h4><p>Techs complete it, we reimburse</p>
+            <div class="flip-hint">Hover</div>
+          </div>
+          <div class="flip-face flip-back"><h4>Service &amp; We Cover It</h4><p>Your techs complete the covered service. Submit the claim, and Whitestone reimburses you for the work.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONEY CALLOUT -->
+    <div class="money-callout">
+      <div class="mc-eyebrow">The Bottom Line</div>
+      <h3>You make money on the <em>sale</em>, and the service keeps them <em>coming back</em>.</h3>
+      <div class="money-flow">
+        <span class="chip">You set the price</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">Customer pays you</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">You pay wholesale</span>
+        <span class="arrow">&rarr;</span>
+        <span class="chip">You keep the difference</span>
+      </div>
+    </div>
+
+    <!-- ART NOTE (remove before publishing): The SVG icons above are clean silhouette stand-ins.
+         To use richer comic/storybook panels from Grok/xAI, generate one image per step (same 6+6
+         order and labels) and swap each .story-icon's <svg> for an <img src="assets/img/story/..">. -->
+  </div>
+</section>
+
+<!-- ===================== WHY ===================== -->
+<section class="band" id="why">
+  <div class="inner">
+    <div class="section-eyebrow">Why It Matters</div>
+    <h2 class="section-title">Built to grow your <em>dealership</em>.</h2>
+    <p class="section-lead">Three reasons dealers run prepaid service with Whitestone.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M8 36l10-10 8 6 14-16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 16h8v8" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>More Money</h4>
+        <p>Margin on every plan you sell, plus profitable service work that keeps the bays full.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 40C14 33 9 27 9 19c0-5 4-9 8-9 3 0 6 2 7 4 1-2 4-4 7-4 4 0 8 4 8 9 0 8-5 14-15 21z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Customer Retention</h4>
+        <p>Customers come back to <em>your</em> shop for years.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="12" y="8" width="24" height="32" rx="2" stroke="currentColor" stroke-width="3"/><line x1="18" y1="18" x2="30" y2="18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="26" x2="30" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <h4>Easy Service Records</h4>
+        <p>Every service is documented automatically &mdash; clean history that helps you grow the department and hit bigger goals.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHY / WHAT / HOW -->
-<section class="band alt" id="why-what-how">
-  <div class="section-inner" style="max-width:920px;">
-    <h2 class="section-title" style="margin-bottom:14px;">Prepaid Maintenance <em>Programs</em>.</h2>
-    <p class="section-lead" style="margin-bottom:0;">Take a deeper look into dealer growth &mdash; exclusive programs built for elite marine dealerships.</p>
-    <div class="section-divider" style="margin:36px auto 0;"></div>
-
-    <div style="margin-top:64px;">
-      <div class="whw-video-row">
-        <div class="whw-video-card">
-          <video autoplay muted loop playsinline preload="auto">
-            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-dbee4238-50ab-4855-af41-9bfdde66b1d6_pv7e01.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="whw-copy">
-          <div class="whw-label">Why</div>
-          <p class="whw-text">Exceptional ownership experiences don&rsquo;t happen by accident&mdash;they&rsquo;re built through proactive care. Customers who maintain their boats with you stay loyal to you.</p>
-        </div>
-      </div>
-
-      <div class="whw-video-row text-left">
-        <div class="whw-video-card">
-          <video autoplay muted loop playsinline preload="auto">
-            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-9c20243c-537b-4d95-9b7a-6268725ce92d_qw6pqo.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="whw-copy">
-          <div class="whw-label">What</div>
-          <p class="whw-text">Whitestone Partners empowers elite marine dealerships with prepaid maintenance programs that generate additional income while helping customers protect performance, reliability, and long-term value.</p>
-        </div>
-      </div>
-
-      <div class="whw-video-row">
-        <div class="whw-video-card">
-          <video autoplay muted loop playsinline preload="auto">
-            <source src="https://res.cloudinary.com/dxnhb4rsn/video/upload/grok-video-c39048cd-ec2c-41cb-bb75-c385c73c9d83_i20wml.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="whw-copy">
-          <div class="whw-label">How</div>
-          <p class="whw-text">Partner with Whitestone and offer seamless prepaid maintenance directly through your dealership&mdash;sold at point of purchase or during routine service, fully supported by our platform.</p>
-        </div>
-      </div>
-    </div>
-
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.4vw,28px);font-weight:300;font-style:italic;color:var(--navy);text-align:center;max-width:760px;margin:72px auto 0;line-height:1.5;">
-      We cover the services that keep your customers coming back to your dealership.
-    </p>
-  </div>
+<!-- ===================== CTA ===================== -->
+<section id="cta">
+  <h2>Become a founding <em>Whitestone dealer</em>.</h2>
+  <p>We&rsquo;re onboarding a select group of marine dealers &mdash; one partner at a time.</p>
+  <a href="/become-a-dealer" class="btn-primary">Become a Partner</a>
 </section>
 
-<!-- SOLD THROUGH -->
-<section class="band tight slide-from-right" id="sold-through">
-  <div class="section-inner" style="max-width:760px;">
-    <div class="section-eyebrow">Sold Through</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Two natural <em>points of sale</em>.</h2>
-    <p class="section-lead">Your team is already trained for this &mdash; Whitestone fits the conversations they have every day.</p>
-    <ul class="sold-through-list">
-      <li><span class="st-marker"></span><div><h4>F&amp;I Department</h4><p>Bundled at point of purchase. A premium add-on that strengthens the close.</p></div></li>
-      <li><span class="st-marker"></span><div><h4>Service Department</h4><p>Offered during routine service visits. Locks in years of recurring maintenance revenue.</p></div></li>
-    </ul>
-  </div>
-</section>
+<footer>
+  <div class="footer-nav">
+    <div class="footer-nav-inner">
+      <div class="footer-options">
 
-<!-- BENEFITS -->
-<section class="band alt tight slide-from-left" id="benefits">
-  <div class="section-inner" style="max-width:1080px;">
-    <div class="section-eyebrow">Benefits</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Built for <em>compounding</em> dealership value.</h2>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 44 L24 36 L32 42 L48 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 24 L48 24 L48 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
-        <h4>Recurring dealership revenue</h4>
-        <p>Predictable, repeating income that compounds over time.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 32 L32 16 L48 32 L48 48 L16 48 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 48 L28 36 L36 36 L36 48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
-        <h4>Increased service retention</h4>
-        <p>Customers keep coming back to your shop, not a competitor.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M32 50 C20 42 14 34 14 26 C14 20 19 16 24 16 C28 16 31 18 32 21 C33 18 36 16 40 16 C45 16 50 20 50 26 C50 34 44 42 32 50 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Improved customer satisfaction</h4>
-        <p>Proactive maintenance prevents the breakdowns that frustrate buyers.</p>
+        <a href="/become-a-dealer" class="footer-option">
+          <div class="fo-icon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.4"/><path d="M16 14v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="9.5" r="1.6" fill="currentColor"/></svg></div>
+          <h4>Get More Info</h4>
+          <p>Learn how the program works and what partnership looks like.</p>
+          <span class="fo-arrow">Learn More &rarr;</span>
+        </a>
+
+        <a href="mailto:support@whitestone-partners.com" class="footer-option">
+          <div class="fo-icon"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="7" width="24" height="18" rx="2" stroke="currentColor" stroke-width="2.4"/><path d="M5 9l11 8 11-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Send a Message</h4>
+          <p>Questions? Reach out to our team directly &mdash; we&rsquo;re happy to help.</p>
+          <span class="fo-arrow">Email Us &rarr;</span>
+        </a>
+
+        <a href="https://whitestone-dealer-portal.vercel.app" class="footer-option">
+          <div class="fo-icon"><svg viewBox="0 0 32 32" fill="none"><rect x="5" y="5" width="22" height="22" rx="2" stroke="currentColor" stroke-width="2.4"/><path d="M14 11l5 5-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Dealer Portal Login</h4>
+          <p>Already a partner? Sign in to manage enrollments and claims.</p>
+          <span class="fo-arrow">Log In &rarr;</span>
+        </a>
+
       </div>
     </div>
   </div>
-</section>
-
-<!-- PARTNERSHIP / CTA -->
-<section class="band alt" id="partnership">
-  <div class="section-inner" style="max-width:760px;">
-    <div class="section-eyebrow">Partnership</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Become an Exclusive <em>Whitestone Dealer</em>.</h2>
-    <p class="section-lead">We&rsquo;re onboarding our founding cohort of certified marine dealers one partner at a time.</p>
-    <div style="text-align:center;margin-top:40px;">
-      <a href="/become-a-dealer" class="btn-primary" style="color:#fff;">Apply to the Network</a>
-    </div>
-  </div>
-</section>
-
-<!-- SIGNATURE -->
-<section id="signature">
-  <div class="sig-inner">
-    <p class="sig-line"><span class="quote-mark">&ldquo;</span>We built Whitestone to be a meaningful profit and retention partner for elite marine dealers. We&rsquo;d welcome the opportunity to introduce what we&rsquo;re building.<span class="quote-mark">&rdquo;</span></p>
-    <div class="sig-divider"></div>
-    <div class="sig-name">Whitestone Partners</div>
-    <div class="sig-title">A clearer view of dealership growth</div>
-    <div class="sig-contact">
-      <a href="tel:+13855054256">385-505-4256</a><br>
-      <span style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:0.1em;margin-top:4px;display:inline-block;">Call to set up a demo or get more information</span><br><br>
-      <a href="mailto:support@whitestone-partners.com">support@whitestone-partners.com</a>
-    </div>
-  </div>
-</section>
-
-<footer>© 2026 Whitestone Partners LLC · PO Box 221, Draper, UT 84020</footer>
+  <div class="footer-bottom">© 2026 Whitestone Partners LLC · PO Box 221, Draper, UT 84020</div>
+</footer>
 
 <script>
+// Tap-to-flip on touch devices (phones have no hover)
 (function(){
-  var targets = document.querySelectorAll('.slide-from-right, .slide-from-left');
-  if(!('IntersectionObserver' in window)){
-    // No observer support: just show everything.
-    targets.forEach(function(el){ el.classList.add('in-view'); });
-    return;
-  }
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');   // slide in
-      } else {
-        entry.target.classList.remove('in-view'); // slide back out (reversible)
-      }
+  var isTouch = window.matchMedia('(hover: none)').matches;
+  if(!isTouch) return;
+  document.querySelectorAll('.story-step').forEach(function(card){
+    card.addEventListener('click', function(){
+      card.classList.toggle('flipped');
     });
-  }, { threshold: 0.2 });
-  targets.forEach(function(el){ observer.observe(el); });
+  });
 })();
 </script>
 
