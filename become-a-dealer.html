@@ -395,6 +395,163 @@
     line-height: 1.7;
     letter-spacing: 0.04em;
   }
+
+/* ============ VIDEO ============ */
+.video-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  margin-top:44px;
+  background:#000;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.video-wrap video{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* ============ MARGIN FLOW ============ */
+.flow-grid{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  align-items:center;
+  gap:16px;
+  margin-top:56px;
+  text-align:left;
+}
+.flow-step{
+  background:#ffffff;
+  border:1px solid var(--border);
+  padding:30px 26px;
+  height:100%;
+}
+.flow-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:16px;
+}
+.flow-step h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  font-weight:300;
+  color:var(--navy);
+  margin:0 0 8px;
+}
+.flow-step p{
+  font-size:13.5px;
+  color:var(--navy-soft);
+  line-height:1.65;
+  margin:0;
+}
+.flow-arrow{
+  color:var(--gold);
+  font-size:18px;
+  text-align:center;
+}
+.flow-note{
+  font-size:12.5px;
+  font-style:italic;
+  color:var(--light);
+  margin-top:28px;
+}
+
+/* ============ WHAT WE OFFER ============ */
+.offer-lead{
+  font-size:17px;
+  line-height:1.75;
+  color:var(--navy);
+  font-weight:300;
+  max-width:720px;
+  margin:24px auto 0;
+}
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  margin-top:52px;
+  text-align:left;
+}
+.offer-item{
+  background:#ffffff;
+  border:1px solid var(--border);
+  padding:26px 24px;
+}
+.offer-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+.offer-item p{
+  font-size:13.5px;
+  color:var(--navy-soft);
+  line-height:1.65;
+  margin:0;
+}
+.services-block{
+  margin-top:44px;
+  padding:34px 30px;
+  background:#ffffff;
+  border:1px solid var(--border);
+  text-align:left;
+}
+.services-head{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.services-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px 24px;
+}
+.services-list li{
+  font-size:13.5px;
+  color:var(--navy);
+  padding-left:16px;
+  position:relative;
+  line-height:1.6;
+}
+.services-list li:before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:8px;
+  width:5px;
+  height:5px;
+  background:var(--gold);
+  border-radius:50%;
+}
+.services-note{
+  font-size:11.5px;
+  font-style:italic;
+  color:var(--light);
+  margin:22px 0 0;
+  line-height:1.6;
+}
+
+@media (max-width:820px){
+  .flow-grid{grid-template-columns:1fr;}
+  .flow-arrow{transform:rotate(90deg);padding:4px 0;}
+}
 </style>
 </head>
 
@@ -410,111 +567,105 @@
   </div>
 </section>
 
-<!-- ============ WHY / WHAT / HOW ============ -->
-<section class="band alt" id="why-what-how">
-  <div class="section-inner" style="max-width:920px;">
-    <div class="section-eyebrow">Pre-Paid Maintenance Programs</div>
+<!-- ============ VIDEO ============ -->
+<section class="band alt" id="video">
+  <div class="section-inner" style="max-width:940px;">
+    <div class="section-eyebrow">60 Seconds</div>
     <div class="section-divider"></div>
-    <h2 class="section-title">Built for <em>dealership growth</em>.</h2>
+    <h2 class="section-title">How it <em>works</em>.</h2>
 
-    <div style="display:grid;grid-template-columns:1fr;gap:48px;margin-top:60px;text-align:left;">
-      <div class="whw-block">
-        <div class="whw-label">WHY</div>
-        <p class="whw-text">Exceptional ownership experiences don&rsquo;t happen by accident&mdash;they&rsquo;re built through proactive care.</p>
-      </div>
-
-      <div class="whw-block">
-        <div class="whw-label">WHAT</div>
-        <p class="whw-text">Whitestone Partners empowers elite marine dealerships with pre-paid maintenance programs that generate additional income while helping customers protect performance, reliability, and long-term value.</p>
-      </div>
-
-      <div class="whw-block">
-        <div class="whw-label">HOW</div>
-        <p class="whw-text">Partner with Whitestone and offer seamless maintenance solutions directly through your dealership.</p>
-      </div>
+    <div class="video-wrap">
+      <video
+        controls
+        preload="none"
+        playsinline
+        poster="/assets/video/whitestone-explainer-poster.jpg">
+        <source src="/assets/video/whitestone-explainer.mp4" type="video/mp4">
+        Your browser doesn&rsquo;t support embedded video.
+        <a href="/assets/video/whitestone-explainer.mp4">Download the video</a> instead.
+      </video>
     </div>
   </div>
 </section>
 
-<!-- ============ SOLD THROUGH ============ -->
-<section class="band" id="sold-through">
-  <div class="section-inner" style="max-width:760px;">
-    <div class="section-eyebrow">Sold Through</div>
+<!-- ============ HOW YOU MAKE MONEY ============ -->
+<section class="band" id="margin">
+  <div class="section-inner" style="max-width:940px;">
+    <div class="section-eyebrow">The Margin</div>
     <div class="section-divider"></div>
-    <h2 class="section-title">Two natural <em>points of sale</em>.</h2>
-    <p class="section-lead">Your team is already trained for this &mdash; Whitestone fits the conversations they have every day.</p>
+    <h2 class="section-title">How you <em>make money</em>.</h2>
+    <p class="section-lead">Wholesale is what you pay Whitestone. What you charge the customer is entirely your call.</p>
 
-    <ul class="sold-through-list">
-      <li>
-        <span class="st-marker"></span>
-        <div>
-          <h4>F&amp;I Department</h4>
-          <p>Bundled at point of purchase. A premium add-on that strengthens the close.</p>
-        </div>
-      </li>
-      <li>
-        <span class="st-marker"></span>
-        <div>
-          <h4>Service Department</h4>
-          <p>Offered during routine service visits. Locks in years of recurring maintenance revenue.</p>
-        </div>
-      </li>
-    </ul>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <h4>You buy</h4>
+        <p>Wholesale from Whitestone.</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <h4>You price</h4>
+        <p>You set retail. Your market, your call.</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <h4>You keep</h4>
+        <p>The difference is yours. Every plan.</p>
+      </div>
+    </div>
+
+    <p class="flow-note">Wholesale pricing is shared directly with partnered dealers.</p>
   </div>
 </section>
 
-<!-- ============ BENEFITS ============ -->
-<section class="band alt" id="benefits">
-  <div class="section-inner" style="max-width:1080px;">
-    <div class="section-eyebrow">Benefits</div>
+<!-- ============ WHAT WE OFFER ============ -->
+<section class="band alt" id="what-we-offer">
+  <div class="section-inner" style="max-width:940px;">
+    <div class="section-eyebrow">What We Offer</div>
     <div class="section-divider"></div>
-    <h2 class="section-title">Built for <em>compounding</em> dealership value.</h2>
+    <h2 class="section-title">Prepaid maintenance, <em>simply put</em>.</h2>
 
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 44 L24 36 L32 42 L48 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M40 24 L48 24 L48 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
-          </svg>
-        </div>
-        <h4>Recurring dealership revenue</h4>
-        <p>Predictable, repeating income that compounds over time.</p>
-      </div>
+    <p class="offer-lead">
+      Whitestone Partners builds prepaid maintenance programs for marine dealerships. Your customer
+      pays once, up front, and their scheduled maintenance is covered for the life of the plan.
+    </p>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 32 L32 16 L48 32 L48 48 L16 48 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M28 48 L28 36 L36 36 L36 48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
-          </svg>
-        </div>
-        <h4>Increased service retention</h4>
-        <p>Customers keep coming back to your shop, not a competitor.</p>
+    <div class="offer-grid">
+      <div class="offer-item">
+        <div class="offer-label">Terms</div>
+        <p>1, 2, and 3-year plans. Priced per engine.</p>
       </div>
+      <div class="offer-item">
+        <div class="offer-label">Sold through</div>
+        <p>Your F&amp;I department at the point of sale, or your service department during a routine visit.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-label">Who does the work</div>
+        <p>You do. The service stays in your bays, and Whitestone reimburses you for covered work.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-label">Paperwork</div>
+        <p>We handle the contracts, the claims, and the customer records.</p>
+      </div>
+    </div>
 
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M32 50 C20 42 14 34 14 26 C14 20 19 16 24 16 C28 16 31 18 32 21 C33 18 36 16 40 16 C45 16 50 20 50 26 C50 34 44 42 32 50 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Improved customer satisfaction</h4>
-        <p>Proactive maintenance prevents the breakdowns that frustrate buyers.</p>
-      </div>
-
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M32 12 L48 20 L48 36 C48 44 41 51 32 54 C23 51 16 44 16 36 L16 20 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M26 32 L30 36 L40 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h4>Higher long-term boat reliability</h4>
-        <p>Well-maintained boats deliver better resale and brand experience.</p>
-      </div>
+    <div class="services-block">
+      <div class="services-head">10 covered services</div>
+      <ul class="services-list">
+        <li>De-Winterization</li>
+        <li>Impeller Service</li>
+        <li>Engine Oil Service</li>
+        <li>Fuel Filter Service</li>
+        <li>Transmission Oil Service</li>
+        <li>Outdrive Service</li>
+        <li>Shaft Alignment</li>
+        <li>Winterization</li>
+        <li>V-Drive Service</li>
+        <li>Ballast Cartridge Service</li>
+      </ul>
+      <p class="services-note">V-Drive Service applies to V-drive vessels. Ballast Cartridge Service applies to ballast-equipped vessels.</p>
     </div>
   </div>
 </section>
