@@ -561,8 +561,8 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Whitestone Partners</div>
-    <h1>Take a deeper look into <em>dealer growth</em>.</h1>
-    <p class="hero-sub">Exclusive pre-paid maintenance programs built for elite marine dealerships.</p>
+    <h1 id="hero-headline">Take a deeper look into <em>dealer growth</em>.</h1>
+    <p class="hero-sub" id="hero-subhead">Exclusive pre-paid maintenance programs built for elite marine dealerships.</p>
     <a href="#enroll-section" class="hero-cta">Become a Partner</a>
   </div>
 </section>
@@ -837,6 +837,36 @@
 
     return false;
   };
+</script>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var dealer = params.get('dealer');
+    var name = params.get('name');
+
+    // sanitize: strip anything that isn't a normal name/business character
+    function clean(s) {
+      if (!s) return '';
+      s = s.slice(0, 60);
+      s = s.replace(/[<>{}$`\\]/g, '');
+      return s.trim();
+    }
+    dealer = clean(dealer);
+    name = clean(name);
+
+    if (!dealer && !name) return; // no params -> leave generic hero untouched
+
+    var headline = document.getElementById('hero-headline');
+    var subhead = document.getElementById('hero-subhead');
+
+    if (headline) {
+      headline.textContent = name ? ('Welcome, ' + name) : 'Welcome';
+    }
+    if (subhead && dealer) {
+      subhead.textContent = "Here's what we've built for " + dealer + '.';
+    }
+  })();
 </script>
 
 </body>
