@@ -16,6 +16,11 @@
     --light: #6b8599;
     --border: #e4eaf0;
     --bg-alt: #f8f9fb;
+    /* added for cinematic intro */
+    --navy2: #12304d;
+    --navy-deep: #081422;
+    --gold-light: #d4b872;
+    --white: #f7f5ef;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -552,10 +557,90 @@
   .flow-grid{grid-template-columns:1fr;}
   .flow-arrow{transform:rotate(90deg);padding:4px 0;}
 }
+
+/* ============== CINEMATIC INTRO ============== */
+#intro-overlay{
+  position:fixed; inset:0;
+  background:radial-gradient(ellipse at center, var(--navy2) 0%, var(--navy) 50%, var(--navy-deep) 100%);
+  z-index:9999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:24px;
+  transition:opacity 1.2s ease;
+}
+#intro-overlay::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 100%);
+  pointer-events:none;
+}
+.intro-logo{
+  position:absolute; top:8vh; opacity:0;
+  animation:logoFadeIn 1.4s ease 0.2s forwards; z-index:2;
+}
+.intro-logo img{
+  height:70px; width:auto; display:block;
+  filter:drop-shadow(0 0 30px rgba(184,150,62,0.15));
+}
+.intro-stage-1{
+  text-align:center; opacity:0; transform:translateY(15px);
+  animation:stage1Cycle 5s ease forwards; animation-delay:1.4s;
+  z-index:2; position:relative;
+}
+.intro-eyebrow{
+  font-family:"DM Sans",sans-serif; font-size:10px; font-weight:500;
+  letter-spacing:0.6em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:32px; display:block; opacity:0.9;
+}
+.intro-stage-1 h1{
+  font-family:"Cormorant Garamond",serif; font-size:clamp(32px,5vw,56px);
+  font-weight:300; color:var(--white); line-height:1.2; letter-spacing:0.005em; margin:0;
+}
+.intro-stage-1 h1 .name{ font-style:italic; color:var(--gold-light); }
+.intro-stage-2{
+  text-align:center; position:absolute; opacity:0; transform:translateY(15px); z-index:2;
+}
+.intro-stage-2.show{ animation:stage2Cycle 3.5s ease forwards; }
+.intro-stage-2 h2{
+  font-family:"Cormorant Garamond",serif; font-size:clamp(26px,4.5vw,46px);
+  font-weight:300; color:var(--white); line-height:1.3; letter-spacing:0.005em;
+  margin:0; max-width:880px;
+}
+.intro-stage-2 h2 .dealership{ font-style:italic; color:var(--gold-light); }
+@keyframes logoFadeIn{ to{opacity:1;} }
+@keyframes stage1Cycle{
+  0%{opacity:0;transform:translateY(15px);}
+  18%{opacity:1;transform:translateY(0);}
+  72%{opacity:1;transform:translateY(0);}
+  100%{opacity:0;transform:translateY(-15px);}
+}
+@keyframes stage2Cycle{
+  0%{opacity:0;transform:translateY(15px);}
+  22%{opacity:1;transform:translateY(0);}
+  100%{opacity:1;transform:translateY(0);}
+}
+#intro-overlay.fade-out{ opacity:0; pointer-events:none; }
+@media (max-width:640px){
+  .intro-logo{top:6vh;}
+  .intro-logo img{height:54px;}
+}
 </style>
 </head>
 
 <body>
+
+<!-- ============== CINEMATIC INTRO (personalized visitors only) ============== -->
+<div id="intro-overlay" style="display:none;">
+  <div class="intro-logo">
+    <img src="/logo.png" alt="Whitestone Partners" onerror="this.style.display='none'">
+  </div>
+  <div class="intro-stage-1" id="stage1">
+    <span class="intro-eyebrow">By Invitation</span>
+    <h1>Welcome to Whitestone Partners,<br><span class="name" id="stage1-name">there</span>.</h1>
+  </div>
+  <div class="intro-stage-2" id="stage2">
+    <span class="intro-eyebrow">A Clearer View</span>
+    <h2>Here is a clearer view<br>of what's built for <span class="dealership" id="stage2-dealership">your dealership</span>.</h2>
+  </div>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -842,30 +927,41 @@
 <script>
   (function () {
     var params = new URLSearchParams(window.location.search);
-    var dealer = params.get('dealer');
-    var name = params.get('name');
 
-    // sanitize: strip anything that isn't a normal name/business character
-    function clean(s) {
-      if (!s) return '';
-      s = s.slice(0, 60);
-      s = s.replace(/[<>{}$`\\]/g, '');
+    function clean(s){
+      if(!s) return '';
+      s = s.slice(0,60).replace(/[<>{}$`\\]/g,'');
       return s.trim();
     }
-    dealer = clean(dealer);
-    name = clean(name);
+    var dealer = clean(params.get('dealer'));
+    var name = clean(params.get('name'));
 
-    if (!dealer && !name) return; // no params -> leave generic hero untouched
+    // No params -> generic page, no intro, nothing changes.
+    if(!dealer && !name) return;
 
+    // --- personalize the static hero underneath (as before) ---
     var headline = document.getElementById('hero-headline');
     var subhead = document.getElementById('hero-subhead');
+    if(headline) headline.textContent = name ? ('Welcome, ' + name) : 'Welcome';
+    if(subhead && dealer) subhead.textContent = "Here's what we've built for " + dealer + '.';
 
-    if (headline) {
-      headline.textContent = name ? ('Welcome, ' + name) : 'Welcome';
-    }
-    if (subhead && dealer) {
-      subhead.textContent = "Here's what we've built for " + dealer + '.';
-    }
+    // --- run the cinematic intro ---
+    var overlay = document.getElementById('intro-overlay');
+    if(!overlay) return;
+
+    // inject names into the intro stages
+    var s1 = document.getElementById('stage1-name');
+    var s2 = document.getElementById('stage2-dealership');
+    if(s1) s1.textContent = name || 'there';
+    if(s2) s2.textContent = dealer || 'your dealership';
+
+    // reveal + start the timed sequence
+    overlay.style.display = 'flex';
+    var stage2 = document.getElementById('stage2');
+
+    setTimeout(function(){ if(stage2) stage2.classList.add('show'); }, 6100);
+    setTimeout(function(){ overlay.classList.add('fade-out'); }, 9500);
+    setTimeout(function(){ overlay.style.display = 'none'; }, 11000);
   })();
 </script>
 
