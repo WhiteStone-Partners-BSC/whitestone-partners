@@ -21,542 +21,236 @@
     --navy-deep: #081422;
     --gold-light: #d4b872;
     --white: #f7f5ef;
+    --paper: #f4f1ea;
+    --ink-soft: #c9d6e0;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { scroll-behavior: smooth; }
+
   html, body {
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--navy);
-    background: #ffffff;
-    line-height: 1.6;
+    color: var(--white);
+    background: var(--navy);
     -webkit-font-smoothing: antialiased;
   }
 
-  img { max-width: 100%; height: auto; display: block; }
-
-  /* ============ HERO ============ */
-  .hero {
-    min-height: 80vh;
-    background: var(--navy);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 24px;
-    position: relative;
-    overflow: hidden;
+  /* ============== HERO ============== */
+  .hero{
+    position:relative;
+    padding:84px 6vw 92px;
+    background:radial-gradient(ellipse at 50% 0%, var(--navy2) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    text-align:center;
+    overflow:hidden;
   }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 20% 30%, rgba(184, 150, 62, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(184, 150, 62, 0.06) 0%, transparent 50%);
-    pointer-events: none;
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.35) 100%);
+    pointer-events:none;
   }
-
-  .hero-inner {
-    max-width: 920px;
-    position: relative;
-    z-index: 1;
+  .hero-inner{position:relative;max-width:900px;margin:0 auto;}
+  .hero-eyebrow{
+    font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);
   }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.36em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
+  .hero h1{
+    font-family:"Cormorant Garamond",serif;font-size:clamp(34px,5.4vw,62px);
+    font-weight:300;line-height:1.12;color:var(--white);margin:18px 0 0;
   }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 7vw, 72px);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: 0.005em;
-    margin-bottom: 28px;
+  .hero h1 em{font-style:italic;color:var(--gold-light);}
+  .hero-sub{
+    font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.7;
+    color:var(--ink-soft,#c9d6e0);max-width:560px;margin:20px auto 0;font-weight:300;
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
+  .hero-scroll-cue{
+    display:inline-block;margin-top:34px;
+    font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border-bottom:1px solid rgba(184,150,62,0.4);padding-bottom:6px;
+    transition:color 0.2s ease;
   }
+  .hero-scroll-cue:hover{color:var(--gold-light);}
 
-  .hero-sub {
-    font-size: clamp(15px, 2vw, 18px);
-    color: rgba(255, 255, 255, 0.78);
-    line-height: 1.7;
-    font-weight: 300;
-    max-width: 640px;
-    margin: 0 auto 48px;
+  /* ============== VIDEO ============== */
+  #video{background:var(--navy);padding:0 6vw 84px;}
+  #video .video-wrap{
+    max-width:760px;margin:0 auto;aspect-ratio:16/9;
+    background:#000;border:1px solid rgba(184,150,62,0.35);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);overflow:hidden;
   }
+  #video .video-wrap video{width:100%;height:100%;display:block;}
 
-  .hero-cta {
-    display: inline-block;
-    padding: 18px 38px;
-    background: var(--gold);
-    color: var(--navy);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    transition: background 0.2s ease;
+  /* ============== BANDS / SHARED ============== */
+  .band{padding:76px 6vw;}
+  .band.paper{background:var(--paper);color:var(--navy);}
+  .band.deep{background:var(--navy-deep);}
+  .section-inner{max-width:1000px;margin:0 auto;}
+  .section-eyebrow{
+    font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);text-align:center;
   }
-
-  .hero-cta:hover {
-    background: #cfa44a;
+  .section-title{
+    font-family:"Cormorant Garamond",serif;font-size:clamp(28px,4vw,44px);
+    font-weight:300;line-height:1.2;text-align:center;margin:14px 0 0;
   }
+  .section-title em{font-style:italic;color:var(--gold);}
 
-  /* ============ SECTIONS ============ */
-  .band {
-    padding: 100px 24px;
-    background: #ffffff;
+  /* ============== WHAT WE OFFER ============== */
+  .offer-head{max-width:640px;margin:0 auto;}
+  .offer-sub{
+    font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.7;
+    color:#4a5b68;margin-top:16px;font-weight:300;text-align:center;
   }
-
-  .band.alt {
-    background: var(--bg-alt);
+  .offer-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px;}
+  .ocard{
+    background:var(--navy);color:var(--white);border-radius:14px;padding:26px 20px;
+    border:1px solid rgba(184,150,62,0.25);
+    transition:transform 0.28s ease,box-shadow 0.28s ease;
   }
-
-  .section-inner {
-    max-width: 1080px;
-    margin: 0 auto;
-    text-align: center;
+  .ocard:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(12,30,46,0.28);}
+  .ocard-ico{
+    width:44px;height:44px;border-radius:10px;background:rgba(184,150,62,0.16);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--gold-light);
   }
-
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 18px;
+  .ocard-ico svg{width:22px;height:22px;}
+  .ocard h4{
+    font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:400;
+    margin-bottom:7px;color:var(--gold-light);
+  }
+  .ocard p{
+    font-family:"DM Sans",sans-serif;font-size:12.5px;line-height:1.6;color:var(--ink-soft,#c9d6e0);
+  }
+  .services-strip{margin-top:40px;background:var(--navy);border-radius:14px;padding:30px 34px;}
+  .services-sh{
+    font-family:"DM Sans",sans-serif;font-size:11px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:18px;text-align:center;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .chip{
+    font-family:"DM Sans",sans-serif;font-size:12.5px;color:var(--white);
+    border:1px solid rgba(184,150,62,0.4);border-radius:100px;padding:8px 16px;
+    background:rgba(184,150,62,0.06);
+  }
+  .services-note{
+    font-family:"DM Sans",sans-serif;font-size:11.5px;font-style:italic;
+    color:var(--ink-soft,#c9d6e0);text-align:center;margin-top:20px;opacity:0.8;
   }
 
-  .section-divider {
-    width: 48px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto 28px;
+  /* ============== HOW YOU MAKE MONEY ============== */
+  .money-head{max-width:620px;margin:0 auto;}
+  .money-sub{
+    font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.7;
+    color:var(--ink-soft,#c9d6e0);margin-top:14px;font-weight:300;text-align:center;
+  }
+  .tiles{
+    display:flex;gap:20px;justify-content:center;align-items:stretch;
+    margin-top:50px;flex-wrap:wrap;
+  }
+  .tile{
+    position:relative;width:200px;height:200px;
+    background:linear-gradient(150deg,var(--gold) 0%,#9c7d31 100%);
+    border-radius:16px;padding:26px;display:flex;flex-direction:column;
+    justify-content:space-between;color:var(--navy-deep);
+    transition:transform 0.3s cubic-bezier(.2,.7,.3,1),box-shadow 0.3s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  }
+  .tile:hover{
+    transform:scale(1.09) translateY(-4px);
+    box-shadow:0 26px 60px rgba(184,150,62,0.35);z-index:2;
+  }
+  .tile-num{
+    font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;
+    letter-spacing:0.15em;opacity:0.7;
+  }
+  .tile h3{
+    font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:400;line-height:1.05;
+  }
+  .tile p{font-family:"DM Sans",sans-serif;font-size:12.5px;line-height:1.5;font-weight:500;}
+  .tile-reveal{
+    display:block;max-height:0;overflow:hidden;opacity:0;
+    transition:max-height 0.3s ease,opacity 0.3s ease;margin-top:0;
+  }
+  .tile:hover .tile-reveal{max-height:60px;opacity:1;margin-top:6px;}
+  .money-note{
+    font-family:"Cormorant Garamond",serif;text-align:center;font-style:italic;
+    color:var(--ink-soft,#c9d6e0);font-size:14px;margin-top:40px;opacity:0.85;
   }
 
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 5vw, 48px);
-    font-weight: 300;
-    line-height: 1.2;
-    color: var(--navy);
-    margin-bottom: 20px;
-    letter-spacing: 0.005em;
+  /* ============== ENROLL ============== */
+  #enroll-section{background:var(--navy);padding:76px 6vw;}
+  #enroll-section .section-inner{max-width:620px;}
+  #enroll-section .section-lead{
+    font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.7;
+    color:var(--ink-soft);text-align:center;margin-top:14px;font-weight:300;
+  }
+  #enroll-section .form-card{
+    margin-top:40px;background:rgba(255,255,255,0.04);
+    border:1px solid rgba(184,150,62,0.25);border-radius:14px;padding:34px 28px;
+  }
+  #enroll-section .form-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;
+  }
+  #enroll-section .form-field.full{grid-column:1 / -1;}
+  #enroll-section .form-field label{
+    display:block;font-family:"DM Sans",sans-serif;font-size:11px;
+    letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+  }
+  #enroll-section .form-field input,
+  #enroll-section .form-field textarea{
+    width:100%;padding:13px 14px;background:rgba(0,0,0,0.25);
+    border:1px solid rgba(255,255,255,0.12);border-radius:8px;
+    color:var(--white);font-family:"DM Sans",sans-serif;font-size:14px;
+    outline:none;transition:border-color 0.2s ease;
+  }
+  #enroll-section .form-field input:focus,
+  #enroll-section .form-field textarea:focus{border-color:var(--gold);}
+  #enroll-section .form-field textarea{resize:vertical;min-height:88px;}
+  #enroll-section .btn-submit{
+    width:100%;margin-top:8px;padding:16px;background:var(--gold);color:var(--navy-deep);
+    border:none;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:13px;
+    font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  #enroll-section .btn-submit:hover{background:var(--gold-light);}
+
+  /* ============== SIGNATURE / FOOTER ============== */
+  .signature{
+    background:var(--navy-deep);text-align:center;padding:72px 6vw 48px;
+  }
+  .sig-mark{color:var(--gold);font-size:22px;margin-bottom:14px;opacity:0.7;}
+  .sig-name{
+    font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:300;color:var(--white);
+  }
+  .sig-tagline{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15px;
+    color:var(--ink-soft);margin-top:10px;
+  }
+  .sig-contact{margin-top:22px;}
+  .sig-contact a{
+    font-family:"DM Sans",sans-serif;font-size:13px;color:var(--gold);
+    text-decoration:none;letter-spacing:0.04em;
+  }
+  .sig-contact a:hover{color:var(--gold-light);}
+  footer{
+    background:var(--navy-deep);text-align:center;padding:0 6vw 36px;
+    font-family:"DM Sans",sans-serif;font-size:11px;color:rgba(201,214,224,0.55);
+    letter-spacing:0.04em;
   }
 
-  .section-title em {
-    font-style: italic;
-    color: var(--gold);
+  @media (max-width:900px){
+    .offer-cards{grid-template-columns:repeat(2,1fr);}
   }
-
-  .section-lead {
-    font-size: 17px;
-    color: var(--navy-soft);
-    line-height: 1.7;
-    max-width: 640px;
-    margin: 0 auto;
-    font-weight: 300;
+  @media (max-width:640px){
+    .offer-cards{grid-template-columns:1fr;}
+    #enroll-section .form-grid{grid-template-columns:1fr;}
+    .services-strip{padding:24px 18px;}
   }
-
-  /* ============ WHY/WHAT/HOW ============ */
-  .whw-block {
-    position: relative;
+  @media(max-width:520px){
+    .tiles{gap:14px;}
+    .tile{width:150px;height:150px;padding:20px;}
+    .tile h3{font-size:22px;}
   }
-  .whw-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--gold);
-    font-style: italic;
-    letter-spacing: 0.04em;
-    margin-bottom: 14px;
-    line-height: 1;
-  }
-  .whw-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--navy);
-    font-weight: 300;
-    max-width: 680px;
-  }
-  @media (min-width: 760px) {
-    .whw-block {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-    .whw-label { margin-bottom: 0; padding-top: 6px; }
-  }
-
-  /* ============ SOLD THROUGH ============ */
-  .sold-through-list {
-    list-style: none;
-    margin: 60px 0 0;
-    display: grid;
-    gap: 28px;
-  }
-  .sold-through-list li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 24px;
-    align-items: start;
-    padding: 28px 32px;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    text-align: left;
-  }
-  .sold-through-list .st-marker {
-    display: block;
-    width: 8px;
-    height: 48px;
-    background: var(--gold);
-  }
-  .sold-through-list h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 300;
-    color: var(--navy);
-    margin: 0 0 8px;
-    letter-spacing: 0.01em;
-  }
-  .sold-through-list p {
-    font-size: 14px;
-    color: var(--navy-soft);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ============ BENEFITS ============ */
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-    margin-top: 60px;
-    text-align: left;
-  }
-  .benefit-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    padding: 36px 28px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-  .benefit-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--gold);
-  }
-  .benefit-icon {
-    width: 48px;
-    height: 48px;
-    color: var(--navy);
-    margin-bottom: 24px;
-    transition: color 0.3s ease;
-  }
-  .benefit-card:hover .benefit-icon { color: var(--gold); }
-  .benefit-icon svg { width: 100%; height: 100%; }
-  .benefit-card h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 21px;
-    font-weight: 400;
-    color: var(--navy);
-    margin: 0 0 10px;
-    line-height: 1.3;
-  }
-  .benefit-card p {
-    font-size: 13.5px;
-    color: var(--navy-soft);
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  /* ============ FORMS ============ */
-  .form-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    padding: 48px 40px;
-    margin-top: 48px;
-    text-align: left;
-  }
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 28px;
-  }
-  .form-field { display: flex; flex-direction: column; }
-  .form-field.full { grid-column: 1 / -1; }
-  .form-field label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--navy-soft);
-    margin-bottom: 8px;
-  }
-  .form-field input,
-  .form-field textarea {
-    font-family: inherit;
-    font-size: 14px;
-    color: var(--navy);
-    background: #ffffff;
-    border: 1px solid var(--border);
-    padding: 14px 16px;
-    outline: none;
-    transition: border-color 0.2s ease;
-    resize: vertical;
-  }
-  .form-field input:focus,
-  .form-field textarea:focus { border-color: var(--gold); }
-  .btn-submit {
-    margin-top: 32px;
-    background: var(--navy);
-    color: #ffffff;
-    border: none;
-    padding: 18px 36px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  .btn-submit:hover { background: var(--gold); }
-  .btn-submit.btn-secondary-cta {
-    background: transparent;
-    color: var(--navy);
-    border: 1px solid var(--navy);
-  }
-  .btn-submit.btn-secondary-cta:hover {
-    background: var(--navy);
-    color: #ffffff;
-  }
-  .btn-submit:disabled { opacity: 0.6; cursor: wait; }
-
-  @media (max-width: 640px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .form-card { padding: 32px 24px; }
-    .whw-label { font-size: 36px; }
-    .whw-text { font-size: 16px; }
-    .band { padding: 70px 20px; }
-  }
-
-  /* ============ SIGNATURE + FOOTER ============ */
-  .signature {
-    text-align: center;
-    padding: 80px 24px 60px;
-    background: var(--bg-alt);
-  }
-  .signature .sig-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-  .signature .sig-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--navy);
-    margin-bottom: 8px;
-  }
-  .signature .sig-tagline {
-    font-size: 13px;
-    color: var(--navy-soft);
-    font-style: italic;
-    letter-spacing: 0.05em;
-  }
-  .signature .sig-contact {
-    margin-top: 36px;
-    font-size: 13px;
-    color: var(--navy-soft);
-    line-height: 1.9;
-  }
-  .signature .sig-contact a {
-    color: var(--navy);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
-  }
-
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    background: var(--navy);
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 12px;
-    line-height: 1.7;
-    letter-spacing: 0.04em;
-  }
-
-/* ============ VIDEO ============ */
-.video-wrap{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  margin-top:44px;
-  background:#000;
-  border:1px solid var(--border);
-  overflow:hidden;
-}
-.video-wrap video{
-  width:100%;
-  height:100%;
-  display:block;
-}
-
-/* ============ MARGIN FLOW ============ */
-.flow-grid{
-  display:grid;
-  grid-template-columns:1fr auto 1fr auto 1fr;
-  align-items:center;
-  gap:16px;
-  margin-top:56px;
-  text-align:left;
-}
-.flow-step{
-  background:#ffffff;
-  border:1px solid var(--border);
-  padding:30px 26px;
-  height:100%;
-}
-.flow-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:15px;
-  color:var(--gold);
-  border:1px solid var(--gold);
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:16px;
-}
-.flow-step h4{
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;
-  font-weight:300;
-  color:var(--navy);
-  margin:0 0 8px;
-}
-.flow-step p{
-  font-size:13.5px;
-  color:var(--navy-soft);
-  line-height:1.65;
-  margin:0;
-}
-.flow-arrow{
-  color:var(--gold);
-  font-size:18px;
-  text-align:center;
-}
-.flow-note{
-  font-size:12.5px;
-  font-style:italic;
-  color:var(--light);
-  margin-top:28px;
-}
-
-/* ============ WHAT WE OFFER ============ */
-.offer-lead{
-  font-size:17px;
-  line-height:1.75;
-  color:var(--navy);
-  font-weight:300;
-  max-width:720px;
-  margin:24px auto 0;
-}
-.offer-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-  margin-top:52px;
-  text-align:left;
-}
-.offer-item{
-  background:#ffffff;
-  border:1px solid var(--border);
-  padding:26px 24px;
-}
-.offer-label{
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:10px;
-}
-.offer-item p{
-  font-size:13.5px;
-  color:var(--navy-soft);
-  line-height:1.65;
-  margin:0;
-}
-.services-block{
-  margin-top:44px;
-  padding:34px 30px;
-  background:#ffffff;
-  border:1px solid var(--border);
-  text-align:left;
-}
-.services-head{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:20px;
-}
-.services-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:10px 24px;
-}
-.services-list li{
-  font-size:13.5px;
-  color:var(--navy);
-  padding-left:16px;
-  position:relative;
-  line-height:1.6;
-}
-.services-list li:before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:8px;
-  width:5px;
-  height:5px;
-  background:var(--gold);
-  border-radius:50%;
-}
-.services-note{
-  font-size:11.5px;
-  font-style:italic;
-  color:var(--light);
-  margin:22px 0 0;
-  line-height:1.6;
-}
-
-@media (max-width:820px){
-  .flow-grid{grid-template-columns:1fr;}
-  .flow-arrow{transform:rotate(90deg);padding:4px 0;}
-}
 
 /* ============== CINEMATIC INTRO ============== */
 #intro-overlay{
@@ -645,122 +339,123 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Whitestone Partners</div>
-    <h1 id="hero-headline">Take a deeper look into <em>dealer growth</em>.</h1>
-    <p class="hero-sub" id="hero-subhead">Exclusive pre-paid maintenance programs built for elite marine dealerships.</p>
-    <a href="#enroll-section" class="hero-cta">Become a Partner</a>
+    <div class="hero-eyebrow">For Marine Dealers</div>
+    <h1 id="hero-headline">A new profit center, hiding in your <em>service bay</em>.</h1>
+    <p class="hero-sub" id="hero-subhead">Sixty seconds is all it takes to see how prepaid maintenance turns routine service into recurring revenue.</p>
+    <a href="#video" class="hero-scroll-cue">&#9656;&nbsp; Watch the 60-second overview</a>
   </div>
 </section>
 
 <!-- ============ VIDEO ============ -->
-<section class="band alt" id="video">
-  <div class="section-inner" style="max-width:940px;">
-    <div class="section-eyebrow">60 Seconds</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">How it <em>works</em>.</h2>
+<section id="video">
+  <div class="video-wrap">
+    <video
+      controls
+      preload="none"
+      playsinline
+      poster="/assets/video/whitestone-explainer-poster.jpg">
+      <source src="/assets/video/whitestone-explainer.mp4" type="video/mp4">
+      Your browser doesn&rsquo;t support embedded video.
+      <a href="/assets/video/whitestone-explainer.mp4">Download the video</a> instead.
+    </video>
+  </div>
+</section>
 
-    <div class="video-wrap">
-      <video
-        controls
-        preload="none"
-        playsinline
-        poster="/assets/video/whitestone-explainer-poster.jpg">
-        <source src="/assets/video/whitestone-explainer.mp4" type="video/mp4">
-        Your browser doesn&rsquo;t support embedded video.
-        <a href="/assets/video/whitestone-explainer.mp4">Download the video</a> instead.
-      </video>
+<!-- ============ WHAT WE OFFER ============ -->
+<section class="band paper" id="what-we-offer">
+  <div class="section-inner">
+    <div class="offer-head">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Prepaid maintenance, <em>simply put</em>.</h2>
+      <p class="offer-sub">Your customer pays once, up front. Their scheduled maintenance is covered for the life of the plan &mdash; and the work stays in your bays.</p>
+    </div>
+
+    <div class="offer-cards">
+      <div class="ocard">
+        <div class="ocard-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h4>Terms</h4>
+        <p>1, 2, and 3-year plans. Priced per engine.</p>
+      </div>
+      <div class="ocard">
+        <div class="ocard-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M6 12h12M9 17h6"/></svg>
+        </div>
+        <h4>Sold through</h4>
+        <p>Your F&amp;I desk at point of sale, or service during a visit.</p>
+      </div>
+      <div class="ocard">
+        <div class="ocard-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </div>
+        <h4>Your bays</h4>
+        <p>You do the work. Whitestone reimburses covered service.</p>
+      </div>
+      <div class="ocard">
+        <div class="ocard-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>
+        </div>
+        <h4>Paperwork</h4>
+        <p>We handle contracts, claims, and customer records.</p>
+      </div>
+    </div>
+
+    <div class="services-strip">
+      <div class="services-sh">10 Covered Services</div>
+      <div class="chips">
+        <span class="chip">De-Winterization</span>
+        <span class="chip">Impeller Service</span>
+        <span class="chip">Engine Oil</span>
+        <span class="chip">Fuel Filter</span>
+        <span class="chip">Transmission Oil</span>
+        <span class="chip">Outdrive</span>
+        <span class="chip">Shaft Alignment</span>
+        <span class="chip">Winterization</span>
+        <span class="chip">V-Drive</span>
+        <span class="chip">Ballast Cartridge</span>
+      </div>
+      <p class="services-note">V-Drive applies to V-drive vessels. Ballast Cartridge applies to ballast-equipped vessels.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ HOW YOU MAKE MONEY ============ -->
-<section class="band" id="margin">
-  <div class="section-inner" style="max-width:940px;">
-    <div class="section-eyebrow">The Margin</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">How you <em>make money</em>.</h2>
-    <p class="section-lead">Wholesale is what you pay Whitestone. What you charge the customer is entirely your call.</p>
+<section class="band deep" id="margin">
+  <div class="section-inner">
+    <div class="money-head">
+      <div class="section-eyebrow">The Margin</div>
+      <h2 class="section-title" style="color:var(--white);">How you <em>make money</em>.</h2>
+      <p class="money-sub">Wholesale is what you pay. Retail is your call. The spread is yours.</p>
+    </div>
 
-    <div class="flow-grid">
-      <div class="flow-step">
-        <div class="flow-num">1</div>
-        <h4>You buy</h4>
-        <p>Wholesale from Whitestone.</p>
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile-num">01</div>
+        <h3>You buy</h3>
+        <p>Wholesale from Whitestone.<span class="tile-reveal">One flat cost per plan.</span></p>
       </div>
-      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <div class="flow-num">2</div>
-        <h4>You price</h4>
-        <p>You set retail. Your market, your call.</p>
+      <div class="tile">
+        <div class="tile-num">02</div>
+        <h3>You price</h3>
+        <p>You set retail.<span class="tile-reveal">Your market, your margin.</span></p>
       </div>
-      <div class="flow-arrow" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <div class="flow-num">3</div>
-        <h4>You keep</h4>
-        <p>The difference is yours. Every plan.</p>
+      <div class="tile">
+        <div class="tile-num">03</div>
+        <h3>You keep</h3>
+        <p>The difference.<span class="tile-reveal">On every plan sold.</span></p>
       </div>
     </div>
 
-    <p class="flow-note">Wholesale pricing is shared directly with partnered dealers.</p>
+    <p class="money-note">Wholesale pricing is shared directly with partnered dealers.</p>
   </div>
 </section>
 
-<!-- ============ WHAT WE OFFER ============ -->
-<section class="band alt" id="what-we-offer">
-  <div class="section-inner" style="max-width:940px;">
-    <div class="section-eyebrow">What We Offer</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Prepaid maintenance, <em>simply put</em>.</h2>
-
-    <p class="offer-lead">
-      Whitestone Partners builds prepaid maintenance programs for marine dealerships. Your customer
-      pays once, up front, and their scheduled maintenance is covered for the life of the plan.
-    </p>
-
-    <div class="offer-grid">
-      <div class="offer-item">
-        <div class="offer-label">Terms</div>
-        <p>1, 2, and 3-year plans. Priced per engine.</p>
-      </div>
-      <div class="offer-item">
-        <div class="offer-label">Sold through</div>
-        <p>Your F&amp;I department at the point of sale, or your service department during a routine visit.</p>
-      </div>
-      <div class="offer-item">
-        <div class="offer-label">Who does the work</div>
-        <p>You do. The service stays in your bays, and Whitestone reimburses you for covered work.</p>
-      </div>
-      <div class="offer-item">
-        <div class="offer-label">Paperwork</div>
-        <p>We handle the contracts, the claims, and the customer records.</p>
-      </div>
-    </div>
-
-    <div class="services-block">
-      <div class="services-head">10 covered services</div>
-      <ul class="services-list">
-        <li>De-Winterization</li>
-        <li>Impeller Service</li>
-        <li>Engine Oil Service</li>
-        <li>Fuel Filter Service</li>
-        <li>Transmission Oil Service</li>
-        <li>Outdrive Service</li>
-        <li>Shaft Alignment</li>
-        <li>Winterization</li>
-        <li>V-Drive Service</li>
-        <li>Ballast Cartridge Service</li>
-      </ul>
-      <p class="services-note">V-Drive Service applies to V-drive vessels. Ballast Cartridge Service applies to ballast-equipped vessels.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRIMARY CTA — Become an Exclusive Whitestone Dealer ============ -->
-<section class="band" id="enroll-section">
-  <div class="section-inner" style="max-width:760px;">
+<!-- ============ ENROLL ============ -->
+<section id="enroll-section">
+  <div class="section-inner">
     <div class="section-eyebrow">Partnership</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Become an Exclusive <em>Whitestone Dealer</em>.</h2>
+    <h2 class="section-title" style="color:var(--white);">Become an Exclusive <em>Whitestone Dealer</em>.</h2>
     <p class="section-lead">Short form. Real partnership conversation begins after submission.</p>
 
     <div class="form-card">
@@ -788,44 +483,6 @@
           </div>
         </div>
         <button type="submit" class="btn-submit">Submit Partnership Interest</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECONDARY CTA — Have Additional Questions? ============ -->
-<section class="band alt" id="questions-section">
-  <div class="section-inner" style="max-width:760px;">
-    <div class="section-eyebrow">Not Ready Yet?</div>
-    <div class="section-divider"></div>
-    <h2 class="section-title">Have additional <em>questions</em>?</h2>
-    <p class="section-lead">Fill out this form and one of our team members will reach out to schedule a one-on-one meeting.</p>
-
-    <div class="form-card">
-      <form id="inquiryForm" onsubmit="return submitInquiry(event)">
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="inquiry_name">Your name</label>
-            <input id="inquiry_name" type="text" name="name" required>
-          </div>
-          <div class="form-field">
-            <label for="inquiry_email">Email</label>
-            <input id="inquiry_email" type="email" name="email" required>
-          </div>
-          <div class="form-field">
-            <label for="inquiry_phone">Phone</label>
-            <input id="inquiry_phone" type="tel" name="phone" required>
-          </div>
-          <div class="form-field">
-            <label for="inquiry_dealership">Dealership name</label>
-            <input id="inquiry_dealership" type="text" name="dealership" required>
-          </div>
-          <div class="form-field full">
-            <label for="inquiry_comment">Questions, concerns, or feedback</label>
-            <textarea id="inquiry_comment" name="comment" rows="5" required placeholder="Tell us what's on your mind &mdash; questions, concerns, what we could explain better..."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="btn-submit btn-secondary-cta">Submit Inquiry</button>
       </form>
     </div>
   </div>
@@ -871,7 +528,7 @@
     }).then(r => r.json().then(j => ({ ok: r.ok, json: j })))
       .then(({ ok, json }) => {
         if (ok && json.ok) {
-          form.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-family:Cormorant Garamond,serif;font-size:36px;font-weight:300;color:#0c1e2e;margin-bottom:18px;font-style:italic;">Thank you.</div><div style="font-family:DM Sans,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;">Welcome to Whitestone. A team member will be in touch within one business day to begin the partnership conversation.</div></div>';
+          form.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-family:Cormorant Garamond,serif;font-size:36px;font-weight:300;color:#f7f5ef;margin-bottom:18px;font-style:italic;">Thank you.</div><div style="font-family:DM Sans,sans-serif;font-size:15px;color:#c9d6e0;line-height:1.7;">Welcome to Whitestone. A team member will be in touch within one business day to begin the partnership conversation.</div></div>';
         } else {
           if (btn) { btn.disabled = false; btn.textContent = 'Submit Partnership Interest'; }
           alert('Something went wrong. Please try again or email support@whitestone-partners.com');
@@ -879,44 +536,6 @@
       }).catch(err => {
         console.error(err);
         if (btn) { btn.disabled = false; btn.textContent = 'Submit Partnership Interest'; }
-        alert('Something went wrong. Please try again or email support@whitestone-partners.com');
-      });
-
-    return false;
-  };
-
-  // Secondary form: Have Additional Questions?
-  window.submitInquiry = function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const fd = new FormData(form);
-    const payload = {
-      name: fd.get('name'),
-      email: fd.get('email'),
-      phone: fd.get('phone'),
-      dealership: fd.get('dealership'),
-      comment: fd.get('comment'),
-      slug: ''
-    };
-
-    const btn = form.querySelector('button[type="submit"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
-
-    fetch('/api/submit-inquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(r => r.json().then(j => ({ ok: r.ok, json: j })))
-      .then(({ ok, json }) => {
-        if (ok && json.ok) {
-          form.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-family:Cormorant Garamond,serif;font-size:36px;font-weight:300;color:#0c1e2e;margin-bottom:18px;font-style:italic;">Thank you.</div><div style="font-family:DM Sans,sans-serif;font-size:15px;color:#4a6278;line-height:1.7;">Your message is received. A team member will reach out shortly to schedule a one-on-one meeting.</div></div>';
-        } else {
-          if (btn) { btn.disabled = false; btn.textContent = 'Submit Inquiry'; }
-          alert('Something went wrong. Please try again or email support@whitestone-partners.com');
-        }
-      }).catch(err => {
-        console.error(err);
-        if (btn) { btn.disabled = false; btn.textContent = 'Submit Inquiry'; }
         alert('Something went wrong. Please try again or email support@whitestone-partners.com');
       });
 
