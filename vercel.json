@@ -5,6 +5,8 @@
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/become-a-dealer", "destination": "/become-a-dealer.html" },
     { "source": "/become-a-dealer/", "destination": "/become-a-dealer.html" },
+    { "source": "/partner-preview", "destination": "/partner-preview.html" },
+    { "source": "/partner-preview/", "destination": "/partner-preview.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "crons": [
