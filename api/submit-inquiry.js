@@ -71,10 +71,18 @@ module.exports = async function handler(req, res) {
           '&select=id,slug,legal_business_name,dealership_name,dba,box_recipient_first_name,box_recipient_last_name,box_recipient_title',
         { headers: supabaseHeaders }
       );
-      const rows = await dealerRes.json();
-      dealer = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+      if (!dealerRes.ok) {
+        const errBody = await dealerRes.text();
+        console.error('Dealer lookup failed:', dealerRes.status, errBody, '- slug:', slug);
+      } else {
+        const rows = await dealerRes.json();
+        dealer = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+        if (!dealer) {
+          console.warn('Dealer lookup found no match for slug:', slug);
+        }
+      }
     } catch (e) {
-      console.error('Dealer lookup failed:', e);
+      console.error('Dealer lookup threw:', e);
     }
   }
 
