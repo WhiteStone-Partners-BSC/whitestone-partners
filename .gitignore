@@ -1,0 +1,7 @@
+# macOS
+.DS_Store
+
+# Local backups taken before edits (see CLAUDE.md Section 7)
+*.bak-*
+CLAUDE.md.bak-*
+index-backup-*
