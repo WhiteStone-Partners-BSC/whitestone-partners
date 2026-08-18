@@ -16,11 +16,24 @@ no framework, no package.json worth speaking of.
 **It is NOT:**
 - the dealer portal (that is a separate repo, `Whitestone-Dealer-Portal`, deployed to
   `whitestone-dealer-portal.vercel.app`)
-- a place for Supabase clients, auth, transactional logic, or anything data-bearing
-- a place for an `/api/` folder
+- a place for dealer auth, billing, contracts, or anything money-bearing
 
-**If a session finds itself wanting to add a backend here, stop and ask.** That is a signal the work
-belongs in the portal repo.
+**This repo DOES have an `api/` folder** — four tracked Vercel serverless functions that serve the
+box campaign. This is deliberate and load-bearing, not a mistake:
+
+| Function | What it does |
+|---|---|
+| `api/submit-enrollment.js` | Enrollment form handler. Resolves slug → `dealer_id`, inserts to `dealer_enrollments`, emails support via Resend. **The primary conversion event.** |
+| `api/submit-inquiry.js` | "Additional questions" form. Same shape, writes `dealer_inquiries`. |
+| `api/scan-notify.js` | Supabase Database Webhook on INSERT to `dealer_box_scans`. Sends the scan-alert email. Auth via `x-webhook-secret`. |
+| `api/send-followup.js` | Daily cron (`vercel.json`, 17:00 UTC). |
+
+These read Supabase with the **service key** (`SUPABASE_SERVICE_KEY`), which bypasses RLS. The
+browser-side code in `dealer.html` uses the **anon key** and must read the `dealer_box_recipients`
+view — anon reads of `dealers` return `[]` silently under RLS.
+
+**Anything touching dealer auth, billing, or contracts still belongs in the portal repo.** If a
+session wants to add that kind of backend here, stop and ask.
 
 The two repos are **not siblings on disk**. Do not assume relative paths between them work.
 
@@ -46,8 +59,8 @@ booked conversation, not a transaction.**
 | File | What it is |
 |---|---|
 | `index.html` | Homepage |
-| `become-a-dealer.html` | **The main conversion page.** ~774 lines. Cinematic intro → hero → video → territory map → what we offer → margin → enrollment form → signature |
-| `dealer.html` | Personalized QR landing page. Reads `?dealer=X&name=Y` from the box campaign |
+| `become-a-dealer.html` | **The main conversion page for homepage traffic.** ~774 lines. Cinematic intro → hero → video → territory map → what we offer → margin → enrollment form → signature. Reads `?dealer=X&name=Y` **query params** for display-only personalization — no DB lookup, no slug. Linked only from `index.html` (`:120`, `:336`, `:344`), always without params, so the intro's early return fires and it renders generic |
+| `dealer.html` | **Personalized QR landing page — the real box-campaign path.** Reads the slug from the URL **PATH** (`/dealer/<slug>`, regex `^/dealer/([a-z0-9-]+)/?$`), resolves it against the `dealer_box_recipients` view, logs the scan, and runs its own enrollment + inquiry forms with the slug in hidden inputs |
 | `partner-preview.html` | Separate demo page, routed at `/partner-preview` |
 | `demo.html` | Scratch/demo file |
 | `vercel.json` | Routes `/become-a-dealer` → `become-a-dealer.html`, `/partner-preview` → `partner-preview.html` |
@@ -88,13 +101,17 @@ This is an established aesthetic. Do not replace it wholesale without being aske
 
 These are load-bearing and easy to break silently:
 
-1. **The cinematic intro overlay** — `#intro-overlay`, `.intro-stage-1/2`, the `logoFadeIn` /
-   `stage1Cycle` / `stage2Cycle` keyframes, and the `URLSearchParams` logic reading `dealer=` and
-   `name=`. This drives the personalized pages that real dealers reach by scanning a QR code on a
-   physical box. Breaking it breaks the campaign.
+1. **`dealer.html`'s slug resolution and intro — THIS is the QR campaign path.** The path regex at
+   `:1216`, the `dealer_box_recipients` lookup at `:1227`, the hidden slug inputs at `:1112` /
+   `:1153`, the scan insert at `:1255`, and `runIntro()` at `:1263`. A real dealer scanning a
+   physical box walks exactly this path. Breaking any of it breaks the campaign.
+   (`become-a-dealer.html`'s `#intro-overlay` / `stage1Cycle` / `stage2Cycle` overlay is a *separate,
+   display-only* intro that fires only for hand-built `?dealer=&name=` URLs. No link in the repo
+   passes those params, so it currently never plays. Do not confuse the two.)
 2. **The video block** — `#video`, `/assets/video/whitestone-explainer.mp4` and its poster.
-3. **The enrollment form** — `#enroll-section`, `#enrollForm`, `submitEnrollment`. See the open
-   question in Section 8 before changing anything here.
+3. **The enrollment form** — `#enroll-section`, `#enrollForm`, `submitEnrollment`. Present on both
+   `dealer.html` and `become-a-dealer.html`; both POST to `/api/submit-enrollment`. Verified working
+   end to end — see the verified note in Section 8 before assuming anything here is broken.
 4. **The territory map** — `#territory` section in `become-a-dealer.html`. See Section 6.
 
 ---
@@ -156,16 +173,35 @@ manual-push workflow.
 
 ## 8. Known issues and open questions
 
-- **`/api/submit-enrollment` — UNRESOLVED AND IMPORTANT.** `become-a-dealer.html` posts the
-  enrollment form to `/api/submit-enrollment`, but this repo has no `api/` folder. Either a Vercel
-  rewrite points it at the portal, or **the form is silently failing.** This has never been
-  confirmed end-to-end. Dealers have landed on this page and not converted. Verify before doing any
-  conversion work — a design improvement cannot fix a dead endpoint.
-- Formspree endpoints in use elsewhere on the site: `mvzvzkqa` (contact), `mlgonaae`
-  (registrations).
 - An ~8MB unoptimized source PNG sits in `assets/img/` uncommitted.
 - **Privacy Policy and Terms of Service do not exist.** `/privacy` returns 404, and Stripe
   references it from the portal. Real gap.
+
+### Verified working — enrollment path (Aug 18, 2026)
+
+Investigated end to end. **The enrollment path works.** Previous drafts of this file claimed the
+form might be silently failing and that Formspree was in use here — both disproven. Do not re-raise
+without new evidence.
+
+- All four `api/*` endpoints are deployed and executing their own handler logic. `POST {}` to
+  `/api/submit-enrollment` returns `400 {"error":"Missing required fields"}`; `GET` returns `405`.
+  Both are the handler's own responses, not Vercel 404s.
+- Form field names match the handler's required fields exactly (`name`, `email`, `phone`,
+  `dealership`).
+- The dealer lookup uses the **service key**, so RLS is bypassed. Confirmed empirically: an anon-key
+  read of `dealers` for a real slug returns `[]` at status 200 (silently filtered), while the same
+  slug against `dealer_box_recipients` returns the row. The API is not affected by this.
+- `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, and `RESEND_API_KEY` are all **confirmed present** on this
+  Vercel project — a successful insert cleared the guard that checks all three.
+- **The QR path attributes correctly.** Dealers scanning a box land on `/dealer/<slug>`, which
+  resolves the slug and submits it, so `dealer_enrollments.dealer_id` is populated.
+- `become-a-dealer.html:655` hardcodes `slug: ''`, but that page is only ever linked from the
+  homepage without params, so an arriving visitor genuinely has no slug. **Left as-is deliberately
+  — it is not a bug on any real path.** Only worth changing if hand-built `?dealer=` links to that
+  page start being sent.
+- No Formspree anywhere in the repo.
+
+**The conversion problem is the page and the offer, not the plumbing.**
 
 ---
 
