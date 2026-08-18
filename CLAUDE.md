@@ -163,8 +163,6 @@ manual-push workflow.
   conversion work — a design improvement cannot fix a dead endpoint.
 - Formspree endpoints in use elsewhere on the site: `mvzvzkqa` (contact), `mlgonaae`
   (registrations).
-- A `.DS_Store` is **tracked** in git and shows as modified. Wants a `git rm --cached .DS_Store`
-  plus a `.gitignore` entry.
 - An ~8MB unoptimized source PNG sits in `assets/img/` uncommitted.
 - **Privacy Policy and Terms of Service do not exist.** `/privacy` returns 404, and Stripe
   references it from the portal. Real gap.
