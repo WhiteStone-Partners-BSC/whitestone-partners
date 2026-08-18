@@ -194,10 +194,10 @@ manual-push workflow.
 - **Honest pushback is wanted.** If a request would overbuild, or if the real blocker is elsewhere,
   say so plainly. The standing strategic insight is that the constraint is *sales and real dealer
   usage*, not missing features.
-- **Ben does not write code directly.** He reviews, runs, and pushes. Explain the reasoning in plain
-  language before the diff.
-- **Ben's Mac has no Node installed by default.** Do not assume `npm`/`npx` works. The Supabase CLI
-  and the Stripe CLI are installed; Homebrew is available.
+- **Ben does not write code directly.** He reviews and approves; Claude runs the git commands (see
+  Section 7). Explain the reasoning in plain language before the diff.
+- **Node is installed** (v26.7.0), so `npm`/`npx` work. The Stripe CLI and the Supabase CLI are both
+  installed; Homebrew is available.
 
 ---
 
